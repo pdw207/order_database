@@ -1,0 +1,16 @@
+<h1>Event</h1>
+
+<p id="notice"><%= notice %></p>
+
+
+
+  <h2><%= @sale.name %></h2>
+
+<div style="text-align: center;">  <%= number_to_currency(@sale.amount) %>
+<br><br>
+ <%= @sale.date %><br>
+<br><br>
+
+<p>
+<%= link_to 'Edit', edit_sale_path(@sale) %> |
+<%= link_to 'Back', sales_path %></p

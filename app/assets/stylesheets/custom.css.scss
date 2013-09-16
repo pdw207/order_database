@@ -1,0 +1,82 @@
+@import "bootstrap";
+/* universal */
+
+html {
+  overflow-y: scroll;
+}
+
+body {
+  padding-top: 10px;
+  margin:50px 0px; 
+  padding-left:0px;
+  padding-right:0px;
+  text-align:center;
+  }
+form input {
+  width: 60px;
+}
+form select {
+  width: 100px;
+}
+.error_messages{ width:200px;
+  margin:0px auto;
+  text-align:left;
+  padding:15px;}
+
+.field_with_errors {
+  margin:0px auto;
+  text-align:left;
+  padding:15px;}
+
+#content {
+  width:500px;
+  margin:0px auto;
+  text-align:left;
+  padding:15px;
+  }
+
+section {
+  overflow: auto;
+}
+
+textarea {
+  resize: vertical;
+}
+
+.center {
+  text-align: center;
+}
+
+.center h1 {
+  margin-bottom: 10px;
+}
+/* typography */
+
+h1, h2, h3, h4, h5, h6 {
+  line-height: 1;
+}
+
+th {
+  text-align: center;
+
+}
+h1 {
+  font-size: 3em;
+  letter-spacing: -2px;
+  margin-bottom: 30px;
+  text-align: center;
+}
+
+h2 {
+  font-size: 1.2em;
+  letter-spacing: -1px;
+  margin-bottom: 30px;
+  text-align: center;
+  font-weight: normal;
+  color: #999;
+}
+
+p {
+  font-size: 1.1em;
+  line-height: 1.7em;
+}

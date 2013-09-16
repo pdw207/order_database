@@ -4,8 +4,8 @@ ruby '2.0.0'
 
 gem 'rails'
 gem 'bootstrap-sass'
-gem 'bcrypt-ruby'
-
+gem 'bcrypt-ruby', :require => "bcrypt"
+gem 'protected_attributes'
 group :development, :test do
   gem 'sqlite3'
   gem 'rspec-rails'
