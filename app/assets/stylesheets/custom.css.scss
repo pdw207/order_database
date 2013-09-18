@@ -13,12 +13,52 @@ body {
   text-align:center;
   }
 
+#content {
+  width:500px;
+  margin:0px auto;
+  text-align:left;
+  padding:15px;
+}
+
+
+p {
+  font-size: 1.1em;
+  line-height: 1.7em;
+}
+section {
+  overflow: auto;
+}
+
+.center {
+  text-align: center;
+}
+
+/* Table Customization*/  
+
+th {
+  text-align: right;
+  vertical-align: text-top;  
+}
+
+.table th, .table td {
+  text-align:center;
+}
+
 /* Sale Form Customization*/  
 form input#sale_amount {
   width: 60px;
 }
-form select {
-  width: 100px;
+form select#sale_date_1i {
+  width: 70px;
+}
+form select#sale_date_2i {
+  width: 110px;
+}
+form select#sale_date_3i {
+  width: 50px;
+}
+textarea {
+  resize: vertical;
 }
 
 /* Error Handling */
@@ -38,38 +78,20 @@ form select {
   border-radius:10px;
   }
 
-#content {
-  width:500px;
-  margin:0px auto;
-  text-align:left;
-  padding:15px;
-  }
 
-section {
-  overflow: auto;
-}
 
-textarea {
-  resize: vertical;
-}
 
-.center {
-  text-align: center;
-}
 
-.center h1 {
-  margin-bottom: 10px;
-}
 /* typography */
 
 h1, h2, h3, h4, h5, h6 {
   line-height: 1;
 }
 
-th {
-  text-align: center;
-
+.center h1 {
+  margin-bottom: 10px;
 }
+
 h1 {
   font-size: 3em;
   letter-spacing: -2px;
@@ -84,9 +106,4 @@ h2 {
   text-align: center;
   font-weight: normal;
   color: #999;
-}
-
-p {
-  font-size: 1.1em;
-  line-height: 1.7em;
 }
