@@ -18,6 +18,9 @@
 # Ignore bundler config.
 /.bundle
 
+# Ignore facturas
+public/system/sales/facturas/*
+
 # Ignore the default SQLite database.
 /db/*.sqlite3
 /db/*.sqlite3-journal
