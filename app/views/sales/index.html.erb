@@ -1,4 +1,4 @@
-<h1>Event Listing</h1>
+<h1>Sales</h1>
 <h2>Total: <%= number_to_currency @sales.sum('amount')  %> and in <%= Date.today.strftime("%B")  %>: 
 
    <%= number_to_currency @sales.sum(:amount, :conditions => {:date => 
