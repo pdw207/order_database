@@ -6,11 +6,16 @@
 
   <h2><%= @sale.name %></h2>
 
-<div style="text-align: center;">  <%= number_to_currency(@sale.amount) %>
-<br><br>
- <%= @sale.date %><br>
-<br><br>
-
-<p>
-<%= link_to 'Edit', edit_sale_path(@sale) %> |
-<%= link_to 'Index', sales_path %></p
+<div style="text-align: center;">  
+	
+	<%= number_to_currency(@sale.amount) %><br>
+	
+	<%= @sale.date %><br><br>
+	<% if @sale.factura_file_size %>
+	<%= link_to image_tag(@sale.factura.url(:thumb)), @sale.factura.url %><br><br>
+	<% end %>
+	<p>
+		<%= link_to 'Edit', edit_sale_path(@sale) %> |
+		<%= link_to 'Index', sales_path %>
+	</p>
+</div>
