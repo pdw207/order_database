@@ -1,0 +1,62 @@
+<%= form_for(@buyer) do |f| %>
+  <% if @buyer.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@buyer.errors.count, "error") %> prohibited this buyer from being saved:</h2>
+
+      <ul>
+      <% @buyer.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+<div class="row-fluid">
+  <div class="span6 offset1">
+  <div class="field">
+    <%= f.label :company %><br>
+    <%= f.text_field :company %>
+  </div>
+  <div class="field">
+    <%= f.label :contact_name %><br>
+    <%= f.text_field :contact_name %>
+  </div>
+  <div class="field">
+    <%= f.label :contact_email %><br>
+    <%= f.text_field :contact_email %>
+  </div>
+  <div class="field">
+    <%= f.label :contact_phone_1 %><br>
+    <%= f.text_field :contact_phone_1 %>
+  </div>
+  <div class="field">
+    <%= f.label :contact_phone_2 %><br>
+    <%= f.text_field :contact_phone_2 %>
+  </div>
+
+  <div class="field">
+    <%= f.label :shipping_address_line_1 %><br>
+    <%= f.text_area  :shipping_address_line_1,:rows => 2 %>
+  </div>
+   </div><div class="span5">
+  <div class="field">
+    <%= f.label :shipping_address_line_2 %><br>
+    <%= f.text_area  :shipping_address_line_2,:rows => 2 %>
+  </div>
+  <div class="field">
+    <%= f.label :factura_information %><br>
+    <%= f.text_area  :factura_information, :rows => 4  %>
+  </div>
+  <div class="field">
+    <%= f.label :special_instructions %><br>
+    <%= f.text_area :special_instructions, :rows => 6 %>
+  </div>
+  <div class="actions">
+    <%= f.submit "Update Record", class: "btn btn-default"%>
+  </div>
+<% end %>
+
+<%= link_to 'Show', @buyer %> |
+<%= link_to 'Index', buyers_path %>
+
+</div>
+</div>

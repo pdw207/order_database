@@ -1,0 +1,13 @@
+
+<div class="navbar navbar-inverse">
+  <div class="navbar-inner">
+
+    <ul class="nav">
+
+      	<li <% if @active == 'buyers' %> class="active"<% end %>><%= link_to "buyers",buyers_path %></li>
+      	<li <% if @active == 'sales' %> class="active"<% end %>><%= link_to "sales",sales_path %></li>
+
+    </ul>
+  </div>
+</div>
+
