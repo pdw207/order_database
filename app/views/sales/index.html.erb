@@ -24,7 +24,7 @@
 
         <td><%= sale.name %></td>
         <td><%= number_to_currency(sale.amount) %></td>
-        <td><%= sale.date %></td>
+        <td><%= sale.date.to_formatted_s(:short) %></td>
         <td><% if sale.factura_file_name %> Attached<% end %></td>
         <td><%= link_to 'View', sale %></td>
         <td><%= link_to 'Edit', edit_sale_path(sale) %></td>

@@ -1,11 +1,13 @@
 source 'https://rubygems.org'
 ruby '2.0.0'
 #ruby-gemset=railstutorial_rails_4_0
+gem "wice_grid", '3.2.1'
 gem "paperclip", "~> 3.0"
 gem 'rails'
 gem 'bootstrap-sass'
 gem 'bcrypt-ruby', :require => "bcrypt"
 gem 'protected_attributes'
+
 group :development, :test do
   gem 'sqlite3'
   gem 'rspec-rails'

@@ -11,7 +11,21 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20130918144558) do
+ActiveRecord::Schema.define(version: 20130919003920) do
+
+  create_table "buyers", force: true do |t|
+    t.string   "company"
+    t.string   "contact_name"
+    t.string   "contact_email"
+    t.string   "contact_phone_1"
+    t.string   "contact_phone_2"
+    t.string   "shipping_address_line_1"
+    t.string   "shipping_address_line_2"
+    t.string   "factura_information"
+    t.string   "special_instructions"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "sales", force: true do |t|
     t.decimal  "amount"
