@@ -55,7 +55,7 @@
   </div>
 <% end %>
 
-<%= link_to 'Show', @buyer %> |
+<%= link_to 'Show', @buyer %> | <%= link_to 'Destroy', @buyer, method: :delete, data: { confirm: 'Are you sure?' } %> |
 <%= link_to 'Index', buyers_path %>
 
 </div>

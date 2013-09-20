@@ -6,6 +6,7 @@ class BuyersController < ApplicationController
   # GET /buyers.json
   def index
     @buyers = Buyer.all
+    @buyers_grid = initialize_grid(Buyer)
   end
 
   # GET /buyers/1

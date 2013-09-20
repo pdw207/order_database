@@ -1,0 +1,9 @@
+
+	<%= define_grid(@buyers_grid, hide_submit_button: true, hide_reset_button: true) do |g|
+    
+    	g.column name:  'Company', attribute: 'company', detach_with_id: :company_filter do |buyer| link_to  buyer.company, buyer end
+		g.column name:  'Contact', attribute: 'contact_name', detach_with_id: :contact_name_filter
+		g.column name:  'Email', attribute: 'contact_email', detach_with_id: :contact_email_filter
+		g.column name:  'Phone', attribute: 'contact_phone_1', detach_with_id: :contact_phone_1_filter
+		g.column name: 'Action'  do |buyer| link_to  "Edit", edit_buyer_path(buyer) end
+	end -%>
