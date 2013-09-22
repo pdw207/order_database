@@ -1,49 +1,42 @@
 <p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Company:</strong>
-  <%= @buyer.company %>
-</p>
+<h1><%= @buyer.company %></h1>
+<div class="row-fluid">
+  <div class="span6">
+      <p>
+        <strong>Contact:</strong>
+        <%= @buyer.contact_name %>
+      <br>
+        <strong>Email:</strong>
+        <%= @buyer.contact_email %>
+      </p>
 
-<p>
-  <strong>Contact name:</strong>
-  <%= @buyer.contact_name %>
-</p>
+      <p>
+        <strong>Phone 1:</strong>
+        <%= @buyer.contact_phone_1 %>
+      <br>
+        <strong>Phone 2:</strong>
+        <%= @buyer.contact_phone_2 %>
+      </p>
 
-<p>
-  <strong>Contact email:</strong>
-  <%= @buyer.contact_email %>
-</p>
+      <p><strong>Shipping Address:</strong><br><%= @buyer.shipping_address_line_1 %><br><%= @buyer.shipping_address_line_2 %>
+      </p>
 
-<p>
-  <strong>Contact phone 1:</strong>
-  <%= @buyer.contact_phone_1 %>
-</p>
 
-<p>
-  <strong>Contact phone 2:</strong>
-  <%= @buyer.contact_phone_2 %>
-</p>
+      <p>
+        <strong>Factura information:</strong>
+        <%= @buyer.factura_information %>
+      </p>
 
-<p>
-  <strong>Shipping address line 1:</strong>
-  <%= @buyer.shipping_address_line_1 %>
-</p>
-
-<p>
-  <strong>Shipping address line 2:</strong>
-  <%= @buyer.shipping_address_line_2 %>
-</p>
-
-<p>
-  <strong>Factura information:</strong>
-  <%= @buyer.factura_information %>
-</p>
-
-<p>
-  <strong>Special instructions:</strong>
-  <%= @buyer.special_instructions %>
-</p>
+      <p>
+        <strong>Special instructions:</strong>
+        <%= @buyer.special_instructions %>
+      </p>
+  </div>
+  <div class="span6" id="photo">
+      <%= image_tag("lg_store.jpg",class:"img-rounded", height: "800px", width: "800px") if @buyer.company == "Lonesome George" %>
+  </div>
+</div>
 
 <%= link_to 'Edit', edit_buyer_path(@buyer) %> |
 <%= link_to 'Index', buyers_path %>

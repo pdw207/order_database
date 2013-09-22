@@ -15,5 +15,7 @@
 //= require turbolinks
 //= require_tree .
 //= require wice_grid
+// Loads all Bootstrap javascripts
+//= require bootstrap
 
 

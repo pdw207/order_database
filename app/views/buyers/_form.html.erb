@@ -1,3 +1,6 @@
+
+
+
 <%= form_for(@buyer) do |f| %>
   <% if @buyer.errors.any? %>
     <div id="error_explanation">
@@ -10,53 +13,72 @@
       </ul>
     </div>
   <% end %>
-<div class="row-fluid">
-  <div class="span6 offset1">
-  <div class="field">
-    <%= f.label :company %><br>
-    <%= f.text_field :company %>
-  </div>
-  <div class="field">
-    <%= f.label :contact_name %><br>
-    <%= f.text_field :contact_name %>
-  </div>
-  <div class="field">
-    <%= f.label :contact_email %><br>
-    <%= f.text_field :contact_email %>
-  </div>
-  <div class="field">
-    <%= f.label :contact_phone_1 %><br>
-    <%= f.text_field :contact_phone_1 %>
-  </div>
-  <div class="field">
-    <%= f.label :contact_phone_2 %><br>
-    <%= f.text_field :contact_phone_2 %>
-  </div>
 
-  <div class="field">
-    <%= f.label :shipping_address_line_1 %><br>
-    <%= f.text_area  :shipping_address_line_1,:rows => 2 %>
-  </div>
-   </div><div class="span5">
-  <div class="field">
-    <%= f.label :shipping_address_line_2 %><br>
-    <%= f.text_area  :shipping_address_line_2,:rows => 2 %>
-  </div>
-  <div class="field">
-    <%= f.label :factura_information %><br>
-    <%= f.text_area  :factura_information, :rows => 4  %>
-  </div>
-  <div class="field">
-    <%= f.label :special_instructions %><br>
-    <%= f.text_area :special_instructions, :rows => 6 %>
-  </div>
-  <div class="actions">
-    <%= f.submit "Update Record", class: "btn btn-default"%>
-  </div>
-<% end %>
+ 
 
-<%= link_to 'Show', @buyer %> | <%= link_to 'Destroy', @buyer, method: :delete, data: { confirm: 'Are you sure?' } %> |
-<%= link_to 'Index', buyers_path %>
+<div class="tabbable">
+   <ul class="nav nav-tabs" id="proftabs">
+      <li><a href="#basic_info_tab"  data-toggle="tab" >Company Info</a></li>
+      <li><a href="#factura_tab" data-toggle="tab">Billing</a></li>
+  </ul>
+</div>
+
+ <div class="tab-content row-fluid">
+        <div id="basic_info_tab" class="tab-pane">
+              <div class="span6 offset1">
+                    <div class="field">
+                      <%= f.label :company %>
+                      <%= f.text_field :company, placeholder: "Tienda ABC" %>
+                    </div>
+                    <div class="field">
+                      <%= f.label :contact_name %>
+                      <%= f.text_field :contact_name , placeholder: "Nombre y Apedillo" %>
+                    </div>
+                    <div class="field">
+                      <%= f.label :contact_email %>
+                      <%= f.text_field :contact_email , placeholder: "nombre@hotmail.com" %>
+                    </div>
+              </div>
+              <div class="span5">
+                    <div class="field">
+                      <%= f.label :Telephone %>
+                      <%= f.text_field :contact_phone_1, placeholder: "primary" %>
+                      <%= f.text_field :contact_phone_2, placeholder: "secondary"%>
+                    </div>
+                    <div class="field">
+                      <%= f.label :shipping_address %>
+                      <%= f.text_field  :shipping_address_line_1, placeholder:"1234 Main Street" %>
+                      <%= f.text_field  :shipping_address_line_2, placeholder: "Boston MA, 23412"%>
+                    </div>
+              </div> 
+        </div>
+
+        <div id="factura_tab"  class="tab-pane">
+               <div class="span6 offset1">
+                    <div class="field">
+                      <%= f.label :factura_information %><br>
+                      <%= f.text_area  :factura_information, :rows => 4  %>
+                    </div>
+              </div>
+              <div class="span5">
+                    <div class="field">
+                      <%= f.label :special_instructions %><br>
+                      <%= f.text_area :special_instructions, :rows => 6 %>
+                    </div>
+              </div>
+              
+        </div>
+</div>
 
 </div>
+
+
+<div class="actions">
+  <%= f.submit "Update Record", class: "btn btn-default"%>
 </div>
+  <% end %>
+
+  <%= link_to 'Show', @buyer %> | <%= link_to 'Destroy', @buyer, method: :delete, data: { confirm: 'Are you sure?' } %> |
+  <%= link_to 'Index', buyers_path %><br>
+
+ 

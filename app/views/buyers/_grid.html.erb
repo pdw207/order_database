@@ -1,5 +1,5 @@
 
-	<%= define_grid(@buyers_grid, hide_submit_button: true, hide_reset_button: true) do |g|
+	<%= define_grid(@buyers_grid, hide_submit_button: true, hide_reset_button: true, class: "table table-hover table-condensed") do |g|
     
     	g.column name:  'Company', attribute: 'company', detach_with_id: :company_filter do |buyer| link_to  buyer.company, buyer end
 		g.column name:  'Contact', attribute: 'contact_name', detach_with_id: :contact_name_filter
