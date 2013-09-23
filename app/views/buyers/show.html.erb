@@ -42,6 +42,27 @@
                 <%= @buyer.special_instructions_4 %><br>
               </p>
           <%else%><% end %>    
+        <strong>Precios:</strong><br>
+      
+        <table>
+        <tr>
+            <td>
+              Collares-Azul <%= number_to_currency(@buyer.necklaces_blue)%><br>
+              Collares-Amarillo <%= number_to_currency(@buyer.necklaces_yellow)%><br>
+              Collares-Verde <%= number_to_currency(@buyer.necklaces_green)%><br>
+              Pulseras <%= number_to_currency(@buyer.bracelets)%><br>
+
+            </td>
+      
+          <td>
+            Aretes <%= number_to_currency(@buyer.earrings)%><br>
+            Llaveros <%= number_to_currency(@buyer.keychains)%><br>
+            Monederos <%= number_to_currency(@buyer.wallets)%><br><br>
+          </td>
+        </tr>
+        </table>
+        
+      
   </div>
 
  

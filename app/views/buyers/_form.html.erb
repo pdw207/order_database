@@ -20,6 +20,7 @@
    <ul class="nav nav-tabs" id="proftabs">
       <li><a href="#basic_info_tab"  data-toggle="tab" >Compañía</a></li>
       <li><a href="#factura_tab" data-toggle="tab">Facturación</a></li>
+      <li><a href="#prices_tab" data-toggle="tab">Precios</a></li>
       <li><a href="#imagen_tab" data-toggle="tab">Imagen</a></li>
   </ul>
 </div>
@@ -63,6 +64,42 @@
                               <td><%= f.label :Upload_Another_Image %><%= f.file_field :store_image %></td>
                           </tr>
                         </table>
+        </div>  
+        <div id="prices_tab" class="tab-pane">
+               <table>
+                   <tr>
+                        <td> <%= f.label :collares_azul %></td>
+                        <td><%= f.text_field :necklaces_blue %></td>
+                    </tr>
+                   <tr>
+                        <td><%= f.label :collares_verde %></td>
+                        <td><%= f.text_field :necklaces_green %></td>
+                    </tr>
+                    <tr>
+                        <td> <%= f.label :collares_amarillo %></td>
+                        <td><%= f.text_field :necklaces_yellow %></td>
+                    </tr>
+                    <tr>
+                      <td><%= f.label :pulseras %></td>
+                      <td><%= f.text_field :bracelets %></td>
+                    </tr>
+                    <tr>
+                      <td><%= f.label :aretes %></td>
+                      <td><%= f.text_field :earrings %></td>
+                    </tr>
+                    <tr>
+                      <td><%= f.label :monederos %></td>
+                      <td><%= f.text_field :wallets %></td>
+                    </tr>
+                    <tr>
+                      <td><%= f.label :llaveros %></td>
+                      <td><%= f.text_field :keychains %></td>
+                    </tr>
+
+               </table>
+                      
+                      
+                    
         </div>  
         <div id="factura_tab"  class="tab-pane">
                <div class="span6 offset1">

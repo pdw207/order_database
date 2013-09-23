@@ -59,8 +59,8 @@ class BuyersController < ApplicationController
       params.require(:buyer).permit(:company, :contact_name, :contact_email, :contact_phone_1, :contact_phone_2, :shipping_address_line_1, :shipping_address_line_2,
 :shipping_address_line_3, :factura_information, :special_instructions,
     :factura_information_RUC, :factura_information_phone, :factura_information_address, 
-    :special_instructions_2, :special_instructions_3, :special_instructions_4, :store_image
-
+    :special_instructions_2, :special_instructions_3, :special_instructions_4, :store_image,
+    :necklaces_blue, :necklaces_yellow, :necklaces_green, :bracelets, :earrings,:keychains, :wallets
 
 
         )
