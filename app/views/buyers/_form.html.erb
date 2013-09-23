@@ -18,8 +18,9 @@
 
 <div class="tabbable">
    <ul class="nav nav-tabs" id="proftabs">
-      <li><a href="#basic_info_tab"  data-toggle="tab" >Company Info</a></li>
-      <li><a href="#factura_tab" data-toggle="tab">Billing</a></li>
+      <li><a href="#basic_info_tab"  data-toggle="tab" >Compañía</a></li>
+      <li><a href="#factura_tab" data-toggle="tab">Facturación</a></li>
+      <li><a href="#imagen_tab" data-toggle="tab">Imagen</a></li>
   </ul>
 </div>
 
@@ -27,58 +28,91 @@
         <div id="basic_info_tab" class="tab-pane">
               <div class="span6 offset1">
                     <div class="field">
-                      <%= f.label :company %>
-                      <%= f.text_field :company, placeholder: "Tienda ABC" %>
+                      <%= f.label :nombre_de_compañía %>
+                      <%= f.text_field :company, placeholder: "Ropa, Joyas y Mas" %>
                     </div>
                     <div class="field">
-                      <%= f.label :contact_name %>
-                      <%= f.text_field :contact_name , placeholder: "Nombre y Apedillo" %>
+                      <%= f.label :nombre_y_apellido %>
+                      <%= f.text_field :contact_name , placeholder: "Elba Suarez" %>
                     </div>
                     <div class="field">
-                      <%= f.label :contact_email %>
+                      <%= f.label :email %>
                       <%= f.text_field :contact_email , placeholder: "nombre@hotmail.com" %>
                     </div>
+
               </div>
               <div class="span5">
                     <div class="field">
-                      <%= f.label :Telephone %>
-                      <%= f.text_field :contact_phone_1, placeholder: "primary" %>
-                      <%= f.text_field :contact_phone_2, placeholder: "secondary"%>
+                      <%= f.label :Teléfono %>
+                      <%= f.text_field :contact_phone_1, placeholder: "primario" %>
+                      <%= f.text_field :contact_phone_2, placeholder: "secundario"%>
                     </div>
                     <div class="field">
-                      <%= f.label :shipping_address %>
+                      <%= f.label :dirección_de_envio %>
                       <%= f.text_field  :shipping_address_line_1, placeholder:"1234 Main Street" %>
                       <%= f.text_field  :shipping_address_line_2, placeholder: "Boston MA, 23412"%>
+                     <%= f.text_field  :shipping_address_line_3, placeholder: "USA"%>
                     </div>
+
               </div> 
         </div>
-
+        <div id="imagen_tab" class="tab-pane">
+                        <table>
+                          <tr>
+                            <td><%= link_to image_tag(@buyer.store_image.url(:medium)), @buyer.store_image.url %></td>
+                              <td><%= f.label :Upload_Another_Image %><%= f.file_field :store_image %></td>
+                          </tr>
+                        </table>
+        </div>  
         <div id="factura_tab"  class="tab-pane">
                <div class="span6 offset1">
-                    <div class="field">
-                      <%= f.label :factura_information %><br>
-                      <%= f.text_area  :factura_information, :rows => 4  %>
-                    </div>
+                            <%= f.label :información_de_factura %><br>
+                       <table>
+                     <tr>
+                          <td> Nombre:</td>
+                          <td><%= f.text_field :factura_information %></td>
+                      </tr>
+                     <tr>
+                          <td>  Dirección:</td>
+                          <td><%= f.text_field :factura_information_address %></td>
+                      </tr>
+                      <tr>
+                          <td> RUC:</td>
+                          <td><%= f.text_field  :factura_information_RUC  %></td>
+                      </tr>
+                      <tr>
+                        <td>Teléfono</td>
+                        <td><%= f.text_field  :factura_information_phone %></td>
+                      </tr>
+                      </table>
+
               </div>
               <div class="span5">
+              
                     <div class="field">
-                      <%= f.label :special_instructions %><br>
-                      <%= f.text_area :special_instructions, :rows => 6 %>
-                    </div>
+                        <%= f.label :dirección_de_envio_de_factura %><br><br>
+                        <%= f.text_field  :special_instructions %>
+                        <%= f.text_field  :special_instructions_2 %>
+                        <%= f.text_field  :special_instructions_3 %>
+                       <%= f.text_field  :special_instructions_4 %>
+                    </div>                 
+                   
+                    
               </div>
               
         </div>
 </div>
 
-</div>
 
 
 <div class="actions">
-  <%= f.submit "Update Record", class: "btn btn-default"%>
+  
 </div>
+
+<%= f.submit "Actualizar", class: "btn btn-default"%>
   <% end %>
 
-  <%= link_to 'Show', @buyer %> | <%= link_to 'Destroy', @buyer, method: :delete, data: { confirm: 'Are you sure?' } %> |
-  <%= link_to 'Index', buyers_path %><br>
+  <%= link_to 'Mostrar', @buyer %> | <%= link_to 'Borrar', @buyer, method: :delete, data: { confirm: 'Are you sure?' } %> |
+  <%= link_to 'Indice', buyers_path %><br>
 
  

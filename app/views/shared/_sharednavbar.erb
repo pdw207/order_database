@@ -9,10 +9,10 @@
       	<% else %>
       		<li class="dropdown">
       	<% end %>
-		        <a href="/buyers" class="dropdown-toggle" data-toggle="dropdown">buyers<b class="caret"></b></a>
+		        <a href="/buyers" class="dropdown-toggle" data-toggle="dropdown"><%= t "nav.buyers" %><b class="caret"></b></a>
 			        <ul class="dropdown-menu">
-			          <li><%= link_to 'index of all buyers', buyers_path  %></li>
-			          <li><%= link_to 'create new buyer', new_buyer_path  %></li>
+			          <li><%= link_to 'Ver Todos los Compradores', buyers_path  %></li>
+			          <li><%= link_to 'Crear Comprador Nuevo', new_buyer_path  %></li>
 			        </ul>
 			</li>
       	<% if @active == 'sales' %> 
@@ -20,10 +20,10 @@
       	<% else %>
       		<li class="dropdown">
       	<% end %>
-		        <a href="/buyers" class="dropdown-toggle" data-toggle="dropdown">sales<b class="caret"></b></a>
+		        <a href="/buyers" class="dropdown-toggle" data-toggle="dropdown"><%= t "nav.sales" %><b class="caret"></b></a>
 			        <ul class="dropdown-menu">
-			          <li><%= link_to 'index of all sales', sales_path  %></li>
-			          <li><%= link_to 'create new sale', new_sale_path  %></li>
+			          <li><%= link_to 'Ver Todas Las Ventas', sales_path  %></li>
+			          <li><%= link_to 'Crear Comprador Nuevo', new_sale_path  %></li>
 			        </ul>
 			</li>
     </ul>

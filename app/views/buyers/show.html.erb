@@ -4,7 +4,7 @@
 <div class="row-fluid">
   <div class="span6">
       <p>
-        <strong>Contact:</strong>
+        <strong>Nombre y Apellido:</strong>
         <%= @buyer.contact_name %>
       <br>
         <strong>Email:</strong>
@@ -12,31 +12,46 @@
       </p>
 
       <p>
-        <strong>Phone 1:</strong>
+        <strong>Teléfono 1:</strong>
         <%= @buyer.contact_phone_1 %>
       <br>
-        <strong>Phone 2:</strong>
+        <strong>Teléfono 2:</strong>
         <%= @buyer.contact_phone_2 %>
       </p>
 
-      <p><strong>Shipping Address:</strong><br><%= @buyer.shipping_address_line_1 %><br><%= @buyer.shipping_address_line_2 %>
+      <p><strong>Dirección de Envío:</strong><br>
+        <%= @buyer.shipping_address_line_1 %><br>
+        <%= @buyer.shipping_address_line_2 %><br>
+        <%= @buyer.shipping_address_line_3 %>
       </p>
+         <% if @buyer.factura_information.length >0 %>
 
+              <p>
+                <strong>Factura Información:</strong><br>
+                Nombre: <%= @buyer.factura_information %><br> 
+                RUC: <%= @buyer.factura_information_RUC %><br> 
+                Dirección: <%= @buyer.factura_information_address %><br> 
+                Teléfono: <%= @buyer.factura_information_phone %><br>
+              </p>
 
-      <p>
-        <strong>Factura information:</strong>
-        <%= @buyer.factura_information %>
-      </p>
-
-      <p>
-        <strong>Special instructions:</strong>
-        <%= @buyer.special_instructions %>
-      </p>
+              <p>
+                <strong>Dirección de Envíar Factura:</strong><br>
+                <%= @buyer.special_instructions %><br>
+                <%= @buyer.special_instructions_2 %><br>
+                <%= @buyer.special_instructions_3 %><br>
+                <%= @buyer.special_instructions_4 %><br>
+              </p>
+          <%else%><% end %>    
   </div>
+
+ 
+
   <div class="span6" id="photo">
-      <%= image_tag("lg_store.jpg",class:"img-rounded", height: "800px", width: "800px") if @buyer.company == "Lonesome George" %>
+       <% if @buyer.store_image_file_size %>
+              <%=  image_tag(@buyer.store_image.url( ), :size => "800x800")%>
+       <% end %>
   </div>
 </div>
 
-<%= link_to 'Edit', edit_buyer_path(@buyer) %> |
-<%= link_to 'Index', buyers_path %>
+<%= link_to 'Editar', edit_buyer_path(@buyer) %> |
+<%= link_to 'Indice', buyers_path %>

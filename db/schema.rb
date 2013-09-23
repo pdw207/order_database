@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20130919003920) do
+ActiveRecord::Schema.define(version: 20130922230518) do
 
   create_table "buyers", force: true do |t|
     t.string   "company"
@@ -25,6 +25,17 @@ ActiveRecord::Schema.define(version: 20130919003920) do
     t.string   "special_instructions"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "shipping_address_line_3"
+    t.string   "factura_information_RUC"
+    t.string   "factura_information_phone"
+    t.string   "factura_information_address"
+    t.string   "special_instructions_2"
+    t.string   "special_instructions_3"
+    t.string   "special_instructions_4"
+    t.string   "store_image_file_name"
+    t.string   "store_image_content_type"
+    t.integer  "store_image_file_size"
+    t.datetime "store_image_updated_at"
   end
 
   create_table "sales", force: true do |t|
