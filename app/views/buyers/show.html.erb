@@ -25,25 +25,20 @@
         <%= @buyer.shipping_address_line_3 %>
       </p>
          <% if @buyer.factura_information.length >0 %>
-
-              <p>
-                <strong>Factura Información:</strong><br>
+                <p><strong>Factura Información:</strong><br>
                 Nombre: <%= @buyer.factura_information %><br> 
                 RUC: <%= @buyer.factura_information_RUC %><br> 
                 Dirección: <%= @buyer.factura_information_address %><br> 
                 Teléfono: <%= @buyer.factura_information_phone %><br>
-              </p>
-
-              <p>
+             </p><p>
                 <strong>Dirección de Envíar Factura:</strong><br>
                 <%= @buyer.special_instructions %><br>
                 <%= @buyer.special_instructions_2 %><br>
                 <%= @buyer.special_instructions_3 %><br>
                 <%= @buyer.special_instructions_4 %><br>
-              </p>
+            </p>
           <%else%><% end %>    
-        <strong>Precios:</strong><br>
-      
+        <strong>Precios:</strong>
         <table>
         <tr>
             <td>
