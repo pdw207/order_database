@@ -81,10 +81,12 @@ MujeresCambiaMail::Application.configure do
  #Amazon Storage 
   config.paperclip_defaults = {
   :storage => :s3,
-  :s3_credentials => {
+     :s3_protocol => 'http',
     :bucket => ENV['mujerescambia'],
+  :s3_credentials => {
     :access_key_id => ENV['AKIAIPGCZRMT2PKM6BYA'],
     :secret_access_key => ENV['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']
   }
 }
 end
+
