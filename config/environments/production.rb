@@ -77,4 +77,14 @@ MujeresCambiaMail::Application.configure do
 
   # Use default logging formatter so that PID and timestamp are not suppressed.
   config.log_formatter = ::Logger::Formatter.new
+
+ #Amazon Storage 
+  config.paperclip_defaults = {
+  :storage => :s3,
+  :s3_credentials => {
+    :bucket => ENV['mujerescambia'],
+    :access_key_id => ENV['AKIAIPGCZRMT2PKM6BYA'],
+    :secret_access_key => ENV['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']
+  }
+}
 end
