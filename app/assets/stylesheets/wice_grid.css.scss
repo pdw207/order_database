@@ -31,10 +31,14 @@
   }
 
   .desc {
-    background: transparent url(/assets/icons/grid/arrow_down.gif) right no-repeat
+    /*background: transparent url(/assets/icons/grid/arrow_down.gif) right no-repeat*/
+    background: transparent url(/assets/arrow_down.png) right no-repeat;
+    background-size:15px 15px;
   }
   .asc  {
-    background: transparent url(/assets/icons/grid/arrow_up.gif)   right no-repeat
+    /*background: transparent url(/assets/icons/grid/arrow_up.gif)   right no-repeat*/
+    background: transparent url(/assets/arrow_up.png) right no-repeat;
+    background-size:15px 15px;
   }
 
   .submit.clickable{

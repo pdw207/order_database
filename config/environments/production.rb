@@ -79,14 +79,14 @@ MujeresCambiaMail::Application.configure do
   config.log_formatter = ::Logger::Formatter.new
 
  #Amazon Storage 
-  config.paperclip_defaults = {
-  :storage => :s3,
-     :s3_protocol => 'http',
-    :bucket => ENV['mujerescambia'],
-  :s3_credentials => {
-    :access_key_id => ENV['AKIAIPGCZRMT2PKM6BYA'],
-    :secret_access_key => ENV['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']
-  }
+  # config.paperclip_defaults = {
+  # :storage => :s3,
+  #    :s3_protocol => 'http',
+  #   :bucket => ENV['mujerescambia'],
+  # :s3_credentials => {
+  #   :access_key_id => ENV['AKIAIPGCZRMT2PKM6BYA'],
+  #   :secret_access_key => ENV['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']
+  # }
 }
 end
 

@@ -1,0 +1,29 @@
+
+%h1 Sales
+
+%h2
+  Total: #{number_to_currency @sales.sum('amount')} and in #{Date.today.strftime("%B")}:
+  #{number_to_currency @sales.sum(:amount, :conditions => {:date =>  (Date.today.beginning_of_month..Date.today.end_of_month)})}
+
+%table.table.table-striped.table-bordered.table-condensed
+  %thead
+    %tr
+      %th Name
+      %th Amount
+      %th Date
+      %th Factura
+      %th Actions
+  %tbody
+    - @sales.each do |sale|
+      %tr
+        %td= sale.name
+        %td= number_to_currency(sale.amount)
+        %td= sale.date.to_formatted_s(:short)
+        %td
+          - if sale.factura_file_name
+            Attached
+        %td= link_to 'View', sale
+        %td= link_to 'Edit', edit_sale_path(sale)
+        %td= link_to 'Delete', sale, method: :delete, data: { confirm: 'Are you sure?' }
+
+%br= link_to 'New Sale', new_sale_path

@@ -1,78 +1,129 @@
 @import "bootstrap";
+@import "bootstrap-responsive";
+
+
+
 /* universal */
 
-html {
-  overflow-y: scroll;
-}
-
+html {overflow-y: scroll}
 
 body {
-  padding-top: 0px;
-  margin:0px 0px; 
-  padding-left:0px;
-  padding-right:0px;
-  text-align:center;
+  color: #333;
+
   }
 
-#content {
+#main {
   width:80%;
   margin:0px auto;
   text-align:left;
   padding:15px;
 }
 
-
-p {
-  font-size: 1.1em;
-  line-height: 1.7em;
-}
-section {
-  overflow: auto;
-}
-
-.center {
+#log_in{
   text-align: center;
+}
+nav{
+  font-size: .9em;
+}
+footer{
+  width:80%;
+  margin:0px auto;
+  text-align: center;
+  font-size: 14px;
+  a:hover {
+    color:black
+  }
+}
+
+a {
+  color: #000;
+  &:visited {
+    color: #666;
+  }
+  &:hover {
+    color: #fff;
+
+    text-decoration:none;
+  }
+}
+
+/* General Helpers*/  
+
+.spacer{
+  margin-bottom:40px
+}
+
+/* Mixins*/  
+
+@mixin rotate($degrees: 180deg){
+  -moz-transform: rotate($degrees);
+  -webkit-transform: rotate($degrees);
+  -o-transform: rotate($degrees);
+  -ms-transform: rotate($degrees);
+  transform: rotate($degrees);
 }
 
 /* Table Customization*/  
 
-th {
-  text-align: right;
-  vertical-align: text-top; 
-  
-}
-
-td {
-  padding: 10px;
-}
-.table th, .table td {
+.table tr th, .table tr td {
   text-align:center;
+  font-size: 13px;
+}
+
+th{color:#666666;}
+th a:hover{color:black;}
+
+tr td:hover a{
+  color:black;
+}
+
+.filter td{
+  padding-right: 20px;
+}
+
+.tab-content{
+  margin: 30px 10% 30px;
+  text-align: center;
 
 }
-/* media */
-@media screen and (max-width:500){
-  img { display: none;}
-  }
+/*Form Customization*/  
 
 
-/* Sale Form Customization*/  
-
-
-form input#sale_amount {
+.medium_text_field input {
   width: 60px;
 }
-form select#sale_date_1i {
-  width: 70px;
+
+.currency {
+  width: 100px;
 }
-form select#sale_date_2i {
-  width: 110px;
+
+form select{
+  &.day { width: 60px;}
+  &.month { width: 110px;}
+  &.year { width: 70px;}
 }
-form select#sale_date_3i {
-  width: 50px;
+
+#buyer_store_image{
+    color:white;
 }
-textarea {
-  resize: vertical;
+#image_label{
+  text-align: left;
+  white-space:nowrap;
 }
+.no_scroll{
+  overflow-x: hidden;
+}
+/* Interactive */
+.show_tab:focus{
+  border: none;
+
+  & ~ .prices {
+  display: block;
+}}
+.hide_tab:focus ~ .prices {
+  display: hide;
+}
+.prices td{ padding-right: 60px;}
 
 /* Error Handling */
 
@@ -95,14 +146,6 @@ textarea {
 
 /* typography */
 
-h1, h2, h3, h4, h5, h6 {
-  line-height: 1;
-}
-
-.center h1 {
-  margin-bottom: 10px;
-}
-
 h1 {
   font-size: 3em;
   letter-spacing: -2px;
@@ -117,4 +160,22 @@ h2 {
   text-align: center;
   font-weight: normal;
   color: #999;
+}
+
+body{
+  font-size: 16px;
+}
+/* responsive */
+
+@media screen and (max-width: 767px) {
+  h1 {
+    font-size: 1.7em;
+  }
+  footer{
+    font-size:12px;
+  }
+}
+
+@media screen and (min-width: 767px) and (max-width: 980px) {
+
 }

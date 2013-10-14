@@ -26,4 +26,15 @@ MujeresCambiaMail::Application.configure do
   # This option may cause significant delays in view rendering with a large
   # number of complex assets.
   config.assets.debug = true
+
+#     config.paperclip_defaults = {
+#   :storage => :s3,
+#   :s3_credentials => {
+#     :bucket => ENV['mujerescambia'],
+#     :access_key_id => ENV['AKIAIPGCZRMT2PKM6BYA'],
+#     :secret_access_key => ENV['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']
+#   }
+# }
+
+
 end

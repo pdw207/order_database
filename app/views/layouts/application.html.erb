@@ -1,48 +1,37 @@
 <!DOCTYPE html>
 <html>
-<head>
-  <title>MC Admin Area</title>
-  <%= stylesheet_link_tag  "application" %>
-  <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
-  <%= csrf_meta_tags %>
-<%=render :partial => 'shared/sharednavbar'%>  
-</head>
+  <head>
+    <title>Admin Area</title>
+    <%= stylesheet_link_tag  "application" %>
+    <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
+    <%= csrf_meta_tags %>
+    <!--[if IE 6]><%= stylesheet_link_tag 'formtastic_ie6' %><![endif]-->
+    <!--[if IE 7]><%= stylesheet_link_tag 'formtastic_ie7' %><![endif]-->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+  </head>
 
-<body>
+  <body>
 
-
-
-<div id="user_nav">
-
-  <% if current_user %>
-</div>
-<div id="content">
-<%= yield %>
-
-</div>
-
-    Conectado como  <%= current_user.email %>. <br>
-  <%= link_to "Finalizar la Sesión", log_out_path %><br><br><br><br><br>
-  <% else %>
-
-  <%= yield :not_logged_in%>
-            <h1>Log in</h1>
-
-            <%= form_tag sessions_path do %>
-              <p>
-                <%= label_tag :email %><br />
-                <%= text_field_tag :email, params[:email] %>
-              </p>
-              <p>
-                <%= label_tag :password %><br />
-                <%= password_field_tag :password %>
-              </p>
-              <%= submit_tag "Iniciar la Sesión", class: "btn btn-default" %>
-            <% end %>
-  <% end %>
-</div>
-
-
-
-</body>
+    <nav id="user_nav">
+      <%=render :partial => 'shared/sharednavbar'%>  
+    </nav>  
+    <% if current_user %>
+      <div id="main">
+        <%= yield %>
+      </div>
+     
+      <footer>
+        <p>Conectado como:  <%= current_user.email %><br/>
+        <%= link_to "Finalizar la Sesión", log_out_path %></p>
+      </footer>
+    
+    <% else %>
+      <div id="main">
+        <%= yield :not_logged_in%>
+      </div>
+    
+    <% end %>
+      
+  </body>
 </html>

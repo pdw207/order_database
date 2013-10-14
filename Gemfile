@@ -7,10 +7,10 @@ gem "wice_grid", '3.2.1'
 
 gem "paperclip", "~> 3.0"
 gem 'aws-sdk'
+gem 'formtastic'
 
-
-
-
+gem 'haml'
+gem 'haml-rails'
 
 gem 'bootstrap-sass'
 

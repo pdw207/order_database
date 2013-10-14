@@ -1,6 +1,5 @@
 class SalesController < ApplicationController
   before_action :set_sale, only: [:show, :edit, :update, :destroy]
-  before_action :active
   
   def index
     @sales = Sale.all
@@ -56,10 +55,6 @@ class SalesController < ApplicationController
     end
   end
 
-  private
-    def active
-      @active = "sales"
-    end
     # Use callbacks to share common setup or constraints between actions.
     def set_sale
       @sale = Sale.find(params[:id])

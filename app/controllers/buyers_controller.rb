@@ -1,6 +1,5 @@
 class BuyersController < ApplicationController
   before_action :set_buyer, only: [:show, :edit, :update, :destroy]
-  before_action :active
 
   def index
     @buyers = Buyer.all
@@ -43,15 +42,11 @@ class BuyersController < ApplicationController
     redirect_to buyers_url 
   end
 
-  private
-    def active
-      @active = "buyers"
-    end
+
 
     # Use callbacks to share common setup or constraints between actions.
     def set_buyer
        @buyer = Buyer.find(params[:id])
-       @active = "buyers"
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.

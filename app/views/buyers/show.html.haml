@@ -1,0 +1,95 @@
+%p#notice= notice
+%h1= @buyer.company
+.row-fluid
+  .span6
+    %p
+      %strong Nombre y Apellido:
+      = @buyer.contact_name
+      %br/
+      %strong Email:
+      = @buyer.contact_email
+    %p
+      %strong Teléfono 1:
+      = @buyer.contact_phone_1
+      %br/
+      %strong Teléfono 2:
+      = @buyer.contact_phone_2
+    %p
+      %strong Dirección de Envío:
+      %br/
+      = @buyer.shipping_address_line_1
+      %br/
+      = @buyer.shipping_address_line_2
+      %br/
+      = @buyer.shipping_address_line_3
+    - if @buyer.factura_information.length >0
+      %p
+        %strong Factura Información:
+        %br/
+        Nombre: #{@buyer.factura_information}
+        %br/
+        RUC: #{@buyer.factura_information_RUC}
+        %br/
+        Dirección: #{@buyer.factura_information_address}
+        %br/
+        Teléfono: #{@buyer.factura_information_phone}
+        %br/
+      %p
+        %strong Dirección de Envíar Factura:
+        %br/
+        = @buyer.special_instructions
+        %br/
+        = @buyer.special_instructions_2
+        %br/
+        = @buyer.special_instructions_3
+        %br/
+        = @buyer.special_instructions_4
+        %br/
+   
+    %button.btn.spacer.show_tab{tabindex:"0"} 
+      Precios Establecido
+    %table.table.table-condensed.table-stripped.table-hover.prices.hide.clearfix
+      %tr.info
+        %td
+          Azul 
+        %td
+          #{number_to_currency(@buyer.necklaces_blue)}
+      %tr.warning
+        %td
+          Amarillo 
+        %td
+          =number_to_currency(@buyer.necklaces_yellow)
+      %tr.success
+        %td
+          Verde 
+        %td
+          =number_to_currency(@buyer.necklaces_green)
+      %tr
+        %td
+          Pulseras 
+        %td
+          =number_to_currency(@buyer.bracelets)
+      %tr
+        %td
+          Aretes 
+        %td
+          =number_to_currency(@buyer.earrings)
+      %tr
+        %td
+          Llaveros 
+        %td
+          =number_to_currency(@buyer.keychains)
+      %tr
+        %td
+          Monederos 
+        %td 
+          =number_to_currency(@buyer.wallets)
+ 
+  #photo.span6.hidden-phone.hidden-tablet
+    - if @buyer.store_image_file_size
+      = image_tag(@buyer.store_image.url( ))
+= link_to 'Editar', edit_buyer_path(@buyer) 
+|
+=link_to 'Indice', buyers_path
+
+

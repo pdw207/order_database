@@ -1,0 +1,95 @@
+= form_for(@buyer) do |f|
+
+
+  -#Error Handling
+  - if @buyer.errors.any?
+    #error_explanation
+      %h2
+        = pluralize(@buyer.errors.count, "error")
+        prohibited this buyer from being saved:
+      %ul
+        - @buyer.errors.full_messages.each do |msg|
+          %li= msg
+
+  -#Navigation Menu with Tabs
+  .tabbable
+    %ul#proftabs.nav.nav-tabs
+      %li
+        %a{"data-toggle" => "tab", href: "#basic_info_tab"} Compañía
+      %li.hidden-phone
+        %a{"data-toggle" => "tab", href: "#factura_tab"} Facturación
+      %li
+        %a{"data-toggle" => "tab", href: "#prices_tab"} Precios
+      %li.hidden-phone
+        %a{"data-toggle" => "tab", href: "#imagen_tab"} Imagen
+
+    -#Tab Content
+    .tab-content.spacer
+      #basic_info_tab.tab-pane.row
+        .span4
+          %p
+            = f.label :nombre_de_compañía
+            = f.text_field :company, placeholder: "Ropa, Joyas y Mas"
+          %p
+            = f.label :nombre_y_apellido
+            = f.text_field :contact_name , placeholder: "Elba Suarez"
+          %p
+            = f.label :dirección_de_envio
+            .br= f.text_field  :shipping_address_line_1, placeholder:"1234 Main Street"
+            .br= f.text_field  :shipping_address_line_2, placeholder: "Boston MA, 23412"
+            .br= f.text_field  :shipping_address_line_3, placeholder: "USA"
+        .span3
+          %p
+            = f.label :email
+            = f.text_field :contact_email , placeholder: "nombre@hotmail.com"
+          %p
+            = f.label :Teléfono
+            .br= f.text_field :contact_phone_1, placeholder: "primario"
+            .br= f.text_field :contact_phone_2, placeholder: "secundario"
+
+      #prices_tab.tab-pane.row
+        .span3
+          = f.label :collares_azul
+          = f.text_field :necklaces_blue, class:"currency"
+          = f.label :collares_verde
+          = f.text_field :necklaces_green, class:"currency"
+          = f.label :collares_amarillo
+          = f.text_field :necklaces_yellow, class:"currency"
+        .span3
+          = f.label :pulseras
+          = f.text_field :bracelets, class:"currency"
+          = f.label :aretes
+          = f.text_field :earrings, class:"currency"
+          = f.label :monederos
+          = f.text_field :wallets, class:"currency"
+        .span3
+          = f.label :llaveros
+          = f.text_field :keychains, class:"currency"
+
+      #factura_tab.tab-pane.row
+        .span4
+          =f.label :nombre_para_factura
+          =f.text_field :factura_information
+          =f.label :Dirección_para_factura
+          =f.text_field :factura_information_address
+          =f.label :Ruc, "RUC"
+          =f.text_field  :factura_information_RUC
+          =f.label :Teléfono_para_factura
+          =f.text_field  :factura_information_phone
+        .span4
+          = f.label :dirección_de_envio_de_factura
+          = f.text_field  :special_instructions
+          = f.text_field  :special_instructions_2
+          = f.text_field  :special_instructions_3
+          = f.text_field  :special_instructions_4
+
+      #imagen_tab.tab-pane.row.no_scroll
+        .span5
+          = link_to image_tag(@buyer.store_image.url()), @buyer.store_image.url
+        .span1
+          = f.label :subir_otra_foto, "Subir Otra Foto", id:"image_label"
+          = f.file_field :store_image
+    .actions
+    = f.submit "Actualizar", class: "btn btn-default"
+
+#{link_to 'Mostrar', @buyer} | #{link_to 'Borrar', @buyer, method: :delete, data: { confirm: 'Are you sure?' }} | #{link_to 'Indice', buyers_path}
