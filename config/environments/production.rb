@@ -86,7 +86,7 @@ MujeresCambiaMail::Application.configure do
   # :s3_credentials => {
   #   :access_key_id => ENV['AKIAIPGCZRMT2PKM6BYA'],
   #   :secret_access_key => ENV['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']
-  # }
-}
+  # }}
+
 end
 
