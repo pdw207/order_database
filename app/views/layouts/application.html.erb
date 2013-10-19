@@ -5,8 +5,13 @@
     <%= stylesheet_link_tag  "application" %>
     <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
     <%= csrf_meta_tags %>
-    <!--[if IE 6]><%= stylesheet_link_tag 'formtastic_ie6' %><![endif]-->
-    <!--[if IE 7]><%= stylesheet_link_tag 'formtastic_ie7' %><![endif]-->
+    <!--[if lte IE 8]>
+    <div class='ie' id='unsupported'>
+    <h4>Incompatible Browser</h4>
+    <p>Sadly, this site isn't compatible with versions of Internet Explorer before 9. Please upgrade or switch to <a href="http://google.com/chrome">Chrome</a>, <a href="http://mozilla.org/en-US/firefox/new/">Firefox</a>, <a href="http://apple.com/safari/">Safari</a>, or <a href="http://opera.com/">Opera</a> and revisit.</p>
+    </div>
+    <![endif]-->
+
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     
   </head>

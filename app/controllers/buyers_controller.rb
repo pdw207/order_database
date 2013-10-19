@@ -1,5 +1,6 @@
 class BuyersController < ApplicationController
   before_action :set_buyer, only: [:show, :edit, :update, :destroy]
+  # after_save: new_buyer_notification
 
   def index
     @buyers = Buyer.all
@@ -20,6 +21,7 @@ class BuyersController < ApplicationController
       @buyer = Buyer.new(buyer_params)
       if @buyer.save
         redirect_to @buyer, notice: 'Buyer was successfully created.' 
+        BuyerMailer.new_buyer(@buyer).deliver
       else
         render action: 'new' 
       end
@@ -51,13 +53,12 @@ class BuyersController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def buyer_params
-      params.require(:buyer).permit(:company, :contact_name, :contact_email, :contact_phone_1, :contact_phone_2, :shipping_address_line_1, :shipping_address_line_2,
-:shipping_address_line_3, :factura_information, :special_instructions,
-    :factura_information_RUC, :factura_information_phone, :factura_information_address, 
-    :special_instructions_2, :special_instructions_3, :special_instructions_4, :store_image,
-    :necklaces_blue, :necklaces_yellow, :necklaces_green, :bracelets, :earrings,:keychains, :wallets
-
-
+      params.require(:buyer).permit(:company, :contact_name, :contact_email, :contact_phone_1, 
+      :contact_phone_2, :shipping_address_line_1, :shipping_address_line_2,
+      :shipping_address_line_3, :factura_information, :special_instructions,
+      :factura_information_RUC, :factura_information_phone, :factura_information_address, 
+      :special_instructions_2, :special_instructions_3, :special_instructions_4, :store_image,
+      :necklaces_blue, :necklaces_yellow, :necklaces_green, :bracelets, :earrings,:keychains, :wallets
         )
     end
 end

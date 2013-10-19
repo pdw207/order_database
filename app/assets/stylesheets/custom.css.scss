@@ -1,7 +1,21 @@
 @import "bootstrap";
 @import "bootstrap-responsive";
 
+/* Mixins*/  
 
+@mixin rotate($degrees: 180deg){
+  -moz-transform: rotate($degrees);
+  -webkit-transform: rotate($degrees);
+  -o-transform: rotate($degrees);
+  -ms-transform: rotate($degrees);
+  transform: rotate($degrees);
+}
+@mixin transition_all($time: 0.5s){
+  -webkit-transition: all $time ease-in-out;
+  -moz-transition: all $time ease-in-out;
+  -ms-transition: all $time ease-in-out;
+  transition: all $time ease-in-out;
+}
 
 /* universal */
 
@@ -9,7 +23,7 @@ html {overflow-y: scroll}
 
 body {
   color: #333;
-
+  @include transition_all;
   }
 
 #main {
@@ -53,14 +67,11 @@ a {
   margin-bottom:40px
 }
 
-/* Mixins*/  
 
-@mixin rotate($degrees: 180deg){
-  -moz-transform: rotate($degrees);
-  -webkit-transform: rotate($degrees);
-  -o-transform: rotate($degrees);
-  -ms-transform: rotate($degrees);
-  transform: rotate($degrees);
+/* Fix Issue on Android Menu Bar*/  
+
+.dropdown-backdrop {
+  position: static;
 }
 
 /* Table Customization*/  
@@ -151,6 +162,7 @@ h1 {
   letter-spacing: -2px;
   margin-bottom: 30px;
   text-align: center;
+
 }
 
 h2 {
@@ -162,18 +174,19 @@ h2 {
   color: #999;
 }
 
-body{
-  font-size: 16px;
-}
 /* responsive */
 
 @media screen and (max-width: 767px) {
   h1 {
-    font-size: 1.7em;
+    font-size: 2em;
   }
-  footer{
-    font-size:12px;
+  body,footer{
+    font-size:0.8em;
   }
+
+.hide{
+        display:block;   
+    }
 }
 
 @media screen and (min-width: 767px) and (max-width: 980px) {
