@@ -1,3 +1,5 @@
+
+
 = form_for(@buyer) do |f|
 
 
@@ -13,7 +15,7 @@
 
   -#Navigation Menu with Tabs
   .tabbable
-    %ul#proftabs.nav.nav-tabs
+    %ul#proftabs.nav.nav-tabs.mobile_hide
       %li
         %a{"data-toggle" => "tab", href: "#basic_info_tab"} Compañía
       %li.hidden-phone
@@ -25,7 +27,7 @@
 
     -#Tab Content
     .tab-content.spacer
-      #basic_info_tab.tab-pane.row
+      #basic_info_tab.tab-pane.row.active
         .span4
           %p
             = f.label :nombre_de_compañía
@@ -90,6 +92,7 @@
           = f.label :subir_otra_foto, "Subir Otra Foto", id:"image_label"
           = f.file_field :store_image
     .actions
-    = f.submit "Actualizar", class: "btn btn-default"
-
-#{link_to 'Mostrar', @buyer} | #{link_to 'Borrar', @buyer, method: :delete, data: { confirm: 'Are you sure?' }} | #{link_to 'Indice', buyers_path}
+      = f.submit "Actualizar", class: "btn btn-default mobile_center"
+    
+    .links.mobile_center
+      #{link_to 'Mostrar', @buyer} | #{link_to 'Borrar', @buyer, method: :delete, data: { confirm: 'Are you sure?' }} | #{link_to 'Indice', buyers_path}

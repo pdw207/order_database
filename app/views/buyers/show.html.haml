@@ -4,16 +4,21 @@
   .span6
     %p
       %strong Nombre y Apellido:
+      %br.hide_in_desktop.hide_in_tablet
       = @buyer.contact_name
-      %br/
+    %p
       %strong Email:
+      %br.hide_in_desktop.hide_in_tablet
       = @buyer.contact_email
     %p
       %strong Teléfono 1:
+      %br.hide_in_desktop.hide_in_tablet
       = @buyer.contact_phone_1
       %br/
-      %strong Teléfono 2:
-      = @buyer.contact_phone_2
+      - if @buyer.contact_phone_2.length > 0 
+        %strong Teléfono 2:
+        %br.hide_in_desktop.hide_in_tablet
+        = @buyer.contact_phone_2
     %p
       %strong Dirección de Envío:
       %br/
@@ -48,7 +53,7 @@
    
     %button.btn.spacer.show_tab.hidden-phone{tabindex:"0"} 
       Precios Establecido
-    %table.table.table-condensed.table-stripped.table-hover.prices.hide.clearfix
+    %table.table.table-condensed.table-stripped.table-hover.prices.hide_in_desktop.clearfix
       %tr.info
         %td
           Azul 
@@ -86,10 +91,11 @@
           =number_to_currency(@buyer.wallets)
  
   #photo.span6.hidden-phone.hidden-tablet
-    - if @buyer.store_image_file_size
+    - if @buyer.store_image_file_size 
       = image_tag(@buyer.store_image.url( ))
-= link_to 'Editar', edit_buyer_path(@buyer) 
-|
-=link_to 'Indice', buyers_path
+.links.mobile_center
+  = link_to 'Editar', edit_buyer_path(@buyer) 
+  |
+  =link_to 'Indice', buyers_path
 
 

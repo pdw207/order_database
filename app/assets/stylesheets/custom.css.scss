@@ -124,6 +124,10 @@ form select{
 .no_scroll{
   overflow-x: hidden;
 }
+
+.actions{
+  margin-bottom: 20px;
+}
 /* Interactive */
 .show_tab:focus{
   border: none;
@@ -174,21 +178,27 @@ h2 {
   color: #999;
 }
 
+.hide_in_desktop{display: none;}
+#hide_brand_desktop{display: none;}
 /* responsive */
 
-@media screen and (max-width: 767px) {
-  h1 {
-    font-size: 2em;
-  }
-  body,footer{
-    font-size:0.8em;
-  }
+.in[style] {
+  height: auto !important;
 
-.hide{
-        display:block;   
-    }
+}
+  .mobile_hide{display:bo;}
+@media screen and (max-width: 567px) {
+  h1 {font-size: 2em;}
+  body,footer{font-size:0.8em;}
+  .tab-content.spacer{margin: 0px auto;padding-bottom: 20px}
+  .mobile_center{display:block; margin: 0px auto; text-align: center;}
+  .mobile_hide{display:none;}
+  .hide_in_desktop{display: block;}
+  #hide_brand_desktop{display: block;}
 }
 
-@media screen and (min-width: 767px) and (max-width: 980px) {
-
+@media screen and (min-width: 568px) and (max-width: 980px) {
+  .hide_in_desktop{display: inline-block;}
+  .hide_in_tablet{display: none;}
+  #hide_brand_desktop{display: block;}
 }
