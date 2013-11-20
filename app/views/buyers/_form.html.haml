@@ -34,20 +34,20 @@
             = f.text_field :company, placeholder: "Ropa, Joyas y Mas"
           %p
             = f.label :nombre_y_apellido
-            = f.text_field :contact_name , placeholder: "Elba Suarez"
+            = f.text_field :contact_name , placeholder: "Gonzales Franco"
           %p
             = f.label :dirección_de_envio
-            .br= f.text_field  :shipping_address_line_1, placeholder:"1234 Main Street"
-            .br= f.text_field  :shipping_address_line_2, placeholder: "Boston MA, 23412"
-            .br= f.text_field  :shipping_address_line_3, placeholder: "USA"
+            .br= f.text_field  :shipping_address_line_1, placeholder:"# Nombre de Calle"
+            .br= f.text_field  :shipping_address_line_2, placeholder: "Cuidad ESTADO, codigo postal"
+            .br= f.text_field  :shipping_address_line_3, placeholder: "pais destino"
         .span3
           %p
             = f.label :email
             = f.text_field :contact_email , placeholder: "nombre@hotmail.com"
           %p
             = f.label :Teléfono
-            .br= f.text_field :contact_phone_1, placeholder: "primario"
-            .br= f.text_field :contact_phone_2, placeholder: "secundario"
+            .br= f.text_field :contact_phone_1, placeholder: "Primario"
+            .br= f.text_field :contact_phone_2, placeholder: "Secundario"
 
       #prices_tab.tab-pane.row
         .span3
