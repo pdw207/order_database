@@ -1,0 +1,33 @@
+.center
+  = semantic_form_for @my_detail do |f|
+    = f.inputs do
+      Empresa Nombre
+      = f.input :compania_nombre, label: false, :input_html => { placeholder: "Empresa Nombre",:size => 30 } 
+      RUC
+      = f.input :RUC, label: false, :input_html => { placeholder: "RUC",:size => 30 } 
+      Direccíon
+      = f.input :direccion_1,  label: false, :input_html => { placeholder: "Dirección Lina 1",:size => 30 } 
+      = f.input :direccion_2,  label: false, :input_html => { placeholder: "Dirección Lina 2",:size => 30 } 
+      = f.input :direccion_3,  label: false, :input_html => { placeholder: "Dirección Lina 3",:size => 30 } 
+      Email
+      = f.input :email,  label: false, :input_html => { placeholder: "Email",:size => 30 } 
+      Cuidad
+      = f.input :cuidad,  label: false, :input_html => { placeholder: "Cuidad",:size => 30 } 
+      Provencia
+      = f.input :provencia,  label: false, :input_html => { placeholder: "Provencia/Estado",:size => 30 } 
+      Codigo Postal
+      = f.input :codigo_postal,  label: false, :input_html => { placeholder: "Codigo Postal",:size => 30 } 
+      Teléfono
+      = f.input :business_phone,  label: false, :input_html => { placeholder: "Teléfono",:size => 30 } 
+      Arancel Codigo
+      = f.input :arancel_codigo,  label: false, :input_html => { placeholder: "Codigio de Arancel",:size => 30 }
+      Arancel Descripcíon
+      = f.input :description_arancel,  label: false, :input_html => { placeholder: "Descripción de Arancel",:size => 30 } 
+      Puerto Embarque
+      = f.input :puerto_embarque,  label: false, :input_html => { placeholder: "Puerto de Embarque",:size => 30 } 
+      Cuidad Embarque
+      = f.input :cuidad_embarque,  label: false, :input_html => { placeholder: "Cuidad de Embarque",:size => 30 } 
+
+
+    %footer= f.submit "Enviar", class: "btn btn-default", style:"font-size:15px; padding:4px;",:as => :input
+    %br

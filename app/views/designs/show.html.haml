@@ -1,0 +1,24 @@
+%p#notice= notice
+
+%h1= @design.nombre
+%h3 Detallas
+%p
+  %b Producto:
+  = @design.product_type.nombre
+%p
+  %b Detalles:
+  = @design.detallas
+%p
+  %b Nivel:
+  = @design.nivel
+
+%p
+  %b Tiempo en minutos:
+  = @design.Tiempo_en_minutos
+%p
+  %b Precio por Mayor ($2.20 por hora):
+  = bulk_price
+
+= link_to 'Editar', edit_design_path(@design)
+\|
+= link_to 'Regresar', designs_path

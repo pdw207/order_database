@@ -1,0 +1,21 @@
+
+	<%= define_grid(@customers_grid, hide_submit_button: true, hide_reset_button: true) do |g|
+
+
+    	g.column name:  'Companía', attribute: 'compania', 
+    	detach_with_id: :compania_filter do |customer|link_to  customer.compania, customer end
+		
+		
+    	g.column name:  'Contacto', attribute: 'nombre_de_contacto', class: "hidden-phone",
+    	detach_with_id: :nombre_de_contacto_filter do |customer|link_to  customer.nombre_de_contacto, customer end
+		
+
+    	g.column name:  'Email', attribute: 'email_de_contacto', class: "hidden-phone",
+    	detach_with_id: :email_de_contacto_filter do |customer|link_to  customer.email_de_contacto, customer end
+		
+
+    	g.column name:  'Teléfono', attribute: 'telefono_1', class: "hidden-phone",
+    	detach_with_id: :telefono_1_filter do |customer|link_to  customer.telefono_1, customer end
+		
+
+	end -%>

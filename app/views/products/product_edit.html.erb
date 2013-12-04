@@ -1,0 +1,14 @@
+<h1>Editar Producto</h1>
+
+
+<%= form_for [@order, @product]  do |f| %>
+ 	Artista: <%= @product.artist.nombre %><br>
+	Diseño: <%= @product.design.nombre %><br>
+	Codigo: <%= @product.codigo %><br>
+	Precio: <%= f.text_field :precio %><br>
+	Funda: <%= f.text_field :funda %><br>
+	<% @product.order_id = params[:order_id]  %>
+    <%= f.submit "Actualizar", name: "button"  %>
+<% end %>
+
+

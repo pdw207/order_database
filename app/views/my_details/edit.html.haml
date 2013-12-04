@@ -1,0 +1,10 @@
+%h1 Microempresa
+
+= render 'form'
+
+%footer
+	= link_to 'Mostrar', @my_detail
+	\|
+	= link_to 'Regresar', my_details_path
+	\|
+	= link_to 'Destruir', @my_detail, :method => :delete, :data => { :confirm => '¿Estás Seguro?' }

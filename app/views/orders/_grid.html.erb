@@ -1,0 +1,10 @@
+
+	<%= define_grid(@orders_grid, hide_submit_button: true, hide_reset_button: true) do |g|
+
+
+    	g.column name:  'customer_id', attribute: 'customer_id', 
+    	detach_with_id: :customer_id_filter do |order|link_to  order.customer_id, order end
+		
+		
+
+	end -%>

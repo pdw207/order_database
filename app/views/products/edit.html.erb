@@ -1,0 +1,14 @@
+<h1>Editar Producto</h1>
+
+
+<%= form_for @product do |f| %>
+ 	Artista: <%= select_artist_edit %><br>
+	Diseño: <%= select_design_edit%><br>
+  	Codigio: <%= f.number_field :codigo%><br>
+	Estado <%= f.select :estado, options_for_select([ "Inventario","Vendido"],@product.estado)%><br>
+  <%= f.submit "Enviar", class: "btn btn-default" %>
+<% end %>
+
+
+<%= link_to 'Ver Todo', products_path %> |
+<%= link_to 'Destruir', @product, method: :delete, data: { confirm: '¿Estás Seguro?' } %>

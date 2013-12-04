@@ -1,11 +1,14 @@
 
-	<%= define_grid(@buyers_grid, hide_submit_button: true, hide_reset_button: true, class: "table table-condensed") do |g|
+	<%= define_grid(@buyers_grid, hide_submit_button: true, hide_reset_button: true, class: "no_stripes") do |g|
     
-    	g.column name:  'Compañía', attribute: 'company', detach_with_id: :company_filter do |buyer|link_to  buyer.company, buyer end
+    	g.column name:  'Compañía', attribute: 'company', 
+    	detach_with_id: :company_filter do |buyer|link_to  buyer.company, buyer end
 
-		g.column name:  'Nombre', attribute: 'contact_name', class: "hidden-phone ",detach_with_id: :contact_name_filter
-		g.column name:  'Email', attribute: 'contact_email',  class: "hidden-phone hidden-tablet",detach_with_id: :contact_email_filter
-		g.column name:  'Teléfono', attribute: 'contact_phone_1',  class: "hidden-phone ",detach_with_id: :contact_phone_1_filter
+		g.column name:  'Nombre', attribute: 'contact_name', 
+		class: "hidden-phone", detach_with_id: :contact_name_filter do |buyer|link_to  buyer.contact_name, buyer end
+			
+		g.column name:  'Email', attribute: 'contact_email',  class: "hidden-phone hidden-tablet",detach_with_id: :contact_email_filter do |buyer|link_to  buyer.contact_email, buyer end
+		g.column name:  'Teléfono', attribute: 'contact_phone_1',  class: "hidden-phone ",detach_with_id: :contact_phone_1_filter do |buyer|link_to  buyer.contact_phone_1, buyer end
 		
 		g.column name: 'Acción' do |buyer| link_to  "Editar", edit_buyer_path(buyer) end
 	end -%>

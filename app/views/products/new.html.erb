@@ -1,0 +1,14 @@
+<h1>Añadir un Producto</h1>
+
+<p id="notice"><%= params[:notice] %></p>
+
+
+<%= form_for @product do |f| %>
+ 	Artista	 <%= select_artist_new %><br>
+	Diseño <%= select_design_new%><br>
+  	Codigio <%= f.number_field :codigo, value: Product.last.codigo+1%><br>
+  	Estado <%= f.select :estado, options_for_select([ "Inventario","Vendido"], "Inventario")%><br>
+  <%= f.submit "Enviar", class: "btn btn-default" %>
+<% end %>
+
+<%= link_to 'Regresar', products_path %>

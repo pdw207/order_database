@@ -1,0 +1,15 @@
+%h1 Tipos de Productos
+
+
+%table-bordered
+%table.table-striped.table-bordered.table.wice-grid
+  %thead
+    %tr.wice-grid-title-row
+      %th Nombre
+
+
+  - @product_types.each do |product_type|
+    %tr
+      %td= link_to product_type.nombre, edit_product_type_path(product_type)
+
+

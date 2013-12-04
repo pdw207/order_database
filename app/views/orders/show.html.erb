@@ -1,0 +1,190 @@
+<p id="notice"><%= notice %></p>
+
+
+<!-- State and Order Number -->
+<h1> <%= @order.estado_de_pedido %> # <%= @order.id %></h1>
+<br>
+
+<!-- Name of Order, Buyer and Value -->
+<h3> <%= date @order.created_at %> <%= @order.customer.compania %>  - Pedido <%= currency @order.venta%> </h3>
+
+
+<!-- Basic Information: Person in Charge, Details, Deadline, Payment: Consignment or Regular Sale -->
+<p>
+  <strong>Persona Encargado:</strong>
+  <%= @order.encargado %>
+</p>
+
+<p>
+  <strong>Detalles:</strong>
+  <%= @order.detall_de_pedido %>
+</p>
+
+<p>
+  <strong>Pago:</strong>
+  <%= @order.pago ? "Venta Regular":"Consignación"%>
+</p>
+
+
+<p>
+  <strong>Fecha a Cumplir:</strong>
+  <%= date @order.fecha_de_finalizacion  %> - <%= deadline(@order)  %>
+</p>
+<p>
+  <div style="display:<%= @order.codigos_vendido == "" ? "none": "block"%>;">
+<br>  
+
+
+<!-- Reconciliation of Sales by Product. In Line editing to be completed -->
+<h3><%= link_to "Codigos y Ventas", reconciliation_path, :target => "_blank" %></h3>
+
+<!-- Displays to user codes that were removed and deleted from the form -->
+  <% if @deleted_codes.any? %>
+
+      <p>Aviso: <%= pluralize(@deleted_codes.count, "Producto") %> Retirado:
+      
+      <% @deleted_codes.each do|codes_removed| %>
+        <%= codes_removed.codigo  %> 
+      <% end %>
+      </p>
+  <% end %>
+
+  <% if @order.products.sum(:precio) !=  @order.venta%>
+      <p><%= "Error: Venta en total #{@order.venta} no es igual de los productos #{currency @order.products.sum(:precio)}"%> - <%= link_to "Corregir", edit_order_path(@order) %></p>
+  <% end %>
+  
+    <% unless @codes_not_found.empty? %>
+      <p><%= "Error: #{pluralize(@codes_not_found.count, "codigo")} no estan en inventario #{@codes_not_found}" %> - <%= link_to "Corregir", edit_order_path(@order) %></p>
+  <% end %>
+
+    <% unless @duplicate_codes.empty? %>
+      <p><%= "Error: #{pluralize(@duplicate_codes.count, "codigo")} ya estan en otra pedido #{@duplicate_codes}" %> - <%= link_to "Corregir", edit_order_path(@order) %></p>
+  <% end %>
+
+  <table class="table-striped table-bordered table wice-grid">
+    <thead>
+      <tr class="wice-grid-title-row" >
+        <td>Codigo</td>
+        <td>Artista</td>
+        <td>Estilo</td>
+        <td>Venta</td>
+        <td>Grupo</td>
+        <td>Funda</td>
+        <td>Directos</td>
+        <td>Pago</td>
+
+      <tr id="calculation" class="wice-grid-title-row" >
+        <td></td><td><td></td></td>
+        <td>A</td>
+        <td>B</td>
+        <td>C</td>
+        <td>D</td>
+        <td>E=A-B-C-D</td>
+      </tr>
+  </thead>
+
+   
+        <tbody>
+                <% @order.products.each do  |i|%>
+            <tr>
+                <td><%= link_to i.codigo, order_product_edit_path(@order.id, i.id)  %></td>
+                <td><%= link_to i.artist.nombre, order_product_edit_path(@order.id, i.id)  %></td>
+                <td><%= link_to i.design.nombre, order_product_edit_path(@order.id, i.id)  %></td>
+                <td><%= link_to currency(i.precio), order_product_edit_path(@order.id, i.id)  %></td>
+                <td><%= link_to currency(i.groupo), order_product_edit_path(@order.id, i.id)  %></td>
+                <td><%= link_to currency(i.funda), order_product_edit_path(@order.id, i.id)  %></td>
+                <td><%= link_to currency(i.costos), order_product_edit_path(@order.id, i.id)  %></td>
+                <td><%= link_to currency(i.pago), order_product_edit_path(@order.id, i.id)  %></td>
+
+                <% end %>
+            </tr>
+
+              <tr style="color: red;">
+                <td>TOTAL</td><td></td><td></td>
+                <td><%= currency @order.products.sum(:precio) %></td>
+                <td><%= currency @order.products.sum(:groupo) %></td>
+                <td><%= currency @order.products.sum(:funda) %></td>
+                <td><%= currency @order.expenses.sum(:valor) %></td>
+                <td><%= currency @order.products.sum(:pago)%></td>
+              </tr>
+      </tbody>
+      
+    </table>
+  
+</div>
+
+<div style="display:<%= @order.expenses.sum(:valor) > 0 ? "block": "none"%>;"> 
+<H2>Costos Directos</H2>
+      <table>
+        <tr>
+          <td>Tipo</td>
+          <td>Valor</td>
+        </tr>
+        <% @order.expenses.each  do |expense| %>
+            <% unless expense.nombre.blank? %>
+               <tr>
+                  <td><%= expense.nombre %></td>
+                  <td><%= currency expense.valor %></td>
+                </tr>
+            <% end %>
+          <% end %>
+        <tr>
+          <td><strong>Total</strong></td>
+          <td><strong><%= currency @order.expenses.sum(:valor) %></strong></td>
+        </tr>
+      </table>
+      
+</div>
+
+
+<br>  
+<!-- Shipping -->
+<div style="display:<%= @order.enviar ? "block": "none"%>;"> 
+
+<H2>Enviar</H2>
+  
+  <!-- Shipping Label -->
+  
+  <p>Imprimir: <%= link_to "Etiqueta", print_label_path, :target => "_blank"  %> y <%= link_to "Exporta Facil Formulario", print_das_path, :target => "_blank"  %>
+  </p>
+  <!-- Shipping Information -->
+  <p>
+    <strong>Numero de rastreo:</strong>
+    <%= @order.numero_de_rastreo %>
+  </p>
+
+  <p>
+    <strong>Idioma:</strong>
+    <%= @order.idioma %>
+  </p>
+
+  <p>
+    <strong>Pesa:</strong>
+    <%= units(@order, "english") %> o <%= units(@order, "metric") %> 
+  </p>
+
+  <p>
+    <strong>Unidades:</strong>
+    <%= @order.unidades %>
+  </p>
+  
+  <p>
+    <strong>Factura Numero:</strong>
+    <%= factura_full_number(@order) %>
+  </p>
+
+  <p>
+    <strong>Fecha de factura:</strong>
+    <%= @order.fecha_de_factura %>
+  </p>
+
+  <p>
+    <strong>Valor aduana:</strong>
+    <%= currency @order.valor_aduana %>
+  </p>
+</div>
+
+<!-- Links -->
+<%= link_to 'Editar', edit_order_path(@order) %> |
+<%= link_to 'Ver Todos', orders_path %>
+<br><br>

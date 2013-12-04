@@ -1,0 +1,10 @@
+%h1 Editar Diseño
+
+= render 'form'
+
+%footer
+	= link_to 'Mostrar', @design
+	\|
+	= link_to 'Regresar', designs_path
+	\|
+	= link_to 'Destruir', @design, :method => :delete, :data => { :confirm => '¿Estás Seguro?' }

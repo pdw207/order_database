@@ -1,0 +1,49 @@
+%p#notice= notice
+%h4 Basicó
+%p
+  %b Empresa Nombre:
+  = @my_detail.compania_nombre
+%p
+  %b RUC:
+  = @my_detail.RUC
+%p
+  %b Email:
+  = @my_detail.email
+
+%p
+  %b Teléfono:
+  = @my_detail.business_phone
+
+%h4 Dirección de Envío
+%p
+  %b Dirección:
+  = @my_detail.direccion_1
+  = @my_detail.direccion_2
+  = @my_detail.direccion_3
+%p
+  %b Cuidad:
+  = @my_detail.cuidad
+%p
+  %b Provencia:
+  = @my_detail.provencia
+%p
+  %b Codigo postal:
+  = @my_detail.codigo_postal
+
+%h4 Exporta Fácil
+%p
+  %b Arancel codigo:
+  = @my_detail.arancel_codigo
+%p
+  %b Description arancel:
+  = @my_detail.description_arancel
+%p
+  %b Puerto embarque:
+  = @my_detail.puerto_embarque
+%p
+  %b Cuidad embarque:
+  = @my_detail.cuidad_embarque
+
+= link_to 'Editar', edit_my_detail_path(@my_detail)
+\|
+= link_to 'Regresar', my_details_path

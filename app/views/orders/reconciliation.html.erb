@@ -1,0 +1,86 @@
+<h4><%= date @order.created_at %> </h4>
+<h4><%= @order.customer.compania %></h4>
+<h4> Pedido: #<%= @order.id %></h4>
+<h4><%= currency @order.venta%> </h4>
+<br>
+<h5>Reconciliacion</h5>
+
+
+<table class="table-striped table-bordered table wice-grid">
+    <thead>
+      <tr>
+        <td>Artista</td>
+        <td>Venta</td>
+        <td>Grupo</td>
+        <td>Funda</td>
+        <td>Directos</td>
+        <td>Pago</td>
+        <td>Nombre y Apellido</td>
+        <td># Cuenta</td>
+      <tr id="calculation" class="wice-grid-title-row" >
+        <td></td>
+        <td>A</td>
+        <td>B</td>
+        <td>C</td>
+        <td>D</td>
+        <td>E=A-B-C-D</td>
+        <td></td>
+        <td></td>
+      </tr>
+  </thead>
+
+        <tbody>
+
+
+                <% @artist_group.each do |artist, products|%>
+   				<tr>
+   				<td><%= @artists.where(id: artist).first.nombre %></td>
+                <td><%=  currency products.map {|s| s[:precio]}.reduce(0, :+)%></td>
+            	<td><%=  currency products.map {|s| s[:groupo]}.reduce(0, :+)%></td>
+            	<td><%=  currency products.map {|s| s[:funda]}.reduce(0, :+)%></td>
+            	<td><%=  currency products.map {|s| s[:costos]}.reduce(0, :+)%></td>
+            	<td><%=  currency products.map {|s| s[:pago]}.reduce(0, :+)%></td>
+	        	<td><%= @artists.where(id: artist).first.nombre_cuenta_de_banco %></td>	        	
+	        	<td><%= @artists.where(id: artist).first.cuenta_de_banco %></td>
+
+            	</tr>
+
+            	<% end -%>
+            	
+              <tr style="color: red;">
+                <td>TOTAL</td>
+                <td><%= currency @order.products.sum(:precio) %></td>
+                <td><%= currency @order.products.sum(:groupo) %></td>
+                <td><%= currency @order.products.sum(:funda) %></td>
+                <td><%= currency @order.expenses.sum(:valor) %></td>
+                <td><%= currency @order.products.sum(:pago)%></td>
+                <td></td>
+                <td></td>
+              </tr>
+      </tbody>
+      
+    </table>
+
+
+    <div style="display:<%= @order.expenses.sum(:valor) > 0 ? "block": "none"%>;"> 
+<br>
+<H5>Costos Directos</H5>
+      <table>
+        <tr>
+
+        </tr>
+        <% @order.expenses.each  do |expense| %>
+            <% unless expense.nombre.blank? %>
+               <tr>
+                  <td><%= expense.nombre %></td>
+                  <td><%= currency expense.valor %></td>
+                </tr>
+            <% end %>
+          <% end %>
+        <tr>
+          <td><strong>Total</strong></td>
+          <td><strong><%= currency @order.expenses.sum(:valor) %></strong></td>
+        </tr>
+      </table>
+      
+</div>

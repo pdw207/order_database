@@ -45,10 +45,13 @@ footer{
   text-align: center;
   font-size: 14px;
   a:hover {
-    color:black
+    color:white;
+    padding: 1px;
   }
 }
-
+.spacer{
+  padding-bottom: 10px;
+}
 a {
   color: #000;
   &:visited {
@@ -67,7 +70,14 @@ a {
   margin-bottom:40px
 }
 
-
+.center{
+     margin-left: auto;
+    margin-right: auto;
+    width: 200px;
+}
+.override.formtastic .stringish input {
+width: 22%;
+}
 /* Fix Issue on Android Menu Bar*/  
 
 .dropdown-backdrop {
@@ -78,6 +88,7 @@ a {
 
 .table tr th, .table tr td {
   text-align:center;
+  vertical-align: center; 
   font-size: 13px;
 }
 
@@ -97,6 +108,33 @@ tr td:hover a{
   text-align: center;
 
 }
+/*row links formatin*/
+*[data-href] {
+  cursor: pointer;
+}
+td a {
+  text-decoration: none;
+  display:inline-block;
+  min-height:100%;
+  width:100%;
+  padding: 5px 5px 5px 1px; /* add your padding here */
+  color: #c4c4c4; 
+}
+td {
+  padding:20px;  
+}
+tr a:hover{
+  background: none;
+}
+table tbody tr:hover {
+  border-width:0px;
+
+  a{
+    color:#0074CC;
+
+   }
+}
+
 /*Form Customization*/  
 
 

@@ -20,7 +20,7 @@ class BuyersController < ApplicationController
   def create
       @buyer = Buyer.new(buyer_params)
       if @buyer.save
-        redirect_to @buyer, notice: 'Buyer was successfully created.' 
+        redirect_to @buyer, notice: 'Su artículo se ha creado con éxito.' 
         BuyerMailer.new_buyer(@buyer).deliver
       else
         render action: 'new' 
@@ -32,7 +32,7 @@ class BuyersController < ApplicationController
         logger.debug "got to this point"
       if @buyer.update(buyer_params)
         logger.debug "Got to update successful"
-        redirect_to @buyer, notice: 'Buyer was successfully updated.' 
+        redirect_to @buyer, notice: 'El cambio ha sido guardado con éxito.' 
       else
         logger.debug "failed update"
         render action: 'edit' 

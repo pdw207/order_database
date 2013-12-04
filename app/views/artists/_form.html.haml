@@ -1,0 +1,53 @@
+= form_for @artist do |f|
+
+    -#Error Handling
+    - if @artist.errors.any?
+        #error_explanation
+            %h2
+                = pluralize(@artist.errors.count, "error")
+                prohibited this entry from being saved:
+            %ul
+                - @artist.errors.full_messages.each do |msg|
+                    %li= msg
+    .tabbable
+        %ul#proftabs.nav.nav-tabs.mobile_hide
+            %li
+                %a{"data-toggle" => "tab", href: "#basic_info_tab"} Basicó
+            %li.hidden-phone
+                %a{"data-toggle" => "tab", href: "#papel_tab"} Papel
+            %li
+                %a{"data-toggle" => "tab", href: "#banco_tab"} Banco
+    -#Tab Content
+    .tab-content.spacer
+        #basic_info_tab.tab-pane.row.active
+            %p
+                = f.label :nombre, "Nombre de Artista"
+                = f.text_field :nombre
+            %p
+                = f.label :telefono, "Teléfono"
+                = f.text_field :telefono, label: "Teléfono"
+            %p
+                = f.label :direccion_1, "Dirección"
+                = f.text_field :direccion_1, label: "dirección 1"
+                %br= f.text_field :direccion_2, label: "dirección 2"
+                = f.text_field :direccion_3, label: "dirección 3"
+        #papel_tab.tab-pane
+            %p
+                = f.label :papel, "Papel en Grupo"
+                = f.text_field :papel
+            %p
+                = f.label :fecha_de_eleccion, "Fecha de Elección"
+                = f.date_select :fecha_de_eleccion, options={with_css_classes: true} 
+        #banco_tab.tab-pane.row
+            %p
+                = f.label :cuenta_de_banco, "Numero de Cuenta del Banco"
+                = f.text_field :cuenta_de_banco
+            %p
+                = f.label :nombre_de_banco, "Nombre del Banco"
+                = f.text_field :nombre_de_banco
+            %p
+                = f.label :nombre_cuenta_de_banco, "Cuenta en Nombre de"
+                = f.text_field :nombre_cuenta_de_banco
+            %p
+    
+    %footer= f.submit "Enviar", class: "btn btn-default", :as => :input

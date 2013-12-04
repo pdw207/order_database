@@ -22,7 +22,7 @@ class SalesController < ApplicationController
 
     respond_to do |format|
       if @sale.save
-        format.html { redirect_to @sale, notice: 'Sale was successfully created.' }
+        format.html { redirect_to @sale, notice: 'Socia sido creado con éxito.' }
         format.json { render action: 'show', status: :created, location: @sale }
       else
         format.html { render action: 'new' }
@@ -36,7 +36,7 @@ class SalesController < ApplicationController
   def update
     respond_to do |format|
       if @sale.update(sale_params)
-        format.html { redirect_to @sale, notice: 'Sale was successfully updated.' }
+        format.html { redirect_to @sale, notice: 'Socia sido creado con éxito.' }
         format.json { head :no_content }
       else
         format.html { render action: 'edit' }

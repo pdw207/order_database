@@ -1,0 +1,10 @@
+%h1 Editar Cliente
+
+= render 'form'
+
+%footer
+	= link_to 'Mostrar', @customer
+	\|
+	= link_to 'Regresar', customers_path
+	\|
+	= link_to 'Destruir', @design, :method => :delete, :data => { :confirm => '¿Estás Seguro?' }

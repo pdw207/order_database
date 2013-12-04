@@ -1,0 +1,6 @@
+= form_for @product_type do |f|
+  %p.center
+    = f.label :nombre, "Nombre de Producto", style:"text-align:center;"
+    = f.text_field :nombre
+
+  %footer= f.submit "Enviar", class: "btn btn-default", :as => :input

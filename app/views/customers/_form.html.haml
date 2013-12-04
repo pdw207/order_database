@@ -1,0 +1,95 @@
+= form_for(@customer) do |f|
+  - if @customer.errors.any?
+    #error_explanation
+      %h2
+        = pluralize(@customer.errors.count, "error")
+        prohibited this customer from being saved:
+      %ul
+        - @customer.errors.full_messages.each do |msg|
+          %li= msg
+  .tabbable
+    %ul#proftabs.nav.nav-tabs.mobile_hide
+      %li
+        %a{"data-toggle" => "tab", href: "#basic_info_tab"} Basicó
+      %li.hidden-phone
+        %a{"data-toggle" => "tab", href: "#direccion_tab"} Direccíon
+      %li
+        %a{"data-toggle" => "tab", href: "#factura_tab"} Factura
+      %li
+        %a{"data-toggle" => "tab", href: "#enviarfactura_tab"} Enviar Factura
+  -#Tab Content
+  .tab-content.spacer
+    #basic_info_tab.tab-pane.row.active
+      .field
+        = f.label :compania
+        %br/
+        = f.text_field :compania
+      .field
+        = f.label :nombre_de_contacto
+        %br/
+        = f.text_field :nombre_de_contacto
+      .field
+        = f.label :email_de_contacto
+        %br/
+        = f.text_field :email_de_contacto
+      .field
+        = f.label :telefono_1
+        %br/
+        = f.text_field :telefono_1
+      .field
+        = f.label :telefono_2
+        %br/
+        = f.text_field :telefono_2
+    #direccion_tab.tab-pane.row  
+      .field
+        = f.label :direccion_1, "Direccíon"
+        %br/
+        = f.text_field :direccion_1
+        %br/
+        = f.text_field :direccion_2
+        %br/
+        = f.text_field :direccion_3
+      .field
+        = f.label :ciudad
+        %br/
+        = f.text_field :ciudad
+      .field
+        = f.label :codigo_postal
+        %br/
+        = f.text_field :codigo_postal
+      .field
+        = f.label :pais
+        %br/
+        = f.text_field :pais
+    #factura_tab.tab-pane.row
+      .field
+        = f.label :factura_nombre, "Nombre de Empresa"
+        %br/
+        = f.text_field :factura_nombre
+      .field
+        = f.label :factura_RUC, "RUC"
+        %br/
+        = f.text_field :factura_RUC
+      .field
+        = f.label :factura_telefono
+        %br/
+        = f.text_field :factura_telefono
+      .field
+        = f.label :factura_direccion
+        %br/
+        = f.text_field :factura_direccion
+    #enviarfactura_tab.tab-pane.row
+      .field
+        = f.label :enviar_factura_1, "Enviar Factura a la Direccíon"
+        %br
+        = f.text_field :enviar_factura_1
+        %br
+        = f.text_field :enviar_factura_2
+        %br
+        = f.text_field :enviar_factura_3
+        %br
+        = f.text_field :enviar_factura_4
+        %br
+        = f.text_field :enviar_factura_5
+     
+  %footer= f.submit "Enviar", class: "btn btn-default", :as => :input

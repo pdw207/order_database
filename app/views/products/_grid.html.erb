@@ -1,0 +1,20 @@
+
+	<%= define_grid(@products_grid, hide_submit_button: true, hide_reset_button: true) do |g|
+
+
+    	g.column name:  'Codigo', attribute: 'codigo', 
+    	detach_with_id: :codigo_filter do |product|link_to  product.codigo, edit_product_path(product) end
+
+
+    	g.column name:  'Artista', attribute: 'artist_id', 
+    	detach_with_id: :artist_id_filter do |product|link_to  product.artist.nombre, edit_product_path(product) end
+
+    	g.column name:  'Diseño', attribute: 'design_id',  class: "hidden-phone ",
+    	detach_with_id: :design_id_filter do |product|link_to  product.design.nombre, edit_product_path(product) end
+
+    	g.column name:  'Nivel' ,  attribute: 'design_id', detach_with_id: :nivel_filter, class: "hidden-phone " do |product|link_to  product.design.nivel, edit_product_path(product) end
+  		g.column name:  'Tipo' ,  attribute: 'design_id', detach_with_id: :tipo_filter, class: "hidden-phone " do |product|link_to  product.design.product_type.nombre, edit_product_path(product) end
+    	g.column name:  'Fecha', attribute: 'created_at',   class: "hidden-phone ",
+    	detach_with_id: :created_at_filter do |product|link_to  product.created_at.strftime("%d/%m/%y"), edit_product_path(product) end
+
+	end -%>

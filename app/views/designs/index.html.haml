@@ -1,0 +1,19 @@
+%h1 Diseños
+
+-#Call Grid for Filter
+= render partial:  'grid'
+
+-# Filter
+%table.hidden-phone.filter
+  %tr
+    %td Producto Numero:
+    %td= grid_filter @designs_grid, :product_type_id_filter
+
+-# Filter Buttons
+.external-buttons.hidden-phone.spacer
+  %button.btn.btn.btn-primary.wg-external-submit-button{"data-grid-name" => "grid"} Enviar
+  %button.btn.btn.wg-external-reset-button{"data-grid-name" => "grid"} Reinicializar
+
+
+-#Table
+= render_grid(@designs_grid)

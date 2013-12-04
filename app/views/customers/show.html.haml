@@ -1,0 +1,65 @@
+%p#notice= notice
+
+%h1= @customer.compania
+
+
+
+%center
+  %h3 Contacto
+  %p
+    %b Contacto:
+    = @customer.nombre_de_contacto
+  %p
+    %b Email:
+    = @customer.email_de_contacto
+  %p
+    %b Teléfono 1:
+    = @customer.telefono_1
+  %p
+    %b Teléfono 2:
+    = @customer.telefono_2
+  %h3 Direccíon
+  %p
+    %b Direccíon:
+    = @customer.direccion_1
+    = @customer.direccion_2
+    = @customer.direccion_3
+  %p
+    %b Ciudad:
+    = @customer.ciudad
+  %p
+    %b Estado:
+    = @customer.estado
+  %p
+    %b Codigo postal:
+    = @customer.codigo_postal
+  %p
+    %b Pais:
+    = @customer.pais
+  - if @customer.factura_nombre.length >0
+    %h3 Factura
+    %p
+      %b Nombre en la Factura:
+      = @customer.factura_nombre
+
+    %p
+      %b RUC:
+      = @customer.factura_RUC
+
+    %p
+      %b Factura Teléfono:
+      = @customer.factura_telefono
+    %p
+      %b Factura Direccíon:
+      = @customer.factura_direccion
+    %p
+      %b Enviar Factura Hasta:
+      = @customer.enviar_factura_1
+      = @customer.enviar_factura_2
+      = @customer.enviar_factura_3
+      = @customer.enviar_factura_4
+      = @customer.enviar_factura_5
+
+  = link_to 'Editar', edit_customer_path(@customer)
+  \|
+  = link_to 'Regresar', customers_path

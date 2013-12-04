@@ -1,0 +1,10 @@
+%h1 Editar Socia
+
+= render 'form'
+
+%footer
+	= link_to 'Ver', @artist
+	\|
+	= link_to 'Ver Todos', artists_path
+	\|
+	= link_to 'Destruir', @artist, method: :delete, data: { confirm: '¿Estás Seguro?' }

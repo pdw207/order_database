@@ -8,25 +8,73 @@
         %span.icon-bar
         %span.icon-bar
       / Be sure to leave the brand out there if you want it shown
-      .brand#hide_brand_desktop Mujeres Cambia
+      .brand#hide_brand_desktop.hidden-phone Mujeres Cambia
       / Everything you want hidden at 940px or less, place within here
       .nav-collapse
         %ul.nav
-          -#Buyers
-          %li{:class => "dropdown #{visited_class('buyers')}"}
-            %a.dropdown-toggle{"data-toggle" => "dropdown", href: "/buyers"}
-              = t "nav.buyers"
+          -#Productos          
+          %li{:class => "dropdown #{visited_class('products')}"}
+            %a.dropdown-toggle{"data-toggle" => "dropdown", href: "/products"}
+              Inventario
               %b.caret
             %ul.dropdown-menu
-              %li= link_to 'Ver Todos los Compradores', buyers_path
-              %li= link_to 'Crear Comprador Nuevo', new_buyer_path
-
-
+              %li= link_to 'Ver Inventario', products_path
+              %li= link_to 'Crear Producto Nuevo', new_product_path         
+          -#Orders          
+          %li{:class => "dropdown #{visited_class('orders')}"}
+            %a.dropdown-toggle{"data-toggle" => "dropdown", href: "/orders"}
+              Pedidos
+              %b.caret
+            %ul.dropdown-menu
+              %li= link_to 'Ver Pedidos', orders_path
+              %li= link_to 'Crear Pedido Nuevo', new_order_path    
+          -#Clients
+          %li{:class => "dropdown #{visited_class('customers')}"}
+            %a.dropdown-toggle{"data-toggle" => "dropdown", href: "/customers"}
+              Clientes
+              %b.caret
+            %ul.dropdown-menu
+              %li= link_to 'Ver Todos los Clientes', customers_path
+              %li= link_to 'Crear Cliente Nuevo', new_customer_path
           -#Sales          
           %li{:class => "dropdown #{visited_class('sales')}"}
-            %a.dropdown-toggle{"data-toggle" => "dropdown", href: "/buyers"}
+            %a.dropdown-toggle{"data-toggle" => "dropdown", href: "/sales"}
               = t "nav.sales"
               %b.caret
             %ul.dropdown-menu
               %li= link_to 'Ver Todas Las Ventas', sales_path
               %li= link_to 'Crear Comprador Nuevo', new_sale_path
+          -#Diseños          
+          %li{:class => "dropdown #{visited_class('designs')}"}
+            %a.dropdown-toggle{"data-toggle" => "dropdown", href: "/designs"}
+              Diseños
+              %b.caret
+            %ul.dropdown-menu
+              %li= link_to 'Ver Todas Diseños', designs_path
+              %li= link_to 'Crear Diseño Nuevo', new_design_path
+
+
+          -#Artists          
+          %li{:class => "dropdown #{visited_class('artists')}"}
+            %a.dropdown-toggle{"data-toggle" => "dropdown", href: "/artists"}
+              Artistas
+              %b.caret
+            %ul.dropdown-menu
+              %li= link_to 'Ver Todas Socias', artists_path
+              %li= link_to 'Añadir Nuevo', new_artist_path
+
+          -#Tipos          
+          %li{:class => "dropdown #{visited_class('product_types')}"}
+            %a.dropdown-toggle{"data-toggle" => "dropdown", href: "/product_types"}
+              Tipos de Productos
+              %b.caret
+            %ul.dropdown-menu
+              %li= link_to 'Ver Todos Producto Tipos', product_types_path
+              %li= link_to 'Crear Nuevo Producto Tipo', new_product_type_path
+          -#Empresa          
+          %li{:class => "dropdown #{visited_class('my_details')}"}
+            %a.dropdown-toggle{"data-toggle" => "dropdown", href: "/my_details"}
+              Empresa
+              %b.caret
+            %ul.dropdown-menu
+              %li= link_to 'Ver Empresa', my_details_path  
