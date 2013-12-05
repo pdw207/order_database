@@ -24,6 +24,11 @@ html {overflow-y: scroll}
 body {
   color: #333;
   @include transition_all;
+  table a {color: black;}
+  }
+
+#log_in{
+  margin-top: 100px;
   }
 
 #main {
@@ -64,8 +69,63 @@ a {
   }
 }
 
-/* General Helpers*/  
 
+/* Printing */
+
+h2,p,#notice,h1{
+clear: both;
+}
+
+.a4{
+  position: relative;
+}
+
+
+
+.from{
+    position: absolute;
+    left: -90px;
+    line-height: .5em;
+}
+
+.to{ 
+  position: absolute;
+  top: 300px;
+  left: 220px;
+  line-height: .5em;
+  
+}
+
+.page{
+  position: absolute;
+  font-size: 10px;
+  background:url(/assets/das2.jpg) no-repeat 0 0;
+    width: 21cm;
+    min-height: 29.7cm;
+    padding: 2cm;
+    margin: 1cm auto;
+
+}
+    @page {
+        size: A4;
+        margin: 0;
+    }
+#mc_address{
+position: relative;
+font-size: 10px;
+z-index: 5;
+top: 215px;
+left: 66px;
+
+}
+@media print{
+  nav {page-break-after:always}
+
+  nav#user_nav{display: none !important;}
+
+}
+  
+/* General Helpers*/  
 .spacer{
   margin-bottom:40px
 }
@@ -126,6 +186,9 @@ td {
 tr a:hover{
   background: none;
 }
+
+#narrow
+{ width:30%;}
 table tbody tr:hover {
   border-width:0px;
 
@@ -134,12 +197,13 @@ table tbody tr:hover {
 
    }
 }
-
+#grid_f_venta_fr, #grid_f_venta_to{
+  width:30px;
+}
 /*Form Customization*/  
 
-
-.medium_text_field input {
-  width: 60px;
+#medium_text_field input {
+  width: 20px;
 }
 
 .currency {
@@ -177,6 +241,19 @@ form select{
   display: hide;
 }
 .prices td{ padding-right: 60px;}
+
+#wrap {
+   width:600px;
+   margin:0 auto;
+}
+#left_col {
+   float:left;
+   width:300px;
+}
+#right_col {
+   float:right;
+   width:300px;
+}
 
 /* Error Handling */
 
@@ -226,17 +303,30 @@ h2 {
 }
   .mobile_hide{display:bo;}
 @media screen and (max-width: 567px) {
-  h1 {font-size: 2em;}
+  h1,h3,h2,h4,h5 {font-size: 1.5em;}
   body,footer{font-size:0.8em;}
   .tab-content.spacer{margin: 0px auto;padding-bottom: 20px}
   .mobile_center{display:block; margin: 0px auto; text-align: center;}
   .mobile_hide{display:none;}
   .hide_in_desktop{display: block;}
   #hide_brand_desktop{display: block;}
+
+
+#left_col , #right_col, #wrap {
+   float:clear;
+   width: 100%;
+}
+
 }
 
 @media screen and (min-width: 568px) and (max-width: 980px) {
   .hide_in_desktop{display: inline-block;}
   .hide_in_tablet{display: none;}
   #hide_brand_desktop{display: block;}
+  
+#left_col , #right_col, #wrap {
+   float:clear;
+   width: 100%;
+}
+
 }

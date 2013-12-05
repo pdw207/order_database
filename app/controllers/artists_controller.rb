@@ -1,5 +1,5 @@
 class ArtistsController < ApplicationController
-  before_action :set_artist, only: [:show, :edit, :update, :destroy]
+  before_action :set_artist, only: [:show, :edit, :update, :destroy, :payment]
 
   # GET /artists
   # GET /artists.json
@@ -10,6 +10,9 @@ class ArtistsController < ApplicationController
   # GET /artists/1
   # GET /artists/1.json
   def show
+  end
+
+  def payment
   end
 
   # GET /artists/new

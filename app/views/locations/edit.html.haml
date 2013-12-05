@@ -1,0 +1,10 @@
+%h1 Editar Ubicación
+
+= render 'form'
+
+%footer
+	= link_to 'Mostrar', @location
+	\|
+	= link_to 'Regresar', location_path
+	\|
+	= link_to 'Destruir', @location, :method => :delete, :data => { :confirm => '¿Estás Seguro?' }

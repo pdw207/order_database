@@ -18,9 +18,9 @@
   %p
     %b Teléfono 2:
     = @customer.telefono_2
-  %h3 Direccíon
+  %h3 Dirección
   %p
-    %b Direccíon:
+    %b Dirección:
     = @customer.direccion_1
     = @customer.direccion_2
     = @customer.direccion_3
@@ -34,7 +34,7 @@
     %b Codigo postal:
     = @customer.codigo_postal
   %p
-    %b Pais:
+    %b País:
     = @customer.pais
   - if @customer.factura_nombre.length >0
     %h3 Factura
@@ -50,7 +50,7 @@
       %b Factura Teléfono:
       = @customer.factura_telefono
     %p
-      %b Factura Direccíon:
+      %b Factura Dirección:
       = @customer.factura_direccion
     %p
       %b Enviar Factura Hasta:

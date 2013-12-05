@@ -1,8 +1,8 @@
 
-	<%= define_grid(@designs_grid, hide_submit_button: true, hide_reset_button: true) do |g|
+	<%= define_grid(@designs_grid, class: "hidden-phone " ,hide_submit_button: true, hide_reset_button: true) do |g|
 
-    	g.column name:  'Producto',  attribute: 'product_type_id', 
-    	detach_with_id: :product_type_id_filter do |design|link_to  [design.product_type_id,design.product_type.nombre].join(" - "), design end
+    	g.column name:  'Producto',  attribute: 'nombre', model: 'ProductType' ,
+    	detach_with_id: :type_filter do |design|link_to  design.product_type.nombre, design end
     
     	g.column name:  'Diseño', attribute: 'nombre', 
     	detach_with_id: :nombre_filter do |design|link_to  design.nombre, design end
@@ -18,3 +18,26 @@
 		
 		
 	end -%>
+
+<div class="hide_in_desktop hidden-tablet">
+<table class="table-striped table-bordered table wice-grid">
+ <thead>
+    <tr>
+      <th>Diseño</th>
+      <th>Tipo</th>
+
+    </tr>
+  </thead>
+
+
+  <tbody>
+    <% @designs.each do |design| %>
+      <tr data-href="<%= edit_design_path(design) %>">
+       <td><%= link_to design.nombre? ? design.nombre : "Sin nombre", edit_design_path(design) %></td>
+        <td><%= link_to design.product_type.nombre , edit_design_path(design)%></td>
+       </tr>
+    <% end %>
+  </tbody>
+</table>
+
+</div>

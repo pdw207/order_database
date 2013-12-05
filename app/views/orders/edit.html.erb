@@ -1,7 +1,8 @@
 <h1>Editar el Pedido</h1>
 
 <%= render 'form' %>
-
+<footer>
 <%= link_to 'Mostrar', @order %> |
 <%= link_to 'Ver Todos', orders_path %> |
-<%= link_to 'Destroy', @order, method: :delete, data: { confirm: '¿Estás Seguro?' } %>
+<%= link_to 'Destruir', @order, method: :delete, data: { confirm: '¿Estás Seguro?' } %>
+</footer>

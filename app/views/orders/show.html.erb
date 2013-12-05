@@ -6,7 +6,7 @@
 <br>
 
 <!-- Name of Order, Buyer and Value -->
-<h3> <%= date @order.created_at %> <%= @order.customer.compania %>  - Pedido <%= currency @order.venta%> </h3>
+<h3> <%= date @order.created_at %> <%= @order.customer.compania %>  Pedido <%= currency @order.venta%> </h3>
 
 
 <!-- Basic Information: Person in Charge, Details, Deadline, Payment: Consignment or Regular Sale -->
@@ -34,7 +34,7 @@
   <div style="display:<%= @order.codigos_vendido == "" ? "none": "block"%>;">
 <br>  
 
-
+<div class="hidden-phone">
 <!-- Reconciliation of Sales by Product. In Line editing to be completed -->
 <h3><%= link_to "Codigos y Ventas", reconciliation_path, :target => "_blank" %></h3>
 
@@ -64,7 +64,7 @@
   <table class="table-striped table-bordered table wice-grid">
     <thead>
       <tr class="wice-grid-title-row" >
-        <td>Codigo</td>
+        <td>Código</td>
         <td>Artista</td>
         <td>Estilo</td>
         <td>Venta</td>
@@ -112,14 +112,16 @@
     </table>
   
 </div>
-
+</div>
 <div style="display:<%= @order.expenses.sum(:valor) > 0 ? "block": "none"%>;"> 
-<H2>Costos Directos</H2>
-      <table>
+<H3>Costos Directos</H3>
+      <table id = "narrow"class=" table-striped table-bordered table wice-grid">
+        <thead>
         <tr>
           <td>Tipo</td>
           <td>Valor</td>
         </tr>
+        </thead>
         <% @order.expenses.each  do |expense| %>
             <% unless expense.nombre.blank? %>
                <tr>
@@ -141,7 +143,7 @@
 <!-- Shipping -->
 <div style="display:<%= @order.enviar ? "block": "none"%>;"> 
 
-<H2>Enviar</H2>
+<H3>Enviar</H3>
   
   <!-- Shipping Label -->
   
@@ -175,7 +177,7 @@
 
   <p>
     <strong>Fecha de factura:</strong>
-    <%= @order.fecha_de_factura %>
+    <%= date @order.fecha_de_factura %>
   </p>
 
   <p>

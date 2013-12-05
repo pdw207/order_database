@@ -1,59 +1,11 @@
-<h1>Pedidos / Ventas </h1>
+<h1>Pedidos </h1>
 
 
+ <H2>Ventas desde el inicio: <%= number_to_currency @sales.sum('venta') %>  y en <%= I18n.localize Date.current, format: :month %>: <%=number_to_currency @sales.sum(:venta, :conditions => {:created_at =>  (Date.today.beginning_of_month..Date.today.end_of_month)})
+ %> 
 
-<p><%= link_to 'Crear Nuevo', new_order_path %></p>
-
-<table>
-  <thead>
-    <tr>
-      <th>Id</th>
-      <th>Cliente</th>
-      <th>Venta</th>
-      <th>Cancelar</th>
-      <th>Estado</th>
-      <th>Encargado</th>
-      <th>Fecha Tope</th>
-      <th>Tipo</th>
-      <th>Codigos</th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @orders.each do |order| %>
-      <tr>
-        <td><%= link_to order.id, order %></td>
-        <td><%= link_to order.customer.compania, order %></td>
-        <td><%= link_to currency(order.venta), order %></td>
-        <td><%= link_to order.pago ? "Pago": "Consignación", order %></td>
-        <td><%= link_to order.estado_de_pedido , order %></td>
-        <td><%= link_to order.encargado , order %></td>
-        <td><%= link_to date(order.fecha_de_finalizacion) , order %></td>
-        <td><%= link_to order.enviar ? "Envío": "Evento", order %></td>
-        <td><%= order.products.count %></td> 
-
-      </tr>
-    <% end %>
-  </tbody>
-</table>
-
+ <%=  %>
+ </H2> 
 
 <%= render partial:  'grid' %> 
-
-<table class="table hidden-phone filter">
-  <tr>    
-    <td> Customer ID:</td>
-    <td><%= grid_filter @orders_grid, :customer_id_filter %></td>
-  </tr>
-</table>
-
-<div class="external buttons hidden-phone spacer">
-
-  <button class="btn btn-primary wg-external-submit-button" data-grid-name: "grid"> Enviar</button>
-  <button class="btn wg-external-reset-button" data-grid-name: "grid"> Reinicializar</button>
-</div>
-
-<%= render_grid(@orders_grid) %>
-
-
 

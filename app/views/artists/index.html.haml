@@ -1,9 +1,10 @@
-%h1 Socias
+%h1 Artistas
 
 %table.table-striped.table-bordered.table.wice-grid
   %thead
     %tr.wice-grid-title-row
       %th Nombre
+      %th Ingresos
       %th.hidden-phone.hidden-tablet Papel
       %th.hidden-phone.hidden-tablet Fecha de Elección
       %th Teléfono
@@ -13,12 +14,11 @@
   - @artists.each do |artist|
     %tr
       %td= link_to artist.nombre, artist
+      %td= link_to currency (artist.products.sum(:pago))
       %td.hidden-phone.hidden-tablet= link_to artist.papel, artist
       %td.hidden-phone.hidden-tablet= link_to artist.fecha_de_eleccion || " ", artist
       %td= link_to artist.telefono, artist
       %td.hidden-phone= link_to [artist.direccion_1,artist.direccion_2,artist.direccion_2].join(" "), artist
-
-
 
 
 

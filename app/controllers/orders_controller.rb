@@ -1,15 +1,17 @@
 class OrdersController < ApplicationController
   before_action :set_order, only: [:show, :edit, :update, :destroy, :print_label, :print_das, :reconciliation]
 
-  # GET /orders
-  # GET /orders.json
   def index
     @orders = Order.all
-    @orders_grid = initialize_grid(Order)
+    @orders_grid = initialize_grid(Order,:include => [:customer])
+    @sales = Order.all.where(estado_de_pedido: "Cerrado", pago: false)
+    # @artist_group = @order.products.group_by { |t| t.artist_id }
+
   end
 
-  # GET /orders/1
-  # GET /orders/1.json
+  def closed
+     end
+
   def show
     #get codes from form
     @codes = @order.get_codes || []
@@ -81,7 +83,7 @@ class OrdersController < ApplicationController
           if attached_product.precio.nil?
             attached_product.precio  = case attached_product.design.product_type.nombre
               when "Collar" 
-                10
+                15
               when "Pulsera"
                 7
               when "Aretes"
@@ -114,15 +116,17 @@ class OrdersController < ApplicationController
   end
 
   def print_label
+       render :layout => "application_simple"
   end
 
   def print_das
-    
+       render :layout => "application_simple"
   end
   
   def reconciliation
      @artist_group = @order.products.group_by { |t| t.artist_id }
      @artists = Artist.all  
+     render :layout => "application_simple"
   end
   # GET /orders/new
   def new
@@ -145,7 +149,6 @@ class OrdersController < ApplicationController
     # logger.debug "Here are my attributes: #{@order.attributes.inspect} #{@order.save}"    
     respond_to do |format|
       if @order.save
-  
         format.html { redirect_to @order, notice: 'Orden sido creado con éxito.' }
         format.json { render action: 'show', status: :created, location: @order }
       else
@@ -163,7 +166,8 @@ class OrdersController < ApplicationController
    
       if @order.update(order_params)
         # logger.debug "Here are my attributes2: #{@order.attributes.inspect} #{@order.save}"
-   
+
+        ThankYouMailer.thank_you(@order).deliver if @order.fecha_envio.nil? && @order.numero_de_rastreo.present?
         format.html { redirect_to @order, notice: 'El cambio ha sido guardado con éxito.' }
         format.json { head :no_content }
       else

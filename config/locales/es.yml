@@ -1,4 +1,9 @@
 es:
+  wice_grid:
+    boolean_filter_false_label: "Cancelar"
+    boolean_filter_true_label: "Consignación"
+    reset_filter_tooltip: "Reiniciar"
+    filter_tooltip: "Enviar"
   date:
     abbr_day_names:
     - dom
@@ -34,6 +39,7 @@ es:
       default: ! '%d/%m/%Y'
       long: ! '%A, %d de %B de %Y'
       short: ! '%d de %b'
+      month: ! '%B'
     month_names:
     - 
     - enero

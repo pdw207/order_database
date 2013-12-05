@@ -3,8 +3,10 @@ class Order < ActiveRecord::Base
 	        :detall_de_pedido, :venta, :pago, :estado_de_pedido, :encargado, :fecha_de_finalizacion, 
 	        :enviar, :fecha_envio, :numero_de_rastreo, :idioma, :email_al_cliente, :pesa_en_gramas, 
 	        :costos_de_enviar, :unidades, :factura_serie, :factura_numero, :fecha_de_factura, :valor_aduana,
-	        :codigos_vendido
-
+	        :codigos_vendido,
+	        :expenses_attributes,
+        	:products_attributes
+        	
 	belongs_to :customer, inverse_of: :orders
 	has_many :expenses
 	has_and_belongs_to_many :products
@@ -12,6 +14,8 @@ class Order < ActiveRecord::Base
 	accepts_nested_attributes_for :expenses, :allow_destroy => true	
 	accepts_nested_attributes_for :products
 	validates_presence_of :customer_id
+
+ 	after_initialize :default_values
 
 
 	def weight(units)
@@ -37,4 +41,12 @@ class Order < ActiveRecord::Base
 	def calcuated_sale(products)
 		self.product.precio - product.funda - product.groupo   - product.costos 
 	end
+
+	private
+    
+    def default_values
+      self.cuenta_del_grupo  ||= 20
+      self.factura_serie  ||= "001-001-"
+    end
+    
 end

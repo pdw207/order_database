@@ -1,0 +1,6 @@
+= form_for @location do |f|
+  %p.center
+    = f.label :location, "Ubicación", style:"text-align:center;"
+    = f.text_field :location
+
+  %footer= f.submit "Enviar", class: "btn btn-default", :as => :input

@@ -1,14 +1,14 @@
-<h1>Editar Producto</h1>
+<h1>Cambiar precio</h1>
 
-
+<div class="center" style="text-align:center;">
 <%= form_for [@order, @product]  do |f| %>
- 	Artista: <%= @product.artist.nombre %><br>
-	Diseño: <%= @product.design.nombre %><br>
-	Codigo: <%= @product.codigo %><br>
+ 	<h4>Socia: <%= @product.artist.nombre %><br></h4>
+	<h4>Diseño: <%= @product.design.nombre %><br></h4>
+	<h4>Código: <%= @product.codigo %><br></h4>
 	Precio: <%= f.text_field :precio %><br>
 	Funda: <%= f.text_field :funda %><br>
 	<% @product.order_id = params[:order_id]  %>
-    <%= f.submit "Actualizar", name: "button"  %>
+    <%= f.submit "Actualizar", name: "button", class: "btn btn-default"  %>
 <% end %>
-
+</div>
 

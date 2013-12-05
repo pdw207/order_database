@@ -5,7 +5,7 @@ class DesignsController < ApplicationController
   # GET /designs.json
   def index
     @designs = Design.all
-    @designs_grid = initialize_grid(Design)
+    @designs_grid = initialize_grid(Design, :include => [:product_type])
   end
 
   # GET /designs/1

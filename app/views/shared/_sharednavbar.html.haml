@@ -19,7 +19,7 @@
               %b.caret
             %ul.dropdown-menu
               %li= link_to 'Ver Inventario', products_path
-              %li= link_to 'Crear Producto Nuevo', new_product_path         
+              %li= link_to 'Añadir Nuevo', new_product_path         
           -#Orders          
           %li{:class => "dropdown #{visited_class('orders')}"}
             %a.dropdown-toggle{"data-toggle" => "dropdown", href: "/orders"}
@@ -27,7 +27,7 @@
               %b.caret
             %ul.dropdown-menu
               %li= link_to 'Ver Pedidos', orders_path
-              %li= link_to 'Crear Pedido Nuevo', new_order_path    
+              %li= link_to 'Crear Nuevo', new_order_path    
           -#Clients
           %li{:class => "dropdown #{visited_class('customers')}"}
             %a.dropdown-toggle{"data-toggle" => "dropdown", href: "/customers"}
@@ -35,15 +35,7 @@
               %b.caret
             %ul.dropdown-menu
               %li= link_to 'Ver Todos los Clientes', customers_path
-              %li= link_to 'Crear Cliente Nuevo', new_customer_path
-          -#Sales          
-          %li{:class => "dropdown #{visited_class('sales')}"}
-            %a.dropdown-toggle{"data-toggle" => "dropdown", href: "/sales"}
-              = t "nav.sales"
-              %b.caret
-            %ul.dropdown-menu
-              %li= link_to 'Ver Todas Las Ventas', sales_path
-              %li= link_to 'Crear Comprador Nuevo', new_sale_path
+              %li= link_to 'Crear Nuevo', new_customer_path
           -#Diseños          
           %li{:class => "dropdown #{visited_class('designs')}"}
             %a.dropdown-toggle{"data-toggle" => "dropdown", href: "/designs"}
@@ -51,18 +43,32 @@
               %b.caret
             %ul.dropdown-menu
               %li= link_to 'Ver Todas Diseños', designs_path
-              %li= link_to 'Crear Diseño Nuevo', new_design_path
-
-
+              %li= link_to 'Crear Nuevo', new_design_path
+          -#Accounting         
+          %li{:class => "dropdown #{visited_class('registers')}"}
+            %a.dropdown-toggle{"data-toggle" => "dropdown", href: "/registers"}
+              Registro
+              %b.caret
+            %ul.dropdown-menu
+              %li= link_to 'Ver Registro', registers_path
+              %li= link_to 'Crear Nuevo', new_register_path
+           
           -#Artists          
           %li{:class => "dropdown #{visited_class('artists')}"}
             %a.dropdown-toggle{"data-toggle" => "dropdown", href: "/artists"}
               Artistas
               %b.caret
             %ul.dropdown-menu
-              %li= link_to 'Ver Todas Socias', artists_path
-              %li= link_to 'Añadir Nuevo', new_artist_path
-
+              %li= link_to 'Ver Todas Artistas', artists_path
+              %li= link_to 'Crear Nuevo', new_artist_path
+          -#Locations          
+          %li{:class => "dropdown #{visited_class('locations')}"}
+            %a.dropdown-toggle{"data-toggle" => "dropdown", href: "/locations"}
+              Ubicaciónes
+              %b.caret
+            %ul.dropdown-menu
+              %li= link_to 'Ver Todos Producto Tipos', locations_path
+              %li= link_to 'Crear Nuevo', new_location_path
           -#Tipos          
           %li{:class => "dropdown #{visited_class('product_types')}"}
             %a.dropdown-toggle{"data-toggle" => "dropdown", href: "/product_types"}
@@ -70,7 +76,7 @@
               %b.caret
             %ul.dropdown-menu
               %li= link_to 'Ver Todos Producto Tipos', product_types_path
-              %li= link_to 'Crear Nuevo Producto Tipo', new_product_type_path
+              %li= link_to 'Crear Nuevo', new_product_type_path
           -#Empresa          
           %li{:class => "dropdown #{visited_class('my_details')}"}
             %a.dropdown-toggle{"data-toggle" => "dropdown", href: "/my_details"}

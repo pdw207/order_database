@@ -28,6 +28,9 @@
 /log/*.log
 /tmp
 
+#ignore mailer password
+/config/initializers/app_env_vars.rb
+
 #ignore other uneeded files.
 database.yml
 doc/

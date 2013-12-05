@@ -1,20 +1,39 @@
 
-	<%= define_grid(@products_grid, hide_submit_button: true, hide_reset_button: true) do |g|
+	<%= grid(@products_grid, class: "hidden-phone ") do |g|
 
 
-    	g.column name:  'Codigo', attribute: 'codigo', 
-    	detach_with_id: :codigo_filter do |product|link_to  product.codigo, edit_product_path(product) end
+    	g.column name:  'Código', attribute: 'codigo' do |product|link_to  product.codigo, edit_product_path(product) end
 
 
-    	g.column name:  'Artista', attribute: 'artist_id', 
-    	detach_with_id: :artist_id_filter do |product|link_to  product.artist.nombre, edit_product_path(product) end
+    	g.column name:  'Artista', attribute: 'nombre', model: 'Artist', class: "hidden-phone " do |product|link_to  product.artist.nombre, edit_product_path(product) end
 
-    	g.column name:  'Diseño', attribute: 'design_id',  class: "hidden-phone ",
-    	detach_with_id: :design_id_filter do |product|link_to  product.design.nombre, edit_product_path(product) end
+    	g.column name:  'Diseño', class: "hidden-phone " do |product|link_to  product.design.nombre, edit_product_path(product) end
 
-    	g.column name:  'Nivel' ,  attribute: 'design_id', detach_with_id: :nivel_filter, class: "hidden-phone " do |product|link_to  product.design.nivel, edit_product_path(product) end
-  		g.column name:  'Tipo' ,  attribute: 'design_id', detach_with_id: :tipo_filter, class: "hidden-phone " do |product|link_to  product.design.product_type.nombre, edit_product_path(product) end
-    	g.column name:  'Fecha', attribute: 'created_at',   class: "hidden-phone ",
-    	detach_with_id: :created_at_filter do |product|link_to  product.created_at.strftime("%d/%m/%y"), edit_product_path(product) end
+        g.column name:  'Estado', attribute: 'location', model: 'Location',class: "hidden-phone " do |product|link_to  product.location.location   , edit_product_path(product) end
 
+    	g.column name:  'Nivel', class: "hidden-phone " do |product|link_to  product.design.nivel, edit_product_path(product) end
+  		g.column name:  'Tipo' ,class: "hidden-phone " do |product|link_to  product.design.product_type.nombre, edit_product_path(product) end
+    	g.column name:  'Fecha',   class: "hidden-phone " do |product|link_to  product.created_at.strftime("%d/%m/%y"), edit_product_path(product) end
 	end -%>
+
+<div class="hide_in_desktop hidden-tablet">
+<table class="table-striped table-bordered table wice-grid">
+  <thead>
+    <tr>
+      <th>Codigo</th>
+      <th>Artista</th>      
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @products.reverse.each do |product| %>
+      <tr>
+        <td><%= link_to product.codigo, edit_product_path(product) %></td>
+        <td><%= link_to product.artist.nombre, edit_product_path(product) %></td>
+        
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+</div>

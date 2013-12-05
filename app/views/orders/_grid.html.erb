@@ -1,10 +1,56 @@
 
-	<%= define_grid(@orders_grid, hide_submit_button: true, hide_reset_button: true) do |g|
+	<%= grid(@orders_grid, class: "hidden-phone ") do |g|
 
 
-    	g.column name:  'customer_id', attribute: 'customer_id', 
-    	detach_with_id: :customer_id_filter do |order|link_to  order.customer_id, order end
-		
-		
+    	g.column name:  'ID', attribute: 'id' do |order|link_to  order.id, order end
+
+    	g.column name:  'Compañía', attribute: 'compania', model: 'Customer'   do |order|link_to  order.customer.compania, order end
+
+    	g.column name:  'Venta', attribute: 'venta', filter_type: :range do |order|link_to  currency(order.venta), order end
+
+    	g.column name:  'Forma de Pago',attribute: 'pago' do |order| order.pago  ? "Consignación": "Cancelar"end    			
+
+    	g.column name:  'Estado',  attribute: 'estado', attribute: 'estado_de_pedido' do |order|link_to  order.estado_de_pedido, order end
+
+    	g.column name:  'Encargado', attribute: 'encargado', 
+    	detach_with_id: :encargado_filter do |order|link_to  order.encargado, order end
+
+    	g.column name:  'Cumplir Fecha' do |order|link_to  date(order.fecha_de_finalizacion), order end
+
+    	g.column name:  'Tipo' do |order|link_to  order.enviar ? "Envío": "Evento", order end   		
 
 	end -%>
+
+
+
+
+
+
+
+<div class="hide_in_desktop hidden-tablet">
+<table class="table-striped table-bordered table wice-grid">
+ <thead>
+    <tr>
+     
+      <th>Cliente</th>
+      <th>Venta</th>
+      <th>Estado</th>
+
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @orders.each do |order| %>
+      <tr>
+ 
+        <td><%= link_to order.customer.compania, order %></td>
+        <td><%= link_to currency(order.venta), order %></td>
+        <td><%= link_to order.estado_de_pedido , order %></td>
+
+
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+</div>

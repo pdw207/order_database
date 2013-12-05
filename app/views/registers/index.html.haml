@@ -1,0 +1,40 @@
+%h1 Registro
+
+%h2="Total menos obligaciones #{currency total_cash}"
+%table.table-striped.table-bordered.table.wice-grid
+	%thead
+		%tr.wice-grid-title-row
+			%th Fecha
+			%th.hidden-phone.hidden-tablet Código
+			%th Descripción
+			%th Tipo
+			%th.hidden-phone Effectivo
+			%th.hidden-phone Banco de Guayaquil
+			%th.hidden-phone Paypal
+			%th.hidden-phone Payoneer
+			%th.hidden-phone Obligaciones
+		%tr
+			%th 
+			%th
+			%th 
+			%th 
+			%th.hidden-phone= currency @registers.sum(:effectivo) 
+			%th.hidden-phone=currency @registers.sum(:banco)
+			%th.hidden-phone=currency @registers.sum(:paypal)
+			%th.hidden-phone=currency @registers.sum(:banco)
+			%th.hidden-phone=currency @registers.sum(:obligaciones)
+	- @registers.sort_by { |obj| obj.created_at }.reverse.each do |transaction|
+		%tr
+			%td= link_to transaction.created_at.strftime("%d/%m/%y"), transaction
+			%td.hidden-phone.hidden-tablet= link_to transaction.codigo, transaction
+			%td= link_to transaction.Descripcion, transaction
+			%td= link_to transaction.tipo , transaction
+			%td.hidden-phone= link_to (currency (transaction.effectivo)) , transaction
+			%td.hidden-phone= link_to (currency (transaction.banco)) , transaction
+			%td.hidden-phone= link_to (currency (transaction.paypal)) , transaction
+			%td.hidden-phone= link_to (currency (transaction.payoneer)) , transaction
+			%td.hidden-phone= link_to (currency (transaction.obligaciones)) , transaction
+
+
+
+

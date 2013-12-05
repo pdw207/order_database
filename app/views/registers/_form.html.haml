@@ -1,0 +1,34 @@
+
+= form_for @register do |f|
+  %p.center
+    = f.label :Descripcion, "Descripción", style:"text-align:center;"
+    = f.text_field :Descripcion
+  %p.center
+    = f.label :codigo, "Código en Libro", style:"text-align:center;"
+    = f.text_field :codigo
+  %p.center
+    = f.label :tipo, "Tipo de Evento", style:"text-align:center;"
+    = f.select :tipo, options_for_select([ "Ingresos","Gastos", "Transferencia"], "Gastos")
+  / %p.center
+  /   = f.label :account, "Cuenta", style:"text-align:center;"
+  /   = f.select :account, options_for_select([ "Effectivo","Banco", "Paypal","Payonner", "Obligaciones"], "Effectivo")
+  / %p.center
+  /   = f.label :amount, "Monto", style:"text-align:center;"
+  /   = f.text_field :amount, scale: 2, default: 20
+
+  %p.center
+    = f.label :effectivo, "Effectivo", style:"text-align:center;"
+    = f.text_field :effectivo, scale: 2, default: 20
+  %p.center
+    = f.label :banco, "Banco", style:"text-align:center;"
+    = f.text_field :banco, scale: 2, default: 20
+  %p.center
+    = f.label :paypal, "Paypal", style:"text-align:center;"
+    = f.text_field :paypal, scale: 2, default: 20
+  %p.center
+    = f.label :payoneer, "Payoneer", style:"text-align:center;"
+    = f.text_field :payoneer, scale: 2, default: 20
+  %p.center
+    = f.label :obligaciones, "Obligaciones", style:"text-align:center;"
+    = f.text_field :obligaciones, scale: 2, default: 20
+  %footer= f.submit "Enviar", class: "btn btn-default", :as => :input

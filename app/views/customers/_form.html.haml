@@ -10,39 +10,39 @@
   .tabbable
     %ul#proftabs.nav.nav-tabs.mobile_hide
       %li
-        %a{"data-toggle" => "tab", href: "#basic_info_tab"} Basicó
+        %a{"data-toggle" => "tab", href: "#basic_info_tab"} Básico
       %li.hidden-phone
-        %a{"data-toggle" => "tab", href: "#direccion_tab"} Direccíon
+        %a{"data-toggle" => "tab", href: "#direccion_tab"} Dirección
       %li
         %a{"data-toggle" => "tab", href: "#factura_tab"} Factura
       %li
         %a{"data-toggle" => "tab", href: "#enviarfactura_tab"} Enviar Factura
   -#Tab Content
   .tab-content.spacer
-    #basic_info_tab.tab-pane.row.active
+    #basic_info_tab.tab-pane.active
       .field
-        = f.label :compania
+        = f.label :compania, "Compañía"
         %br/
         = f.text_field :compania
       .field
-        = f.label :nombre_de_contacto
+        = f.label :nombre_de_contacto,"Contacto"
         %br/
         = f.text_field :nombre_de_contacto
       .field
-        = f.label :email_de_contacto
+        = f.label :email_de_contacto, "Email"
         %br/
         = f.text_field :email_de_contacto
       .field
-        = f.label :telefono_1
+        = f.label :telefono_1, "Teléfono Principal"
         %br/
         = f.text_field :telefono_1
       .field
-        = f.label :telefono_2
+        = f.label :telefono_2, "Teléfono Alternativa"
         %br/
         = f.text_field :telefono_2
-    #direccion_tab.tab-pane.row  
+    #direccion_tab.tab-pane  
       .field
-        = f.label :direccion_1, "Direccíon"
+        = f.label :direccion_1, "Dirección"
         %br/
         = f.text_field :direccion_1
         %br/
@@ -54,14 +54,14 @@
         %br/
         = f.text_field :ciudad
       .field
-        = f.label :codigo_postal
+        = f.label :codigo_postal, "Código"
         %br/
         = f.text_field :codigo_postal
       .field
         = f.label :pais
         %br/
         = f.text_field :pais
-    #factura_tab.tab-pane.row
+    #factura_tab.tab-pane
       .field
         = f.label :factura_nombre, "Nombre de Empresa"
         %br/
@@ -71,16 +71,16 @@
         %br/
         = f.text_field :factura_RUC
       .field
-        = f.label :factura_telefono
+        = f.label :factura_telefono, "Teléfono"
         %br/
         = f.text_field :factura_telefono
       .field
-        = f.label :factura_direccion
+        = f.label :factura_direccion, "Dirección"
         %br/
         = f.text_field :factura_direccion
-    #enviarfactura_tab.tab-pane.row
+    #enviarfactura_tab.tab-pane
       .field
-        = f.label :enviar_factura_1, "Enviar Factura a la Direccíon"
+        = f.label :enviar_factura_1, "Enviar Factura a la Dirección"
         %br
         = f.text_field :enviar_factura_1
         %br

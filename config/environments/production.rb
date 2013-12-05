@@ -70,8 +70,8 @@ MujeresCambiaMail::Application.configure do
     address:              'smtp.gmail.com',
     port:                 587,
     domain:               'mujerescambia.com',
-    user_name:            'pdw207@gmail.com',
-    password:             'r3dgmail',
+    user_name:            ENV["EMAIL"],
+    password:             ENV["PASSWORD"],
     authentication:       'plain',
     enable_starttls_auto: true  }
   # Enable locale fallbacks for I18n (makes lookups for any locale fall back to

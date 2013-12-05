@@ -18,11 +18,13 @@ MujeresCambiaMail::Application.configure do
   config.action_mailer.delivery_method = :smtp
   
   config.action_mailer.smtp_settings = {
-    address:              'smtp.gmail.com',
-    port:                 587,
+    # address:              'smtp.gmail.com',
+    # port:                 587,
+    address:              'smtpout.secureserver.net',
+    port:                 80,
     domain:               'mujerescambia.com',
-    user_name:            'pdw207@gmail.com',
-    password:             'r3dgmail',
+    user_name:            ENV["EMAIL"],
+    password:             ENV["PASSWORD"],
     authentication:       'plain',
     enable_starttls_auto: true  }
   # Print deprecation notices to the Rails logger.

@@ -1,5 +1,6 @@
 MujeresCambiaMail::Application.routes.draw do
 
+  resources :registers
   resources :product_types
   resources :products
   resources :my_details
@@ -8,15 +9,18 @@ MujeresCambiaMail::Application.routes.draw do
   resources :orders
   resources :artists
 
-root :to => "sessions#new"
-resources :buyers
-resources :users
-resources :sessions
-resources :sales
-get "log_out" => "sessions#destroy", :as => "log_out"
-get "log_in" => "sessions#new", :as => "log_in"
+  root :to => "sessions#new"
+  resources :buyers
+  resources :users
+  resources :sessions
+  resources :sales
+  resources :locations
 
+  get "log_out" => "sessions#destroy", :as => "log_out"
+  get "log_in" => "sessions#new", :as => "log_in"
 
+ get '/artists/payments', to: 'artists#payments', as: 'payments'
+  get '/orders/closed', to: 'orders#closed', as: 'closed'
   get '/orders/print_label/:id', to: 'orders#print_label', as: 'print_label'
   get '/orders/print_exporta_facil/:id', to: 'orders#print_das', as: 'print_das'
   get '/orders/reconciliation/:id', to: 'orders#reconciliation', as: 'reconciliation'

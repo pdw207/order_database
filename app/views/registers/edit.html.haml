@@ -1,0 +1,10 @@
+%h1 Editar
+
+= render 'form'
+
+%footer
+	= link_to 'Mostrar', @register
+	\|
+	= link_to 'Regresara', registers_path
+	\|
+	= link_to 'Destruir', @register, :method => :delete, :data => { :confirm => '¿Estás Seguro?' }

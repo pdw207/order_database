@@ -2,35 +2,41 @@
 %h1= @artist.nombre
 
 %p#notice= notice
-%h4 Basicó
-%p
-  %b Teléfono:
-  = @artist.telefono
-%p
-  %b Dirección:
-  = @artist.direccion_1
-  = @artist.direccion_2
-  = @artist.direccion_3
-%br
-%h4  Papel en Grupo
-%p
-  %b Papel:
-  = @artist.papel
-%p
-  %b Fecha de elección:
-  = @artist.fecha_de_eleccion
-%br
-%h4  Financiera
-%p
-  %b Nombre de Banco:
-  = @artist.nombre_de_banco
-%p
-  %b Cuenta en Nombre de:
-  = @artist.nombre_cuenta_de_banco
-%p
-  %b # de Cuenta:
-  = @artist.cuenta_de_banco
-%footer
-  = link_to 'Editar', edit_artist_path(@artist)
-  \|
-  = link_to 'Ver Todos', artists_path
+%center
+  %h4 Basicó
+  %p
+    %b Teléfono:
+    = @artist.telefono
+  %p
+    %b Dirección:
+    = @artist.direccion_1
+    = @artist.direccion_2
+    = @artist.direccion_3
+  %br
+  %h4  Papel en Grupo
+  %p
+    %b Papel:
+    = @artist.papel
+  %p
+    %b Fecha de elección:
+    = @artist.fecha_de_eleccion
+  %br
+  %h4  Financiera
+  %p
+    %b Nombre de Banco:
+    = @artist.nombre_de_banco
+  %p
+    %b Cuenta en Nombre de:
+    = @artist.nombre_cuenta_de_banco
+  %p
+    %b # de Cuenta:
+    = @artist.cuenta_de_banco
+  %p
+    %b Pagos
+    = currency (@artist.products.sum(:pago))
+  %br
+
+  %footer
+    = link_to 'Editar', edit_artist_path(@artist)
+    \|
+    = link_to 'Ver Todos', artists_path

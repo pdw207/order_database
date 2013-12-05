@@ -1,0 +1,9 @@
+%p#notice= notice
+%center
+  %h3= "#{@register.tipo}: #{@register.Descripcion}"
+  %h2= currency (@register.effectivo + @register.banco + @register.paypal + @register.payoneer + @register.obligaciones + @register.obligaciones)
+
+%footer
+  = link_to 'Editar', edit_register_path(@register)
+  \|
+  = link_to 'Regresar', registers_path

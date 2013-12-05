@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131204001434) do
+ActiveRecord::Schema.define(version: 20131205020053) do
 
   create_table "artists", force: true do |t|
     t.string   "nombre"
@@ -104,6 +104,12 @@ ActiveRecord::Schema.define(version: 20131204001434) do
     t.datetime "updated_at"
   end
 
+  create_table "locations", force: true do |t|
+    t.string   "location"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "my_details", force: true do |t|
     t.string   "compania_nombre"
     t.string   "RUC"
@@ -175,6 +181,20 @@ ActiveRecord::Schema.define(version: 20131204001434) do
     t.decimal  "pago"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "location_id"
+  end
+
+  create_table "registers", force: true do |t|
+    t.string   "Descripcion"
+    t.string   "codigo"
+    t.string   "tipo"
+    t.decimal  "paypal"
+    t.decimal  "banco"
+    t.decimal  "payoneer"
+    t.decimal  "obligaciones"
+    t.decimal  "effectivo"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "sales", force: true do |t|
@@ -196,6 +216,7 @@ ActiveRecord::Schema.define(version: 20131204001434) do
     t.string   "password_salt"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.boolean  "admin"
   end
 
 end
