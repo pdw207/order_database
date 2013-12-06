@@ -6,7 +6,11 @@
 <%= form_for @product do |f| %>
  	Artista	 <%= select_artist_new %><br>
 	Diseño <%= select_design_new%><br>
-  	Código <%= f.number_field :codigo, value: Product.last.codigo+1 unless Product.all.count ==0%><br>
+	<% if  Product.all.count == 0 %>
+  	Código <%= f.number_field :codigo, value: 1 %><br>
+	<% else %>
+  	Código <%= f.number_field :codigo, value: Product.last.codigo+1 %><br>
+	<% end %>
   	Estado <%= select_location_new%><br>
   <!-- 	Estado <%= f.select :estado, options_for_select([ "Inventario","Vendido"], "Inventario")%><br> -->
   <%= f.submit "Enviar", class: "btn btn-default" %>
