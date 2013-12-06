@@ -1,7 +1,11 @@
 %p#notice= notice
 %center
-  %h3= "#{@register.tipo}: #{@register.Descripcion}"
-  %h2= currency (@register.effectivo + @register.banco + @register.paypal + @register.payoneer + @register.obligaciones + @register.obligaciones)
+  %h3= "#{@register.tipo}: #{@register.Descripcion}" 
+  %h2= "Efectivo: #{currency @register.effectivo }" unless @register.effectivo.nil?
+  %h2= "Banco: #{currency  @register.banco   }" unless @register.banco.nil?
+  %h2= "Paypal: #{currency  @register.paypal  }"  unless @register.paypal.nil?
+  %h2= "Payoneer: #{currency  @register.payoneer}"unless @register.payoneer.nil?
+  %h2= "Obligaciones: #{@register.obligaciones}"unless @register.obligaciones.nil?
 
 %footer
   = link_to 'Editar', edit_register_path(@register)

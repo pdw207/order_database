@@ -15,7 +15,7 @@ class RegistersController < ApplicationController
 
   # GET /registers/new
   def new
-    @register = Register.new
+    @register = Register.new(paypal: 0, banco: 0, payoneer: 0, obligaciones:0, effectivo:0)
 
   end
 

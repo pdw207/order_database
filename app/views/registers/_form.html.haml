@@ -30,7 +30,7 @@
 				= f.select :tipo, options_for_select([ "Ingresos","Gastos", "Múltiple Entrada"], @register.tipo), :onchange => "selection(this)"
 			%p.center
 				= f.label :account, "Cuenta", style:"text-align:center;"
-				= f.select :account, options_for_select([ "Efectivo","Banco", "Paypal","Payonner", "Obligaciones"], @register.account)
+				= f.select :account, options_for_select([ "Efectivo","Banco", "Paypal","Payoneer", "Obligaciones"], @register.account)
 			%p.center
 				= f.label :amount, "Monto", style:"text-align:center;"
 				= f.text_field :amount, scale: 2, default: 20
