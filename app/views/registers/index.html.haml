@@ -8,7 +8,7 @@
 			%th.hidden-phone.hidden-tablet Código
 			%th Descripción
 			%th Tipo
-			%th.hidden-phone Effectivo
+			%th.hidden-phone Efectivo
 			%th.hidden-phone Banco de Guayaquil
 			%th.hidden-phone Paypal
 			%th.hidden-phone Payoneer
@@ -21,19 +21,19 @@
 			%th.hidden-phone= currency @registers.sum(:effectivo) 
 			%th.hidden-phone=currency @registers.sum(:banco)
 			%th.hidden-phone=currency @registers.sum(:paypal)
-			%th.hidden-phone=currency @registers.sum(:banco)
+			%th.hidden-phone=currency @registers.sum(:payoneer)
 			%th.hidden-phone=currency @registers.sum(:obligaciones)
 	- @registers.sort_by { |obj| obj.created_at }.reverse.each do |transaction|
 		%tr
-			%td= link_to transaction.created_at.strftime("%d/%m/%y"), transaction
-			%td.hidden-phone.hidden-tablet= link_to transaction.codigo, transaction
-			%td= link_to transaction.Descripcion, transaction
-			%td= link_to transaction.tipo , transaction
-			%td.hidden-phone= link_to (currency (transaction.effectivo)) , transaction
-			%td.hidden-phone= link_to (currency (transaction.banco)) , transaction
-			%td.hidden-phone= link_to (currency (transaction.paypal)) , transaction
-			%td.hidden-phone= link_to (currency (transaction.payoneer)) , transaction
-			%td.hidden-phone= link_to (currency (transaction.obligaciones)) , transaction
+			%td= link_to transaction.created_at.strftime("%d/%m/%y"), edit_register_path(transaction)
+			%td.hidden-phone.hidden-tablet= link_to transaction.codigo, edit_register_path(transaction)
+			%td= link_to transaction.Descripcion, edit_register_path(transaction)
+			%td= link_to transaction.tipo , edit_register_path(transaction)
+			%td.hidden-phone= link_to (currency (transaction.effectivo)) , edit_register_path(transaction)
+			%td.hidden-phone= link_to (currency (transaction.banco)) , edit_register_path(transaction)
+			%td.hidden-phone= link_to (currency (transaction.paypal)) , edit_register_path(transaction)
+			%td.hidden-phone= link_to (currency (transaction.payoneer)) , edit_register_path(transaction)
+			%td.hidden-phone= link_to (currency (transaction.obligaciones)) , edit_register_path(transaction)
 
 
 

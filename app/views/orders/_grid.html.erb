@@ -8,7 +8,7 @@
 
     	g.column name:  'Venta', attribute: 'venta', filter_type: :range do |order|link_to  currency(order.venta), order end
 
-    	g.column name:  'Forma de Pago',attribute: 'pago' do |order| order.pago  ? "Consignación": "Cancelar"end    			
+    	g.column name:  'Forma de Pago',attribute: 'pago' do |order| order.pago  ? "Consignación": "Efectivo" end    			
 
     	g.column name:  'Estado',  attribute: 'estado', attribute: 'estado_de_pedido' do |order|link_to  order.estado_de_pedido, order end
 

@@ -1,6 +1,6 @@
 es:
   wice_grid:
-    boolean_filter_false_label: "Cancelar"
+    boolean_filter_false_label: "Efectivo"
     boolean_filter_true_label: "Consignación"
     reset_filter_tooltip: "Reiniciar"
     filter_tooltip: "Enviar"

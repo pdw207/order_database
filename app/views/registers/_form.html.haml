@@ -1,34 +1,57 @@
 
 = form_for @register do |f|
-  %p.center
-    = f.label :Descripcion, "Descripción", style:"text-align:center;"
-    = f.text_field :Descripcion
-  %p.center
-    = f.label :codigo, "Código en Libro", style:"text-align:center;"
-    = f.text_field :codigo
-  %p.center
-    = f.label :tipo, "Tipo de Evento", style:"text-align:center;"
-    = f.select :tipo, options_for_select([ "Ingresos","Gastos", "Transferencia"], "Gastos")
-  / %p.center
-  /   = f.label :account, "Cuenta", style:"text-align:center;"
-  /   = f.select :account, options_for_select([ "Effectivo","Banco", "Paypal","Payonner", "Obligaciones"], "Effectivo")
-  / %p.center
-  /   = f.label :amount, "Monto", style:"text-align:center;"
-  /   = f.text_field :amount, scale: 2, default: 20
-
-  %p.center
-    = f.label :effectivo, "Effectivo", style:"text-align:center;"
-    = f.text_field :effectivo, scale: 2, default: 20
-  %p.center
-    = f.label :banco, "Banco", style:"text-align:center;"
-    = f.text_field :banco, scale: 2, default: 20
-  %p.center
-    = f.label :paypal, "Paypal", style:"text-align:center;"
-    = f.text_field :paypal, scale: 2, default: 20
-  %p.center
-    = f.label :payoneer, "Payoneer", style:"text-align:center;"
-    = f.text_field :payoneer, scale: 2, default: 20
-  %p.center
-    = f.label :obligaciones, "Obligaciones", style:"text-align:center;"
-    = f.text_field :obligaciones, scale: 2, default: 20
-  %footer= f.submit "Enviar", class: "btn btn-default", :as => :input
+	-#Error Handling
+	- if @register.errors.any?
+		#error_explanation
+			%h2
+				= pluralize(@register.errors.count, "error")
+				prohibited this entry from being saved:
+			%ul
+				- @register.errors.full_messages.each do |msg|
+					%li= msg
+	.tabbable
+	.tabbable
+		%ul#proftabs.nav.nav-tabs.mobile_hide
+			%li
+				%a{"data-toggle" => "tab", href: "#basic_info_tab"} Básico
+			%li.hidden-phone
+				%a{"data-toggle" => "tab", href: "#multi_tab"} Múltiple Entrada
+		-#Tab Content
+	.tab-content.spacer
+		#basic_info_tab.tab-pane.active
+			%p.center
+				= f.label :Descripcion, "Descripción", style:"text-align:center;"
+				= f.text_field :Descripcion
+			%p.center
+				= f.label :codigo, "Código en Libro", style:"text-align:center;"
+				= f.text_field :codigo
+			%p.center
+				= f.label :tipo, "Tipo de Evento", style:"text-align:center;"
+				= f.select :tipo, options_for_select([ "Ingresos","Gastos", "Múltiple Entrada"], @register.tipo), :onchange => "selection(this)"
+			%p.center
+				= f.label :account, "Cuenta", style:"text-align:center;"
+				= f.select :account, options_for_select([ "Efectivo","Banco", "Paypal","Payonner", "Obligaciones"], @register.account)
+			%p.center
+				= f.label :amount, "Monto", style:"text-align:center;"
+				= f.text_field :amount, scale: 2, default: 20
+			#transfer_to_account{:style => "display:none;"}
+				%p.center
+					= f.label :account, "A Cuenta(para Transferencias)", style:"text-align:center;"
+					= f.select :account_to, options_for_select([ "Effectivo","Banco", "Paypal","Payonner", "Obligaciones"], "Effectivo")
+		#multi_tab.tab-pane
+			%p.center
+				= f.label :effectivo, "Efectivo", style:"text-align:center;"
+				= f.text_field :effectivo, scale: 2, default: 20
+			%p.center
+				= f.label :banco, "Banco", style:"text-align:center;"
+				= f.text_field :banco, scale: 2, default: 20
+			%p.center
+				= f.label :paypal, "Paypal", style:"text-align:center;"
+				= f.text_field :paypal, scale: 2, default: 20
+			%p.center
+				= f.label :payoneer, "Payoneer", style:"text-align:center;"
+				= f.text_field :payoneer, scale: 2, default: 20
+			%p.center
+				= f.label :obligaciones, "Obligaciones", style:"text-align:center;"
+				= f.text_field :obligaciones, scale: 2, default: 20
+	%footer= f.submit "Enviar", class: "btn btn-default", :as => :input

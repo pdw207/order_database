@@ -1,6 +1,6 @@
 class RegistersController < ApplicationController
   before_action :set_register, only: [:show, :edit, :update, :destroy]
-  before_action :set_accounts, only: [:update, :create]
+
 
   # GET /registers
   # GET /registers.json
@@ -15,7 +15,7 @@ class RegistersController < ApplicationController
 
   # GET /registers/new
   def new
-    @register = Register.new(payoneer: 0, paypal: 0, banco: 0 , effectivo: 0, obligaciones: 0)
+    @register = Register.new
 
   end
 
@@ -30,6 +30,7 @@ class RegistersController < ApplicationController
 
     respond_to do |format|
       if @register.save
+       logger.debug  "I can access #{@register.amount}"
         format.html { redirect_to @register, notice: 'Register was successfully created.' }
         format.json { render action: 'show', status: :created, location: @register }
       else
@@ -44,7 +45,7 @@ class RegistersController < ApplicationController
   def update
     respond_to do |format| 
       if @register.update(register_params)
-         # logger.debug  "I can access #{@register.amount}"
+        logger.debug  "I can access #{@register.amount}"
         format.html { redirect_to @register, notice: 'Register was successfully updated.' }
         format.json { head :no_content }
       else
@@ -70,19 +71,7 @@ class RegistersController < ApplicationController
       @register = Register.find(params[:id])
     end
 
-    def set_accounts
-      if @register.account == "Effectivo"
-          logger.debug  "i input something effectivo"
-      elsif @register.account == "Banco"
-          logger.debug  "I can access #{@register.amount}"
-      elsif @register.account == "Paypal"
-          logger.debug  "I can access #{@register.amount}"
-      elsif @register.account == "Payoneer"
-          logger.debug  "I can access #{@register.amount}"
-      else 
-          logger.debug  "I can access #{@register.amount}"
-      end
-    end
+
     # Never trust parameters from the scary internet, only allow the white list through.
     def register_params
       params.require(:register).permit(:Descripcion, :codigo, :tipo, :paypal, :banco, :payoneer, :obligaciones, :effectivo, :account, :amount)

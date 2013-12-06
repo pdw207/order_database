@@ -32,22 +32,23 @@
 
   .desc {
     /*background: transparent url(/assets/icons/grid/arrow_down.gif) right no-repeat*/
-    background: transparent url(/assets/arrow_down.png) right no-repeat;
+    background: transparent url(  https://dl.dropbox.com/s/vr60n5qfssjy1mv/arrow_down.png) right no-repeat;
     background-size:15px 15px;
   }
   .asc  {
     /*background: transparent url(/assets/icons/grid/arrow_up.gif)   right no-repeat*/
-    background: transparent url(/assets/arrow_up.png) right no-repeat;
+    background: transparent url(https://dl.dropbox.com/s/qh1rs0lmw71xu1o/arrow_up.png) right no-repeat;
     background-size:15px 15px;
   }
 
+
   .submit.clickable{
-    background: transparent url(/assets/icons/grid/table_refresh.png) no-repeat;
+    background: transparent url(https://dl.dropbox.com/s/j3je7fm3rbzfrr8/table_refresh.png) no-repeat;
     @include icon-dimensions;
   }
 
   .reset.clickable{
-    background: transparent url(/assets/icons/grid/table.png) no-repeat;
+    background: transparent url(https://dl.dropbox.com/s/dhicst0mhvvdxb4/table.png) no-repeat;
     @include icon-dimensions;
   }
 

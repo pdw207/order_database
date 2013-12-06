@@ -9,7 +9,7 @@ MujeresCambiaMail::Application.routes.draw do
   resources :orders
   resources :artists
 
-  root :to => "sessions#new"
+  root :to => "sessions#destroy"
   resources :buyers
   resources :users
   resources :sessions
