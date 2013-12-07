@@ -65,10 +65,7 @@
     <div style="display:<%= @order.expenses.sum(:valor) > 0 ? "block": "none"%>;"> 
 <br>
 <H5>Costos Directos</H5>
-      <table>
-        <tr>
-
-        </tr>
+      <table class="table-striped table-bordered wice-grid">
         <% @order.expenses.each  do |expense| %>
             <% unless expense.nombre.blank? %>
                <tr>

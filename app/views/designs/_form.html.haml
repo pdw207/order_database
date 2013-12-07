@@ -1,31 +1,33 @@
-= form_for(@design) do |f|
-  - if @design.errors.any?
-    #error_explanation
-      %h2
-        = pluralize(@design.errors.count, "error")
-        prohibited this design from being saved:
-      %ul
-        - @design.errors.full_messages.each do |msg|
-          %li= msg
-  .field
-    = f.label :select_type_id, "Producto"
-    %br/
-    = select_type
-  .field
-    = f.label :nombre
-    %br/
-    = f.text_field :nombre
-  .field
-    = f.label :detallas, "Detalles"
-    %br/
-    = f.text_field :detallas
-  .field
-    = f.label :Tiempo_en_minutos
-    %br/
-    = f.text_field :Tiempo_en_minutos
-  .field
-    = f.label :nivel
-    %br/
-    = f.select(:nivel, options_for_select([ "Amarillo","Verde","Azul", "Rojo" ], @design.nivel))
-  .actions
-    = f.submit "Enviar", class: "btn btn-default"
+.center
+  = form_for(@design) do |f|
+    - if @design.errors.any?
+      #error_explanation
+        %h2
+          = pluralize(@design.errors.count, "error")
+          prohibited this design from being saved:
+        %ul
+          - @design.errors.full_messages.each do |msg|
+            %li= msg
+    .field
+      = f.label :select_type_id, "Producto"
+      %br/
+      = select_type
+    .field
+      = f.label :nombre
+      %br/
+      = f.text_field :nombre
+    .field
+      = f.label :detallas, "Detalles"
+      %br/
+      = f.text_field :detallas
+    .field
+      = f.label :Tiempo_en_minutos
+      %br/
+      = f.text_field :Tiempo_en_minutos
+    .field
+      = f.label :nivel
+      %br/
+      = f.select(:nivel, options_for_select([ "Amarillo","Verde","Azul", "Rojo" ], @design.nivel))
+    %footer
+      .actions
+        = f.submit "Enviar", class: "btn btn-default"

@@ -1,11 +1,9 @@
 <h1>Pedidos </h1>
 
 
- <H2>Ventas desde el inicio: <%= number_to_currency @sales.sum('venta') %>  y en <%= I18n.localize Date.current, format: :month %>: <%=number_to_currency @sales.sum(:venta, :conditions => {:created_at =>  (Date.today.beginning_of_month..Date.today.end_of_month)})
- %> 
+ <H2 class:"hidden-phone" >Ventas desde el inicio: <%= number_to_currency @sales.sum('venta') %>  y en <%= I18n.localize Date.current, format: :month %>: <%=number_to_currency @sales.sum(:venta, :conditions => {:created_at =>  (Date.today.beginning_of_month..Date.today.end_of_month)})
+ %> </H2> 
 
- <%=  %>
- </H2> 
 
 <%= render partial:  'grid' %> 
 

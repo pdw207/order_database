@@ -1,7 +1,7 @@
 module DesignsHelper
 
 	def select_type
-		select(:design, :product_type_id, ProductType.all.map {|a| [ a.nombre, a.id ] })
+		select(:design, :product_type_id, ProductType.order(:nombre).all.map {|a| [ a.nombre, a.id ] })
 	end
 
 	def currency (var)

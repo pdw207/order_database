@@ -10,26 +10,29 @@
 
 
 <!-- Basic Information: Person in Charge, Details, Deadline, Payment: Consignment or Regular Sale -->
+<% if @order.encargado.length > 1 %>
 <p>
   <strong>Persona Encargado:</strong>
-  <%= @order.encargado %>
+  <%= @order.encargado  %>
 </p>
-
+<% end %>
+<% if @order.detall_de_pedido.length > 1 %>
 <p>
   <strong>Detalles:</strong>
   <%= @order.detall_de_pedido %>
 </p>
-
+<% end %>
 <p>
   <strong>Pago:</strong>
   <%= @order.pago ? "Consignación" : "Efectivo"%>
 </p>
 
-
+<% if @order.estado_de_pedido == "Abierto" %>
 <p>
   <strong>Fecha a Cumplir:</strong>
   <%= date @order.fecha_de_finalizacion  %> - <%= deadline(@order)  %>
 </p>
+<% end %>
 <p>
   <div style="display:<%= @order.codigos_vendido == "" ? "none": "block"%>;">
 <br>  

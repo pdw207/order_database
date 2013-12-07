@@ -27,7 +27,7 @@
         #left_col
           .field
             = f.label :customer_id, "Cliente"
-            = select(:order, :customer_id, Customer.all.map {|a| [ a.compania, a.id ] })
+            = select(:order, :customer_id, Customer.order(:compania).all.map {|a| [ a.compania, a.id ] })
             %br= link_to 'Crear Nuevo', new_customer_path, :target => "_blank"
           %br
           .field
@@ -62,8 +62,8 @@
       .field.left
         = f.label :cuenta_del_grupo
         %br/
-        = number_to_percentage f.text_field :cuenta_del_grupo, scale: 2, default: 20, :class => 'input-small'
-      %table
+        = number_to_percentage f.text_field :cuenta_del_grupo, scale: 2, default: 20, :class => 'input-small', style: "text-align:center;"
+      %table#full
         %thead
           %tr
             %th Descripción
@@ -73,7 +73,7 @@
             %tr
               %td= this.text_field :nombre
               %td
-                #{this.text_field :valor, :class => 'input-small'}
+                #{this.text_field :valor}
 
     #codigos_tab.tab-pane
       = f.label :codigos_vendido,"Códigos"

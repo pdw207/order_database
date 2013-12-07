@@ -5,7 +5,7 @@ class DesignsController < ApplicationController
   # GET /designs.json
   def index
     @designs = Design.all
-    @designs_grid = initialize_grid(Design, :include => [:product_type])
+    @designs_grid = initialize_grid(Design, :include => [:product_type], :order => 'nombre')
   end
 
   # GET /designs/1
@@ -15,7 +15,7 @@ class DesignsController < ApplicationController
 
   # GET /designs/new
   def new
-    @design = Design.new
+    @design = Design.new(Tiempo_en_minutos:0)
   end
 
   # GET /designs/1/edit
