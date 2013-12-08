@@ -68,7 +68,7 @@ class OrdersController < ApplicationController
         end
 
         #return to user the codes that are connected to more than one orders
-        if Product.where(codigo: code).orders.count 
+        if Product.where(codigo: code).orders.count > 1 
           logger.debug "#{Product.where(codigo: code).orders.count} and #{code} of duplicate codes #{@duplicate_codes} "
           @duplicate_codes << code
         end
