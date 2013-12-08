@@ -1,6 +1,6 @@
 <h1>Editar Producto</h1>
 <div class="center">
-
+	<p id="notice"><%= params[:notice] %></p>
 <%= form_for @product do |f| %>
  	Artista: <%= select_artist_edit %><br>
 	Diseño: <%= select_design_edit%><br>

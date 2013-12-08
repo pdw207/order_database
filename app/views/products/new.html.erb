@@ -1,8 +1,9 @@
 <h1>Añadir un Producto</h1>
 
-<p id="notice"><%= params[:notice] %></p>
+
 
 <div class="center">
+	<p id="notice"><%= params[:notice] %></p>
 <%= form_for @product do |f| %>
  	Artista	 <%= select_artist_new %><br>
 	Diseño <%= select_design_new%><br>
@@ -15,5 +16,5 @@
 </div>
 
 <footer>
-	<%= link_to 'Regresar', products_path %>
+	<%= link_to 'Ver Todo', products_path %>
 </footer>

@@ -1,5 +1,6 @@
-<p id="notice"><%= notice %></p>
-
+<div class="center">
+  <p id="notice"><%= notice %></p>
+</div>
 
 <!-- State and Order Number -->
 <h1> <%= @order.estado_de_pedido %> # <%= @order.id %></h1>
@@ -24,7 +25,7 @@
 <% end %>
 <p>
   <strong>Pago:</strong>
-  <%= @order.pago ? "Consignación" : "Efectivo"%>
+  <%= @order.pago ? "Consignación" : "Efectivo" %>
 </p>
 
 <% if @order.estado_de_pedido == "Abierto" %>
@@ -39,7 +40,12 @@
 
 <div class="hidden-phone">
 <!-- Reconciliation of Sales by Product. In Line editing to be completed -->
-<h3><%= link_to "Codigos y Ventas", reconciliation_path, :target => "_blank" %></h3>
+
+<% unless @order.pago %>
+  <h3><%= link_to "Codigos y Ventas", reconciliation_path, :target => "_blank" %></h3>
+  <% else %>
+  <h3>Inventario</h3>
+<% end %>
 
 <!-- Displays to user codes that were removed and deleted from the form -->
   <% if @deleted_codes.any? %>
@@ -53,7 +59,7 @@
   <% end %>
 
   <% if @order.products.sum(:precio) !=  @order.venta%>
-      <p><%= "Error: Venta en total #{@order.venta} no es igual de los productos #{currency @order.products.sum(:precio)}"%> - <%= link_to "Corregir", edit_order_path(@order) %></p>
+      <p><%= "Error: Venta en total #{currency @order.venta} no es igual de los productos #{currency @order.products.sum(:precio)}"%> - <%= link_to "Corregir", edit_order_path(@order) %></p>
   <% end %>
   
     <% unless @codes_not_found.empty? %>
@@ -70,19 +76,25 @@
         <td>Código</td>
         <td>Artista</td>
         <td>Estilo</td>
+        <% if @order.pago %>
+        <td>Precio</td>
+        <% end %>
+        <% unless @order.pago %>
         <td>Venta</td>
         <td>Grupo</td>
         <td>Funda</td>
         <td>Directos</td>
         <td>Pago</td>
-
+        <% end %>
       <tr id="calculation" class="wice-grid-title-row" >
         <td></td><td><td></td></td>
         <td>A</td>
+         <% unless @order.pago %>
         <td>B</td>
         <td>C</td>
         <td>D</td>
         <td>E=A-B-C-D</td>
+        <% end %>
       </tr>
   </thead>
 
@@ -94,21 +106,25 @@
                 <td><%= link_to i.artist.nombre, order_product_edit_path(@order.id, i.id)  %></td>
                 <td><%= link_to i.design.nombre, order_product_edit_path(@order.id, i.id)  %></td>
                 <td><%= link_to currency(i.precio), order_product_edit_path(@order.id, i.id)  %></td>
-                <td><%= link_to currency(i.groupo), order_product_edit_path(@order.id, i.id)  %></td>
-                <td><%= link_to currency(i.funda), order_product_edit_path(@order.id, i.id)  %></td>
-                <td><%= link_to currency(i.costos), order_product_edit_path(@order.id, i.id)  %></td>
-                <td><%= link_to currency(i.pago), order_product_edit_path(@order.id, i.id)  %></td>
-
+                
+                    <% unless @order.pago %>
+                        <td><%= link_to currency(i.groupo), order_product_edit_path(@order.id, i.id)  %></td>
+                        <td><%= link_to currency(i.funda), order_product_edit_path(@order.id, i.id)  %></td>
+                        <td><%= link_to currency(i.costos), order_product_edit_path(@order.id, i.id)  %></td>
+                        <td><%= link_to currency(i.pago), order_product_edit_path(@order.id, i.id)  %></td>
+                    <% end %>
                 <% end %>
             </tr>
 
               <tr style="color: red;">
                 <td>TOTAL</td><td></td><td></td>
                 <td><%= currency @order.products.sum(:precio) %></td>
+                   <% unless @order.pago %>
                 <td><%= currency @order.products.sum(:groupo) %></td>
                 <td><%= currency @order.products.sum(:funda) %></td>
                 <td><%= currency @order.expenses.sum(:valor) %></td>
                 <td><%= currency @order.products.sum(:pago)%></td>
+                <% end %>
               </tr>
       </tbody>
       

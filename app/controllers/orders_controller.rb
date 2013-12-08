@@ -23,11 +23,24 @@ class OrdersController < ApplicationController
     #go through the attached products and delete whatever was removed from form
     #save deleted codes in @deleted_codes to tell user what codes were removed
     @order.products.each do |attached_product|
-       logger.debug  "my attached product number is #{attached_product.codigo.to_s}"
+    #logger.debug  "my attached product number is #{attached_product.codigo.to_s}"
       
       if @codes.include?(attached_product.codigo.to_s) == false
         @deleted_codes << attached_product
         @order.products.delete(attached_product)
+
+        #For removed codes reverd to last location (if not inventory)        
+        logger.debug  "i am a code that is not included"
+        p = Product.where(codigo: attached_product.codigo.to_s).first
+        if p.pago
+          logger.debug "hey look at me, I am a consignment product being dropped #{p.location_id}"
+          p.location_id = @order.location_id
+        else  
+          logger.debug "hey look at me, I am a cash sale product being dropped#{p.location_id}"
+          p.location_id = 1
+        end
+        p.last_location = p.location_id
+        p.save     
 
       end
  
@@ -35,17 +48,28 @@ class OrdersController < ApplicationController
 
     # Go through each code and attach the product and set defaults if needed
     @codes.each  do |code|
+      logger.debug "I am going through code #{code}"
+    logger.debug "#{!!!! Product.where(codigo: code).orders.count} and #{code} of duplicate codes #{@duplicate_codes} "
+
+        #Go through codes and add those that are attached and remove any that were removed
         # logger.debug "#{code} results in #{Product.where(codigo: code).count}"
         unless  Product.where(codigo: code).count == 0  #if not nil that execute    
           @order.products << Product.where(codigo: code) unless @order.products_with_code(code)
-           # logger.debug "You go into the unless block: #{ Product.where(codigo: code)}"
-            logger.debug " in #{Product.where(codigo: code).inspect}"
+          
+          #change the location of product to sold
+          p = Product.where(codigo: code).first
+         
+  
+
         else
            logger.debug " out #{Product.where(codigo: code).inspect}"
            @codes_not_found << code
+
         end
-          logger.debug " out #{Product.where(codigo: code).count}"
-        if Product.where(codigo: code).count > 1
+
+        #return to user the codes that are connected to more than one orders
+        if Product.where(codigo: code).orders.count 
+          logger.debug "#{Product.where(codigo: code).orders.count} and #{code} of duplicate codes #{@duplicate_codes} "
           @duplicate_codes << code
         end
     end
@@ -65,8 +89,6 @@ class OrdersController < ApplicationController
           else
             attached_product.groupo = 0
           end
-
-          #calculate unidades
 
 
           #calculate default packaging costs ($1 for necklaces, $0 for smaller purchases)
@@ -165,8 +187,6 @@ class OrdersController < ApplicationController
     # logger.debug "Here are my attributes1: #{@order.attributes.inspect} #{@order.save}"
    
       if @order.update(order_params)
-        # logger.debug "Here are my attributes2: #{@order.attributes.inspect} #{@order.save}"
-
         ThankYouMailer.thank_you(@order).deliver if @order.fecha_envio.nil? && @order.numero_de_rastreo.present?
         format.html { redirect_to @order, notice: 'El cambio ha sido guardado con éxito.' }
         format.json { head :no_content }
@@ -199,10 +219,11 @@ class OrdersController < ApplicationController
         :detall_de_pedido, :venta, :pago, :estado_de_pedido, :encargado, :fecha_de_finalizacion, 
         :enviar, :fecha_envio, :numero_de_rastreo, :idioma, :email_al_cliente, :pesa_en_gramas, 
         :costos_de_enviar, :unidades, :factura_serie, :factura_numero, :fecha_de_factura, :valor_aduana,
-        :codigos_vendido,
+        :codigos_vendido, :location_id,
         expenses_attributes: [:id, :order_id, :nombre, :valor,:_destroy],
         products_attributes: [:id, :design_id,:codigo,
-          :estado,:lugar,:precio,:costos,:funda,:groupo,:pago])
+          :estado,:lugar,:precio,:costos,:funda,:groupo,:pago, :last_location],
+        locations_attributes: [:location])
     end
 end
 

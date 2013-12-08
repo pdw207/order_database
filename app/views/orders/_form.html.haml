@@ -27,7 +27,7 @@
         #left_col
           .field
             = f.label :customer_id, "Cliente"
-            = select(:order, :customer_id, Customer.order(:compania).all.map {|a| [ a.compania, a.id ] })
+            = select(:order, :customer_id, Customer.order(:compania).map {|a| [ a.compania, a.id ] })
             %br= link_to 'Crear Nuevo', new_customer_path, :target => "_blank"
           %br
           .field
@@ -48,7 +48,12 @@
             = f.label :pago, "Consignación"
             = f.check_box :pago
           %br
-
+          
+          .field
+            = f.label :location_id, "Consignación en"
+            = select(:order, :location_id, Location.order(:location).map {|a| [ a.location, a.id ] })
+            %br= link_to 'Crear Nuevo', new_location_path, :target => "_blank"
+          %br
     #asignar_tab.tab-pane
       .field
         = f.label :encargado, "Persona Encargado"

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131206201101) do
+ActiveRecord::Schema.define(version: 20131207171350) do
 
   create_table "artists", force: true do |t|
     t.string   "nombre"
@@ -153,6 +153,7 @@ ActiveRecord::Schema.define(version: 20131206201101) do
     t.string   "codigos_vendido"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "location_id"
   end
 
   create_table "orders_products", force: true do |t|
@@ -182,6 +183,7 @@ ActiveRecord::Schema.define(version: 20131206201101) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "location_id"
+    t.string   "last_location"
   end
 
   create_table "registers", force: true do |t|

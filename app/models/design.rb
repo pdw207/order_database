@@ -3,6 +3,11 @@ class Design < ActiveRecord::Base
 	has_many :products, inverse_of: :designs
 	belongs_to :product_type, inverse_of: :designs
 
+	 # def destroy
+  #   	return false if products.any? 
+  #   	super
+  # 	end
+
 	accepts_nested_attributes_for :products
 	validates_presence_of :product_type_id    
 end

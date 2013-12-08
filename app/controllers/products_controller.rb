@@ -28,7 +28,7 @@ class ProductsController < ApplicationController
 
   def product_edit
     @product.order_id = params[:order_id]
-    logger.debug "and hwsda #{ @product.order_id}"
+    logger.debug "and the order Id number is!!! #{ @product.order_id}"
   end
 
   # POST /products
@@ -49,7 +49,7 @@ class ProductsController < ApplicationController
     respond_to do |format|
     #logger.debug "and hwsda2 #{ @product.orders.first.id}"
      if params[:button] == "Actualizar" && @product.update(product_params)
-        format.html { redirect_to action: 'show', controller: 'orders', id: @product.orders.first.id,  notice: 'PSu artículo se ha creado con éxito.' }
+        format.html { redirect_to action: 'show', controller: 'orders', id: @product.orders.order(:updated_at).first.id,  notice: 'PSu artículo se ha creado con éxito.' }
         format.json { head :no_content }
      end
       if @product.update(product_params)
@@ -82,7 +82,7 @@ class ProductsController < ApplicationController
     end
       # Never trust parameters from the scary internet, only allow the white list through.
     def product_params
-      params.require(:product).permit(:artist_id, :design_id, :codigo, :lugar, :estado, :funda, :precio, :button, :order_id, :location_id)
+      params.require(:product).permit(:artist_id, :design_id, :codigo, :lugar, :estado, :funda, :precio, :button, :order_id, :location_id, :last_location)
     end
 
 end

@@ -3,11 +3,15 @@ class Order < ActiveRecord::Base
 	        :detall_de_pedido, :venta, :pago, :estado_de_pedido, :encargado, :fecha_de_finalizacion, 
 	        :enviar, :fecha_envio, :numero_de_rastreo, :idioma, :email_al_cliente, :pesa_en_gramas, 
 	        :costos_de_enviar, :unidades, :factura_serie, :factura_numero, :fecha_de_factura, :valor_aduana,
-	        :codigos_vendido,
+	        :codigos_vendido,:location_id,
 	        :expenses_attributes,
-        	:products_attributes
-        	
+        	:products_attributes,
+        	:locations_attributes
+    before_update :set_location
+    before_create :set_location
+
 	belongs_to :customer, inverse_of: :orders
+	belongs_to :location, inverse_of: :orders
 	has_many :expenses
 	has_and_belongs_to_many :products
 
@@ -15,6 +19,7 @@ class Order < ActiveRecord::Base
 	accepts_nested_attributes_for :products
 	validates_presence_of :customer_id
 
+ 	
  	after_initialize :default_values
 
 
@@ -48,5 +53,34 @@ class Order < ActiveRecord::Base
       self.cuenta_del_grupo  ||= 20
       self.factura_serie  ||= "001-001-"
     end
-    
+
+    def set_location
+
+  	logger.debug "I am closed order #{location_id}"
+	    	if estado_de_pedido == "Cerrado"
+	        	#Cycle through products connected to order for closed orders
+	        	products.map do |product|
+	        		logger.debug "My location ID on product.codigo is : #{product.location_id}" 	
+	       	 		
+	       	 		#If consignment order set location to location indicated in order or if cash order set as sold
+	       	 		if pago
+	       	 			product.location_id = location_id
+		       	 	else
+		       	 		product.location_id = 2	
+		       	 	end
+		       	 	product.save
+	       	 	end
+	       	else
+	       		products.map do |product|
+	        		if pago
+	       	 			product.location_id = 1
+		       	 	else
+		       	 		product.location_id = 1	
+
+		       	 	end
+		       	 	product.save
+	       	 	end
+	       	end
+   	end
 end
+
