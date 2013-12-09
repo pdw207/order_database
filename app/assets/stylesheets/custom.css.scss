@@ -205,6 +205,14 @@ table tbody tr:hover {
 }
 /*Form Customization*/  
 
+
+/*Pagination*/
+.pagination ul > li > a{width: 10px;
+
+}
+.pagination ul>li{
+float:left;
+}
 #medium_text_field input {
   width: 20px;
 }

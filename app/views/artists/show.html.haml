@@ -32,9 +32,11 @@
   %p
     %b # de Cuenta:
     = @artist.cuenta_de_banco
+  %br
+  %h4= link_to "Pagos", payments_path
   %p
-    %b Pagos
-    = currency (@artist.products.sum(:pago))
+    %b= "Pago Total"
+    = currency @artist.products.sum(:pago)
   %br
 
   %footer

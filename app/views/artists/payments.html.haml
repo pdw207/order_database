@@ -1,0 +1,36 @@
+
+%h1= "Ventas de #{@artist.nombre}"
+%table.table-striped.table-bordered.table.wice-grid
+  %thead
+    %tr.wice-grid-title-row
+      %td Codigo
+      %td Diseño
+      %td Fecha
+      %td Estado
+      %td Venta
+      %td Grupo
+      %td Funda
+      %td Directos
+      %td Pago
+  %tbody
+    - @products.each do  |product|
+      %tr
+        %td= product.codigo
+        %td= product.design.nombre
+        %td= date product.updated_at
+        %td= product.location.location
+        %td= product.precio
+        %td= product.groupo
+        %td= product.funda
+        %td= product.costos
+        %td= product.pago
+    %tr{style:"color: red;"}
+      %td Total
+      %td 
+      %td 
+      %td
+      %td= @products.sum(:precio)
+      %td= @products.sum(:groupo)
+      %td= @products.sum(:funda)
+      %td= @products.sum(:costos)
+      %td= @products.sum(:pago)

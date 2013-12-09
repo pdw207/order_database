@@ -1,5 +1,5 @@
 class ArtistsController < ApplicationController
-  before_action :set_artist, only: [:show, :edit, :update, :destroy, :payment]
+  before_action :set_artist, only: [:show, :edit, :update, :destroy, :payments]
 
   # GET /artists
   # GET /artists.json
@@ -12,7 +12,9 @@ class ArtistsController < ApplicationController
   def show
   end
 
-  def payment
+  def payments
+    @products=Product.where(artist_id: params[:id] )
+    @sales = Order.all.where(estado_de_pedido: "Cerrado", pago: false)
   end
 
   # GET /artists/new

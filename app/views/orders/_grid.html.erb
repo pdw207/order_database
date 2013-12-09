@@ -12,12 +12,11 @@
 
     	g.column name:  'Estado',  attribute: 'estado', attribute: 'estado_de_pedido' do |order|link_to  order.estado_de_pedido, order end
 
-    	g.column name:  'Encargado', attribute: 'encargado', 
-    	detach_with_id: :encargado_filter do |order|link_to  order.encargado, order end
+    	g.column name:  'Detalles', attribute: 'detall_de_pedido' do |order|link_to  order.detall_de_pedido, order end
 
     	g.column name:  'Cumplir Fecha' do |order|link_to  date(order.fecha_de_finalizacion), order end
 
-    	g.column name:  'Tipo' do |order|link_to  order.enviar ? "Envío": "Evento", order end   		
+    	g.column name:  'Productos Adjuntos'  do |order|link_to  order.products.count , order end   		
 
 	end -%>
 

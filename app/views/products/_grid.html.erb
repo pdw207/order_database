@@ -1,13 +1,14 @@
 
 	<%= grid(@products_grid, class: "hidden-phone ") do |g|
 
+      g.column name:  '#', attribute: 'id' do |product|link_to  product.id, edit_product_path(product) end
 
     	g.column name:  'Código', attribute: 'codigo' do |product|link_to  product.codigo, edit_product_path(product) end
 
 
     	g.column name:  'Artista', attribute: 'nombre', model: 'Artist', class: "hidden-phone " do |product|link_to  product.artist.nombre, edit_product_path(product) end
 
-    	g.column name:  'Diseño', class: "hidden-phone " do |product|link_to  product.design.nombre, edit_product_path(product) end
+    	g.column name:  'Diseño', class: "hidden-phone ", attribute: 'nombre', model: 'Design' do |product|link_to  product.design.nombre, edit_product_path(product) end
 
         g.column name:  'Estado', attribute: 'location', model: 'Location',class: "hidden-phone " do |product|link_to  product.location.location   , edit_product_path(product) end
 

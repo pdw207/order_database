@@ -3,7 +3,7 @@ class OrdersController < ApplicationController
 
   def index
     @orders = Order.all
-    @orders_grid = initialize_grid(Order,:include => [:customer])
+    @orders_grid = initialize_grid(Order,:include => [:customer], order: 'id')
     @sales = Order.all.where(estado_de_pedido: "Cerrado", pago: false)
     # @artist_group = @order.products.group_by { |t| t.artist_id }
 
