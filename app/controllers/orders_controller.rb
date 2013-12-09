@@ -171,6 +171,11 @@ class OrdersController < ApplicationController
     # logger.debug "Here are my attributes: #{@order.attributes.inspect} #{@order.save}"    
     respond_to do |format|
       if @order.save
+        if @order.idioma == "Español - Ecuador"
+          ThankYouMailer.gracias(@order).deliver if @order.fecha_envio.nil? && @order.numero_de_rastreo.present? && @order.customer.email_de_contacto.present?
+        else
+          ThankYouMailer.thank_you(@order).deliver if @order.fecha_envio.nil? && @order.numero_de_rastreo.present? && @order.customer.email_de_contacto.present?         
+        end
         format.html { redirect_to @order, notice: 'Orden sido creado con éxito.' }
         format.json { render action: 'show', status: :created, location: @order }
       else
@@ -184,10 +189,14 @@ class OrdersController < ApplicationController
   # PATCH/PUT /orders/1.json
   def update
     respond_to do |format|
-    # logger.debug "Here are my attributes1: #{@order.attributes.inspect} #{@order.save}"
+    logger.debug "Here are my attributes1: @order.customer.email_de_contacto.present? #{@order.customer.email_de_contacto.present?} @order.numero_de_rastreo.present? #{@order.numero_de_rastreo.present?} @order.fecha_envio.nil? #{@order.fecha_envio.nil?}"
    
       if @order.update(order_params)
-        ThankYouMailer.thank_you(@order).deliver if @order.fecha_envio.nil? && @order.numero_de_rastreo.present?
+        if @order.idioma == "Español - Ecuador"
+          ThankYouMailer.gracias(@order).deliver if @order.fecha_envio.nil? && @order.numero_de_rastreo.present? && @order.customer.email_de_contacto.present?
+        else
+          ThankYouMailer.thank_you(@order).deliver if @order.fecha_envio.nil? && @order.numero_de_rastreo.present? && @order.customer.email_de_contacto.present?         
+        end
         format.html { redirect_to @order, notice: 'El cambio ha sido guardado con éxito.' }
         format.json { head :no_content }
       else

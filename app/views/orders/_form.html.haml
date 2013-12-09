@@ -99,7 +99,7 @@
           .field
             = f.label :idioma
             %br/
-            = f.select :idioma, options_for_select([ "Inglés","Español" ], @order.idioma)
+            = f.select :idioma, options_for_select([ "Inglés - Exterior","Español - Ecuador" ], @order.idioma)
 
           .field
             = f.label :fecha_de_factura
@@ -121,4 +121,4 @@
         = f.text_field :factura_serie
         = f.number_field :factura_numero
   %footer.actions
-    = submit_tag "Submit", class: "btn btn-default"
+    = submit_tag "Enviar", class: "btn btn-default"

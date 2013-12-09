@@ -10,3 +10,14 @@ load(app_env_vars) if File.exists?(app_env_vars)
 
 # Initialize the Rails application.
 MujeresCambiaMail::Application.initialize!
+
+# ActionMailer::Base.delivery_method = :smtp
+  
+# ActionMailer::Base.smtp_settings  = {
+#     address:              'smtp.gmail.com',
+#     port:                 587,
+#     domain:               'mujerescambia.com',
+#     user_name:            ENV["EMAIL"],
+#     password:             ENV["PASSWORD"],
+#     authentication:       'plain',
+#     enable_starttls_auto: true  }

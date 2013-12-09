@@ -69,9 +69,9 @@ MujeresCambiaMail::Application.configure do
   config.action_mailer.smtp_settings = {
     address:              'smtp.gmail.com',
     port:                 587,
-    domain:               'mujerescambia.com',
-    user_name:            ENV["EMAIL"],
-    password:             ENV["PASSWORD"],
+    domain:               'heroku.com',
+    user_name:            'orders@mujerescambia.com',
+    password:             'Sanpablo18',
     authentication:       'plain',
     enable_starttls_auto: true  }
   # Enable locale fallbacks for I18n (makes lookups for any locale fall back to
