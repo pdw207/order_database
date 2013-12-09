@@ -19,18 +19,18 @@
         %td= product.design.nombre
         %td= date product.updated_at
         %td= product.location.location
-        %td= product.precio
-        %td= product.groupo
-        %td= product.funda
-        %td= product.costos
-        %td= product.pago
+        %td= currency product.precio
+        %td= currency product.groupo
+        %td= currency product.funda
+        %td= currency product.costos
+        %td= currency product.pago
     %tr{style:"color: red;"}
       %td Total
       %td 
       %td 
       %td
-      %td= @products.sum(:precio)
-      %td= @products.sum(:groupo)
-      %td= @products.sum(:funda)
-      %td= @products.sum(:costos)
-      %td= @products.sum(:pago)
+      %td= currency @products.sum(:precio)
+      %td= currency @products.sum(:groupo)
+      %td= currency @products.sum(:funda)
+      %td= currency @products.sum(:costos)
+      %td= currency @products.sum(:pago)
