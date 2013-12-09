@@ -4,6 +4,9 @@ es:
     boolean_filter_true_label: "Consignación"
     reset_filter_tooltip: "Reiniciar"
     filter_tooltip: "Enviar"
+    previous_label: «
+    next_label: » 
+    show_all_records_label: Ver Todo
   date:
     abbr_day_names:
     - dom
