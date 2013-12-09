@@ -6,6 +6,8 @@ class RegistersController < ApplicationController
   # GET /registers.json
   def index
     @registers = Register.all
+
+    
   end
 
   # GET /registers/1

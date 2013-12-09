@@ -13,7 +13,7 @@ gem 'haml'
 gem 'haml-rails'
 
 gem 'bootstrap-sass'
-
+gem  'easy-gtalk-bot'
 
 gem 'bcrypt-ruby', :require => "bcrypt"
 gem 'protected_attributes'

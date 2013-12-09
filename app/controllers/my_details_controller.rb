@@ -12,6 +12,9 @@ class MyDetailsController < ApplicationController
   def show
   end
 
+  def instructions
+  end
+  
   # GET /my_details/new
   def new
     @my_detail = MyDetail.new

@@ -3,11 +3,12 @@ MujeresCambiaMail::Application.routes.draw do
   resources :registers
   resources :product_types
   resources :products
+   get '/my_details/instructions', to: 'my_details#instructions', as: 'instructions'
   resources :my_details
   resources :designs
   resources :customers
   resources :orders
-  
+
    get '/artists/:id/payments', to: 'artists#payments', as: 'payments'
   resources :artists
 
