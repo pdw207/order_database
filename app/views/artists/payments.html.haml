@@ -18,11 +18,11 @@
       %td Empieza
       %td 
       %td 
-      %td= @artist.beg_venta unless @artist.beg_venta.nil?
-      %td= @artist.beg_grupo unless @artist.beg_venta.nil?
+      %td= currency @artist.beg_venta unless @artist.beg_venta.nil?
+      %td= currency @artist.beg_grupo unless @artist.beg_venta.nil?
       %td 
       %td 
-      %td= @artist.beg_pago unless @artist.beg_venta.nil?
+      %td= currency @artist.beg_pago unless @artist.beg_venta.nil?
     - @products.where(location_id: 2).each do  |product|
       %tr
         %td= product.codigo

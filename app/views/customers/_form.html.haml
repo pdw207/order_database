@@ -87,6 +87,10 @@
         = f.text_field :factura_direccion
     #precio_tab.tab-pane
       .field
+        = f.label :yellow, "Collar Amarillo"
+        %br/
+        = f.text_field :yellow
+      .field
         = f.label :green, "Collar Verde"
         %br/
         = f.text_field :green
@@ -94,10 +98,6 @@
         = f.label :blue, "Collar Azul"
         %br/
         = f.text_field :blue
-        .field
-        = f.label :yellow, "Collar Amarillo"
-        %br/
-        = f.text_field :yellow
       .field
         = f.label :bracelet, "Pulsera"
         %br/
@@ -107,6 +107,10 @@
         %br/
         = f.text_field :earring
       .field
+        = f.label :keychain, "Llaveros"
+        %br/
+        = f.text_field :keychain
+        .field
         = f.label :coin_purse, "Monedero"
         %br/
         = f.text_field :coin_purse
