@@ -1,29 +1,24 @@
-
 <div class="a4">
+<table class="addresses from">
+	<tr><td><%= MyDetail.first.compania_nombre %></td></tr>
+	<tr><td><%= MyDetail.first.direccion_1  %></td></tr>
+	<tr><td><%= MyDetail.first.direccion_2  %></td></tr>
+	<tr><td><%= MyDetail.first.direccion_3  %></td></tr>
+	<tr><td><%= MyDetail.first.cuidad %>, <%= MyDetail.first.provencia %>  <%= MyDetail.first.codigo_postal %></td></tr>
+	<tr><td>Tel: <%= MyDetail.first.business_phone %></td></tr>
+</table>
 
-
-<div class="from"><br>
-
-<p><%= MyDetail.first.compania_nombre %></p>
-<p><%= MyDetail.first.direccion_1  %><p>
-<p><%= MyDetail.first.direccion_2  %></p>
-<p><%= MyDetail.first.direccion_3  %></p>
-<p><%= MyDetail.first.cuidad %>, <%= MyDetail.first.provencia %>  <%= MyDetail.first.codigo_postal %></p>
-<p>Tel: <%= MyDetail.first.business_phone %></p>
-
+<table class="addresses to ">
+<tr><td><%= @order.customer.nombre_de_contacto   %></td><tr>
+<tr><td><%= @order.customer.compania  %></td><tr>
+<tr><td>Order # <%= @order.id %></td><tr>
+<tr><td><%=  @order.customer.direccion_1  %></td><tr>
+<tr><td><%= @order.customer.direccion_2   %></td><tr>
+<tr><td><%=  @order.customer.direccion_3  %></td><tr>
+<tr><td><%=  @order.customer.ciudad%> , <%=@order.customer.estado  %> <%=  @order.customer.codigo_postal%> </td><tr>
+<tr><td>Tel: <%=  @order.customer.telefono_1  %></td><tr>
+</table>
 </div>
-
-<div class="to">
-<p><%= @order.customer.nombre_de_contacto   %></p>
-<p><%= @order.customer.compania  %></p>
-<p>Order # <%= @order.id %></p>
-<p><%=  @order.customer.direccion_1  %></p>
-<p><%= @order.customer.direccion_2   %></p>
-<p><%=  @order.customer.direccion_3  %></p>
-<p><%=  @order.customer.ciudad%> , <%=@order.customer.estado  %> <%=  @order.customer.codigo_postal%> </p>
-<p>Tel: <%=  @order.customer.telefono_1  %></p>
-</div>
-
 
 
 

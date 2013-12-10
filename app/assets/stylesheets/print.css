@@ -1,30 +1,52 @@
 @media print{
-  nav {page-break-before:always}
-
-  nav#user_nav{display: none !important;}
+/*Main */
+nav {page-break-before:always}
+nav#user_nav{display: none !important;}
 .hidden-print{display: none !important;}
 .pagination, .wg-show-all-link, .pagination_status, .wg-filter-row, .filter, .external-buttons{display: none !important;}
 td{text-align: center; padding-left: 10px;}
 td a, h3 a {text-decoration:none;}
 thead {text-decoration: underline;}
 
-.a4	{position: relative;}
+/*Printing Label*/
+/* Printing */
+
+h2,p,#notice,h1{
+clear: both;
+}
+
+.a4{
+  position: relative;
+}
+
+
+
 .from{
     position: absolute;
-    left: -90px;
-    line-height: .5em;
+    left: -200px;
+    font-size: 1.2em;
+  
 }
 
 .to{ 
   position: absolute;
   top: 300px;
-  left: 220px;
-  line-height: .5em;}
+  left: 150px;
+  font-size: 1.2em;
+  
+  
+}
 
-  img.full_page{width: 80%; padding-left: 10%; padding-bottom: 30px;}
-  h1.full_page{width: 50%; margin: 0 auto; padding-bottom: 30px;}
-	h1.lead_line{width: 80%; margin: 0 auto;}
-  table.addresses{padding: 30px;width: 70%; margin: 0 auto;}
-  table.center_table {width: 80%; margin: 0 auto;}
+
+
+
+
+/*Packing Slip*/
+img.full_page{width: 80%; padding-left: 10%; padding-bottom: 30px;}
+h1.full_page{width: 50%; margin: 0 auto; padding-bottom: 30px;}
+h1.lead_line{width: 80%; margin: 0 auto;}
+table.addresses{padding: 30px;width: 70%; margin: 0 auto;}
+table.center_table {width: 80%; margin: 0 auto;}
 .addresses tr { line-height: 12px; }
+
 }

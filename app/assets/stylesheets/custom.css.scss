@@ -70,6 +70,7 @@ a {
 }
 
 
+/*Printing Label*/
 /* Printing */
 
 h2,p,#notice,h1{
@@ -119,7 +120,7 @@ left: 66px;
 
 }
 
-  
+
 /* General Helpers*/  
 .spacer{
   margin-bottom:40px
@@ -200,6 +201,9 @@ table tbody tr:hover {
 }
 /*Form Customization*/  
 
+/*Packing Slip*/
+  .addresses td { line-height: 24px; font-size: 20px; padding: 0; }
+table.addresses{padding: 30px;width: 70%; margin: 0 auto;}
 
 /*Pagination*/
 .pagination ul > li > a{width: 10px;

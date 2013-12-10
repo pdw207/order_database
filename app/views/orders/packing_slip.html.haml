@@ -2,21 +2,29 @@
 %img.full_page{src: "https://dl.dropbox.com/s/bkaid3dowfdwqma/MujeresCambiaGroupShot.jpg"}
 %h1.lead_line= "Order number #{@order.id} prepared on #{ @order.updated_at.strftime("%m/%d/%y")}" 
 %table.addresses
-	%tr
-		%td= MyDetail.first.compania_nombre
-		%td= @order.customer.compania 
-	%tr
-		%td= "#{MyDetail.first.direccion_1}"
-		%td="#{@order.customer.direccion_1} #{@order.customer.direccion_2 }" 
-	%tr
-		%td=MyDetail.first.direccion_2
-		%td="#{@order.customer.ciudad}, #{@order.customer.estado}  #{@order.customer.codigo_postal}"
-	%tr
-		%td="#{MyDetail.first.cuidad}, #{MyDetail.first.provencia} #{MyDetail.first.codigo_postal}"
-		%td="#{@order.customer.telefono_1}" 
-	%tr
-		%td="#{MyDetail.first.business_phone}"
-		%td 
+	%thead
+		%tr
+			%td 
+				%strong Return Address:
+			%td 
+				%strong Shipping Address: 
+	%tbody
+		%tr
+			%td= MyDetail.first.compania_nombre
+			%td= @order.customer.compania 
+		%tr
+			%td= "#{MyDetail.first.direccion_1}"
+			%td="#{@order.customer.direccion_1} #{@order.customer.direccion_2 }" 
+		%tr
+			%td=MyDetail.first.direccion_2
+			%td="#{@order.customer.ciudad}, #{@order.customer.estado}  #{@order.customer.codigo_postal}"
+		%tr
+			%td="#{MyDetail.first.cuidad}, #{MyDetail.first.provencia} #{MyDetail.first.codigo_postal}"
+			%td="#{@order.customer.telefono_1}" 
+		%tr
+			%td="#{MyDetail.first.business_phone}"
+			%td 
+%br
 %table.table-striped.table-bordered.table.wice-grid.center_table
 	%thead
 		%tr.wice-grid-title-row
