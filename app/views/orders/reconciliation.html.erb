@@ -1,7 +1,7 @@
-<h4><%= date @order.created_at %> </h4>
-<h4><%= @order.customer.compania %></h4>
-<h4> Pedido: #<%= @order.id %></h4>
-<h4><%= currency @order.venta%> </h4>
+<h4>
+<p><%= date @order.created_at %> <%= @order.customer.compania %> Pedido: #<%= @order.id %></p>
+<p><%= currency @order.venta%> </p>
+</h4>
 <br>
 <h5>Reconciliación</h5>
 

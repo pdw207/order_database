@@ -1,23 +1,27 @@
 
 <div class="a4">
-<div class="from">
-<h6><%= MyDetail.first.direccion_1 %></h6>
-<h6><%= MyDetail.first.compania_nombre %></h6>
-<h6><%= MyDetail.first.direccion_3 %></h6>
-<h6><%= MyDetail.first.direccion_2 %></h6>
-<h6><%= MyDetail.first.cuidad %>, <%= MyDetail.first.provencia %>  <%= MyDetail.first.codigo_postal %></h6>
-<h6>Tel: <%= MyDetail.first.business_phone %></h6>
+
+
+<div class="from"><br>
+
+<p><%= MyDetail.first.compania_nombre %></p>
+<p><%= MyDetail.first.direccion_1  %><p>
+<p><%= MyDetail.first.direccion_2  %></p>
+<p><%= MyDetail.first.direccion_3  %></p>
+<p><%= MyDetail.first.cuidad %>, <%= MyDetail.first.provencia %>  <%= MyDetail.first.codigo_postal %></p>
+<p>Tel: <%= MyDetail.first.business_phone %></p>
+
 </div>
 
 <div class="to">
-<h6><%= @order.customer.nombre_de_contacto  %></h6>
-<h6>Order # <%= @order.id %></h6>
-<h6><%= @order.customer.compania   %></h6>
-<h6><%= @order.customer.direccion_1   %></h6>
-<h6><%= @order.customer.direccion_2   %></h6>
-<h6><%=  @order.customer.direccion_3  %></h6>
-<h6><%=  @order.customer.ciudad%> , <%=@order.customer.estado  %> <%=  @order.customer.codigo_postal%> </h6>
-<h6>Tel: <%=  @order.customer.telefono_1  %></h6>
+<p><%= @order.customer.nombre_de_contacto   %></p>
+<p><%= @order.customer.compania  %></p>
+<p>Order # <%= @order.id %></p>
+<p><%=  @order.customer.direccion_1  %></p>
+<p><%= @order.customer.direccion_2   %></p>
+<p><%=  @order.customer.direccion_3  %></p>
+<p><%=  @order.customer.ciudad%> , <%=@order.customer.estado  %> <%=  @order.customer.codigo_postal%> </p>
+<p>Tel: <%=  @order.customer.telefono_1  %></p>
 </div>
 
 

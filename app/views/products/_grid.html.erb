@@ -1,7 +1,7 @@
 
 	<%= grid(@products_grid, class: "hidden-phone ") do |g|
 
-      g.column name:  '#', attribute: 'id' do |product|link_to  product.id, edit_product_path(product) end
+      g.column name:  '#', attribute: 'id', class: "hidden-print" do |product|link_to  product.id, edit_product_path(product) end
 
     	g.column name:  'Código', attribute: 'codigo' do |product|link_to  product.codigo, edit_product_path(product) end
 
@@ -17,7 +17,7 @@
     	g.column name:  'Fecha',   class: "hidden-phone " do |product|link_to  product.created_at.strftime("%d/%m/%y"), edit_product_path(product) end
 	end -%>
 
-<div class="hide_in_desktop hidden-tablet">
+<div class="hide_in_desktop hidden-tablet hidden-print">
 <table class="table-striped table-bordered table wice-grid">
   <thead>
     <tr>

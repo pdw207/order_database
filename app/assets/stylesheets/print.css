@@ -1,0 +1,25 @@
+@media print{
+  nav {page-break-before:always}
+
+  nav#user_nav{display: none !important;}
+.hidden-print{display: none !important;}
+.pagination, .wg-show-all-link, .pagination_status, .wg-filter-row, .filter, .external-buttons{display: none !important;}
+td{text-align: center; padding-left: 10px;}
+td a, h3 a {text-decoration:none;}
+thead {text-decoration: underline;}
+
+.a4	{position: relative;}
+.from{
+    position: absolute;
+    left: -90px;
+    line-height: .5em;
+}
+
+.to{ 
+  position: absolute;
+  top: 300px;
+  left: 220px;
+  line-height: .5em;
+  
+
+}

@@ -14,7 +14,7 @@
 
     	g.column name:  'Estado',  attribute: 'estado', attribute: 'estado_de_pedido' do |order|link_to  order.estado_de_pedido, order end
 
-    	g.column name:  'Detalles', attribute: 'detall_de_pedido' do |order|link_to  order.detall_de_pedido, order end
+    	g.column name:  'Detalles', attribute: 'detall_de_pedido',  class:"hidden-print"  do |order|link_to  order.detall_de_pedido, order end
 
 		
 
@@ -26,8 +26,8 @@
 
 
 
-<div class="hide_in_desktop hidden-tablet">
-<table class="table-striped table-bordered table wice-grid">
+<div class="hide_in_desktop hidden-tablet hidden-print">
+<table class="table-striped table-bordered table wice-grid hidden-print">
  <thead>
     <tr>
      

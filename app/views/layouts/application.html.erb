@@ -2,8 +2,12 @@
 <html>
   <head>
     <title>Admin Area</title>
-    <%= stylesheet_link_tag  "application" %>
+
     <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
+    <%= stylesheet_link_tag "print", :media => "print"  %>
+    <%= stylesheet_link_tag "custom"  %>
+    <%= stylesheet_link_tag "wice_grid"  %>
+    <%= stylesheet_link_tag "scaffolds"  %>
     <%= csrf_meta_tags %>
     <!--[if lte IE 8]>
     <div class='ie' id='unsupported'>
@@ -26,7 +30,7 @@
         <%= yield %>
       </div>
      
-      <footer>
+      <footer class="hidden-print">
         <p>Conectado como:  <%= current_user.email %><br/>
         <%= link_to "Finalizar la Sesión", log_out_path %></p>
       </footer>

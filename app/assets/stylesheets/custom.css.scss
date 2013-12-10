@@ -23,7 +23,7 @@ html {overflow-y: scroll}
 
 body {
   color: #333;
-  @include transition_all;
+/*  @include transition_all;*/
   table a {color: black;}
   }
 
@@ -85,14 +85,14 @@ clear: both;
 .from{
     position: absolute;
     left: -90px;
-    line-height: .5em;
+    line-height: 2em;
 }
 
 .to{ 
   position: absolute;
   top: 300px;
   left: 220px;
-  line-height: .5em;
+  line-height: 2em;
   
 }
 
@@ -118,12 +118,7 @@ top: 215px;
 left: 66px;
 
 }
-@media print{
-  nav {page-break-after:always}
 
-  nav#user_nav{display: none !important;}
-
-}
   
 /* General Helpers*/  
 .spacer{
