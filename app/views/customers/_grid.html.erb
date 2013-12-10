@@ -2,6 +2,11 @@
 	<%= define_grid(@customers_grid, hide_submit_button: true, hide_reset_button: true) do |g|
 
 
+
+        g.column name:  'ID', attribute: 'id', 
+        detach_with_id: :id_filter do |customer|link_to  customer.id, customer end
+        
+
     	g.column name:  'Compañía', attribute: 'compania', 
     	detach_with_id: :compania_filter do |customer|link_to  customer.compania, customer end
 		

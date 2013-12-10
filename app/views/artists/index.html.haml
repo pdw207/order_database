@@ -15,13 +15,13 @@
     %tr
       %td= link_to artist.nombre, artist
       -if artist.beg_pago.nil?
-        %td= link_to (currency artist.products.where(location_id: 2).sum(:pago)), artist_path(artist)
+        %td= link_to (currency artist.products.where(location_id: 2).sum(:pago)), payments_path(artist)
       -else
-        %td= link_to (currency (artist.beg_pago+artist.products.where(location_id: 2).sum(:pago))), artist_path(artist)
-      %td.hidden-phone.hidden-tablet= link_to artist.papel, artist_path(artist)
-      %td.hidden-phone.hidden-tablet= link_to artist.fecha_de_eleccion || " ", artist
-      %td= link_to artist.telefono, artist
-      %td.hidden-phone= link_to [artist.direccion_1,artist.direccion_2,artist.direccion_2].join(" "), artist
+        %td= link_to (currency (artist.beg_pago+artist.products.where(location_id: 2).sum(:pago))), payments_path(artist)
+      %td.hidden-phone.hidden-tablet= link_to artist.papel, payments_path(artist)
+      %td.hidden-phone.hidden-tablet= link_to artist.fecha_de_eleccion || " ", payments_path(artist)
+      %td= link_to artist.telefono, payments_path(artist)
+      %td.hidden-phone= link_to [artist.direccion_1,artist.direccion_2,artist.direccion_2].join(" "), payments_path(artist)
 
 
 

@@ -33,7 +33,7 @@
     %b # de Cuenta:
     = @artist.cuenta_de_banco
   %br
-  %h4= link_to "Pagos", payments_path
+  %h4 Pagos
   %p
     %b= "Pago Desde Inicio:"
     = currency @artist.products.where(location_id: 2).sum(:pago) + @artist.beg_pago unless @artist.beg_venta.nil?

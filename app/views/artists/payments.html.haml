@@ -1,71 +1,76 @@
 
-%h1= "#{@artist.nombre}"
+%h1= link_to "#{@artist.nombre}", artist_path(@artist)
 %h2 Vendido
 %table.table-striped.table-bordered.table.wice-grid
-  %thead
-    %tr.wice-grid-title-row
-      %td Codigo
-      %td Diseño
-      %td Fecha de Entrega
-      %td Venta
-      %td Grupo
-      %td Funda
-      %td Directos
-      %td Pago
-  
-  %tbody
-    %tr
-      %td Inicio
-      %td 
-      %td 
-      %td= currency @artist.beg_venta unless @artist.beg_venta.nil?
-      %td= currency @artist.beg_grupo unless @artist.beg_grupo.nil?
-      %td 
-      %td 
-      %td= currency @artist.beg_pago unless @artist.beg_pago.nil?
-    - @products.where(location_id: 2).each do  |product|
-      %tr
-        %td= product.codigo
-        %td= product.design.nombre
-        %td= date product.updated_at
-        %td= currency product.precio
-        %td= currency product.groupo
-        %td= currency product.funda
-        %td= currency product.costos
-        %td= currency product.pago
-    %tr{style:"color: red;"}
-      %td Total
-      %td 
-      %td 
-      %td= currency @products.where(location_id:2).sum(:precio) + @artist.beg_venta unless @artist.beg_venta.nil?
-      %td= currency @products.where(location_id:2).sum(:groupo) + @artist.beg_grupo unless @artist.beg_venta.nil?
-      %td= currency @products.where(location_id:2).sum(:funda)
-      %td= currency @products.where(location_id:2).sum(:costos)
-      %td= currency @products.where(location_id:2).sum(:pago) + @artist.beg_pago unless @artist.beg_venta.nil?
+	%thead
+		%tr.wice-grid-title-row
+			%td Codigo
+			%td Diseño
+			%td Fecha de Entrega
+			%td Venta
+			%td Grupo
+			%td Funda
+			%td Directos
+			%td Pago
+	
+	%tbody
+		%tr
+			%td Inicio
+			%td 
+			%td 
+			%td= currency @artist.beg_venta unless @artist.beg_venta.nil?
+			%td= currency @artist.beg_grupo unless @artist.beg_grupo.nil?
+			%td 
+			%td 
+			%td= currency @artist.beg_pago unless @artist.beg_pago.nil?
+		- @products.where(location_id: 2).each do  |product|
+			%tr
+				%td= product.codigo
+				%td= product.design.nombre
+				%td= date product.updated_at
+				%td= currency product.precio
+				%td= currency product.groupo
+				%td= currency product.funda
+				%td= currency product.costos
+				%td= currency product.pago
+		%tr{style:"color: red;"}
+			%td Total
+			%td 
+			%td 
+			%td= currency @products.where(location_id:2).sum(:precio) + @artist.beg_venta unless @artist.beg_venta.nil?
+			%td= currency @products.where(location_id:2).sum(:groupo) + @artist.beg_grupo unless @artist.beg_venta.nil?
+			%td= currency @products.where(location_id:2).sum(:funda)
+			%td= currency @products.where(location_id:2).sum(:costos)
+			%td= currency @products.where(location_id:2).sum(:pago) + @artist.beg_pago unless @artist.beg_venta.nil?
 
 -@product_group.each do |location_id, products|
-  -if location_id != 2
-    %h2=  @locations.where(id: location_id).first.location
-    %table.table-striped.table-bordered.table.wice-grid
-      %thead
-        %tr.wice-grid-title-row
-          %td Codigo
-          %td Diseño
-          %td Fecha de Entrega
-          %td Precio
+	-if location_id != 2
+		%h2=  @locations.where(id: location_id).first.location
+		%table.table-striped.table-bordered.table.wice-grid
+			%thead
+				%tr.wice-grid-title-row
+					%td Codigo
+					%td Diseño
+					%td Fecha de Entrega
+					%td Precio
 
-      %tbody
-      -products.each do |x|
-        %tr
-          %td= x.codigo
-          %td= x.design.nombre
-          %td= date x.updated_at
-          %td= currency x.precio
+			%tbody
+			-products.each do |x|
+				%tr
+					%td= x.codigo
+					%td= x.design.nombre
+					%td= date x.updated_at
+					%td= currency x.precio
 
-      %tr{style:"color: red;"}
-        %td 
-        %td 
-        %td 
-        %td= currency @products.where(location_id:location_id).sum(:precio)
+			%tr{style:"color: red;"}
+				%td 
+				%td 
+				%td 
+				%td= currency @products.where(location_id:location_id).sum(:precio)
 
-
+%footer
+	= link_to 'Mostrar', artist_path(@artist)
+	\|
+	= link_to 'Editar', edit_artist_path(@artist)
+	\|
+	= link_to 'Ver Todos', artists_path

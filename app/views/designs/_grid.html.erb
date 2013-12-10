@@ -1,6 +1,9 @@
 
 	<%= define_grid(@designs_grid, class: "hidden-phone " ,hide_submit_button: true, hide_reset_button: true) do |g|
 
+      g.column name:  'ID', attribute: 'id', 
+      detach_with_id: :id_filter do |design|link_to  design.id, design end
+
     	g.column name:  'Producto',  attribute: 'nombre', model: 'ProductType' ,
     	detach_with_id: :type_filter do |design|link_to  design.product_type.nombre, design end
     
