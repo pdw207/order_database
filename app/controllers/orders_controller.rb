@@ -106,7 +106,7 @@ class OrdersController < ApplicationController
                   10
                 end
               when "Pulsera"
-                 @order.customer.braclet || 7
+                 @order.customer.bracelet || 7
               when "Aretes"
                  @order.customer.earring || 5
               when "Monedero"
