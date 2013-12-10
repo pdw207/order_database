@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131207171350) do
+ActiveRecord::Schema.define(version: 20131209231518) do
 
   create_table "artists", force: true do |t|
     t.string   "nombre"
@@ -26,6 +26,9 @@ ActiveRecord::Schema.define(version: 20131207171350) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "nombre_cuenta_de_banco"
+    t.decimal  "beg_pago"
+    t.decimal  "beg_venta"
+    t.decimal  "beg_grupo"
   end
 
   create_table "buyers", force: true do |t|
@@ -84,6 +87,13 @@ ActiveRecord::Schema.define(version: 20131207171350) do
     t.string   "enviar_factura_5"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.decimal  "green"
+    t.decimal  "blue"
+    t.decimal  "yellow"
+    t.decimal  "bracelet"
+    t.decimal  "earring"
+    t.decimal  "keychain"
+    t.decimal  "coin_purse"
   end
 
   create_table "designs", force: true do |t|

@@ -1,24 +1,33 @@
 
-%h1= "Ventas de #{@artist.nombre}"
+%h1= "#{@artist.nombre}"
+%h2 Vendido
 %table.table-striped.table-bordered.table.wice-grid
   %thead
     %tr.wice-grid-title-row
       %td Codigo
       %td Diseño
-      %td Fecha
-      %td Estado
+      %td Fecha de Entrega
       %td Venta
       %td Grupo
       %td Funda
       %td Directos
       %td Pago
+  
   %tbody
-    - @products.each do  |product|
+    %tr
+      %td Empieza
+      %td 
+      %td 
+      %td= @artist.beg_venta unless @artist.beg_venta.nil?
+      %td= @artist.beg_grupo unless @artist.beg_venta.nil?
+      %td 
+      %td 
+      %td= @artist.beg_pago unless @artist.beg_venta.nil?
+    - @products.where(location_id: 2).each do  |product|
       %tr
         %td= product.codigo
         %td= product.design.nombre
         %td= date product.updated_at
-        %td= product.location.location
         %td= currency product.precio
         %td= currency product.groupo
         %td= currency product.funda
@@ -28,9 +37,35 @@
       %td Total
       %td 
       %td 
-      %td
-      %td= currency @products.sum(:precio)
-      %td= currency @products.sum(:groupo)
-      %td= currency @products.sum(:funda)
-      %td= currency @products.sum(:costos)
-      %td= currency @products.sum(:pago)
+      %td= currency @products.where(location_id:2).sum(:precio) + @artist.beg_venta unless @artist.beg_venta.nil?
+      %td= currency @products.where(location_id:2).sum(:groupo) + @artist.beg_grupo unless @artist.beg_venta.nil?
+      %td= currency @products.where(location_id:2).sum(:funda)
+      %td= currency @products.where(location_id:2).sum(:costos)
+      %td= currency @products.where(location_id:2).sum(:pago) + @artist.beg_pago unless @artist.beg_venta.nil?
+
+-@product_group.each do |location_id, products|
+  -if location_id != 2
+    %h2=  @locations.where(id: location_id).first.location
+    %table.table-striped.table-bordered.table.wice-grid
+      %thead
+        %tr.wice-grid-title-row
+          %td Codigo
+          %td Diseño
+          %td Fecha de Entrega
+          %td Precio
+
+      %tbody
+      -products.each do |x|
+        %tr
+          %td= x.codigo
+          %td= x.design.nombre
+          %td= date x.updated_at
+          %td= currency x.precio
+
+      %tr{style:"color: red;"}
+        %td 
+        %td 
+        %td 
+        %td= currency @products.where(location_id:location_id).sum(:precio)
+
+

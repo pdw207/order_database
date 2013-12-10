@@ -17,6 +17,8 @@
                 %a{"data-toggle" => "tab", href: "#papel_tab"} Papel
             %li
                 %a{"data-toggle" => "tab", href: "#banco_tab"} Financiero
+            %li
+                %a{"data-toggle" => "tab", href: "#beg_tab"} Empieza
     -#Tab Content
     .tab-content.spacer
         #basic_info_tab.tab-pane.row.active
@@ -49,5 +51,16 @@
                 = f.label :nombre_cuenta_de_banco, "Cuenta en Nombre de"
                 = f.text_field :nombre_cuenta_de_banco
             %p
-    
+        #beg_tab.tab-pane.row
+            %p
+                = f.label :beg_venta, "Venta Empieza"
+                = f.text_field :beg_venta
+            %p
+                = f.label :beg_grupo, "Grupo Empieza"
+                = f.text_field :beg_grupo
+            %p
+                = f.label :beg_pago, "Pago Empieza"
+                = f.text_field :beg_pago
+            %p
+          
     %footer= f.submit "Enviar", class: "btn btn-default", :as => :input

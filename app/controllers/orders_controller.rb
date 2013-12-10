@@ -91,29 +91,32 @@ class OrdersController < ApplicationController
           end
 
 
-          #calculate default packaging costs ($1 for necklaces, $0 for smaller purchases)
-          if attached_product.funda.nil? 
-            attached_product.funda  = case attached_product.design.product_type.nombre
-              when "Collar" 
-                1
-              else
-                0
-            end  
-          end
-
          #calcuate default price
-          if attached_product.precio.nil?
+          if attached_product.precio == 0
             attached_product.precio  = case attached_product.design.product_type.nombre
               when "Collar" 
-                15
+                attached_product.funda  = 1
+                if attached_product.design.nivel == "Amarillo"
+                  @order.customer.yellow || 20
+                elsif attached_product.design.nivel == "Verde"
+                  @order.customer.green || 15
+                elsif attached_product.design.nivel ==  "Azul" 
+                  @order.customer.blue || 10
+                else
+                  10
+                end
               when "Pulsera"
-                7
+                 @order.customer.braclet || 7
               when "Aretes"
-                5
+                 @order.customer.earring || 5
+              when "Monedero"
+                 @order.customer.coin_purse || 5
+              when "Llavero"
+                 @order.customer.keychain || 3
               else
-                0
+                1
             end
-            attached_product.precio = 10    
+           
           end
 
           #calculate shared event or order costs

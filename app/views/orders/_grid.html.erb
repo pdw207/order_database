@@ -7,16 +7,16 @@
     	g.column name:  'Compañía', attribute: 'compania', model: 'Customer'   do |order|link_to  order.customer.compania, order end
 
     	g.column name:  'Venta', attribute: 'venta', filter_type: :range do |order|link_to  currency(order.venta), order end
+      g.column name:  'Fecha' do |order|link_to  date(order.created_at), order end
 
+      g.column name:  'Productos Adjuntos'  do |order|link_to  order.products.count , order end   
     	g.column name:  'Forma de Pago',attribute: 'pago' do |order| order.pago  ? "Consignación": "Efectivo" end    			
 
     	g.column name:  'Estado',  attribute: 'estado', attribute: 'estado_de_pedido' do |order|link_to  order.estado_de_pedido, order end
 
     	g.column name:  'Detalles', attribute: 'detall_de_pedido' do |order|link_to  order.detall_de_pedido, order end
 
-    	g.column name:  'Cumplir Fecha' do |order|link_to  date(order.fecha_de_finalizacion), order end
-
-    	g.column name:  'Productos Adjuntos'  do |order|link_to  order.products.count , order end   		
+		
 
 	end -%>
 

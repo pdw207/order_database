@@ -70,6 +70,6 @@ class CustomersController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def customer_params
-      params.require(:customer).permit(:compania, :nombre_de_contacto, :email_de_contacto, :telefono_1, :telefono_2, :direccion_1, :direccion_2, :direccion_3, :ciudad, :estado, :codigo_postal, :pais, :factura_nombre, :factura_RUC, :factura_telefono, :factura_direccion, :enviar_factura_1, :enviar_factura_2, :enviar_factura_3, :enviar_factura_4, :enviar_factura_5)
+      params.require(:customer).permit(:compania, :nombre_de_contacto, :email_de_contacto, :telefono_1, :telefono_2, :direccion_1, :direccion_2, :direccion_3, :ciudad, :estado, :codigo_postal, :pais, :factura_nombre, :factura_RUC, :factura_telefono, :factura_direccion, :enviar_factura_1, :enviar_factura_2, :enviar_factura_3, :enviar_factura_4, :enviar_factura_5,  :green, :blue, :yellow, :bracelet, :earring , :keychain, :coin_purse)
     end
 end

@@ -51,7 +51,7 @@
           
           .field
             = f.label :location_id, "Consignación en"
-            = select(:order, :location_id, Location.order(:location).map {|a| [ a.location, a.id ] })
+            = select(:order, :location_id, Location.order(:location).map {|a| [ a.location, a.id ]},:disabled => [1,2] )
             %br= link_to 'Crear Nuevo', new_location_path, :target => "_blank"
           %br
     #asignar_tab.tab-pane

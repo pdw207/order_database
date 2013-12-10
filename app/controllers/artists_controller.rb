@@ -14,7 +14,9 @@ class ArtistsController < ApplicationController
 
   def payments
     @products=Product.where(artist_id: params[:id] )
-    @sales = Order.all.where(estado_de_pedido: "Cerrado", pago: false)
+    # @sales = Order.all.where(estado_de_pedido: "Cerrado", pago: false)
+    @product_group = @products.group_by { |t| t.location_id }
+    @locations = Location.all
   end
 
   # GET /artists/new
@@ -74,6 +76,6 @@ class ArtistsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def artist_params
-      params.require(:artist).permit(:nombre, :papel, :nombre_cuenta_de_banco, :fecha_de_eleccion, :nombre_de_banco, :cuenta_de_banco, :telefono, :direccion_1, :direccion_2, :direccion_3)
+      params.require(:artist).permit(:nombre, :papel, :nombre_cuenta_de_banco, :fecha_de_eleccion, :nombre_de_banco, :cuenta_de_banco, :telefono, :direccion_1, :direccion_2, :direccion_3, :beg_pago, :beg_venta, :beg_grupo)
     end
 end
