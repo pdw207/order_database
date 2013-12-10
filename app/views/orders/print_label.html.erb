@@ -1,9 +1,14 @@
 <div class="a4">
+
 <table class="addresses from">
 	<tr><td><%= MyDetail.first.compania_nombre %></td></tr>
 	<tr><td><%= MyDetail.first.direccion_1  %></td></tr>
+		<% unless MyDetail.first.direccion_2.empty?  %>
+
 	<tr><td><%= MyDetail.first.direccion_2  %></td></tr>
+<% end -%>		<% unless MyDetail.first.direccion_3.empty?  %>
 	<tr><td><%= MyDetail.first.direccion_3  %></td></tr>
+	<% end -%>
 	<tr><td><%= MyDetail.first.cuidad %>, <%= MyDetail.first.provencia %>  <%= MyDetail.first.codigo_postal %></td></tr>
 	<tr><td>Tel: <%= MyDetail.first.business_phone %></td></tr>
 </table>
@@ -11,12 +16,19 @@
 <table class="addresses to ">
 <tr><td><%= @order.customer.nombre_de_contacto   %></td><tr>
 <tr><td><%= @order.customer.compania  %></td><tr>
-<tr><td>Order # <%= @order.id %></td><tr>
 <tr><td><%=  @order.customer.direccion_1  %></td><tr>
+	<% unless @order.customer.direccion_2.empty?  %>
 <tr><td><%= @order.customer.direccion_2   %></td><tr>
+	<% end %>
+	<% unless @order.customer.direccion_3.empty?  %>
+
 <tr><td><%=  @order.customer.direccion_3  %></td><tr>
+<% end %>
 <tr><td><%=  @order.customer.ciudad%> , <%=@order.customer.estado  %> <%=  @order.customer.codigo_postal%> </td><tr>
-<tr><td>Tel: <%=  @order.customer.telefono_1  %></td><tr>
+
+	<% unless @order.customer.telefono_1.empty?  %>
+			<tr><td>Tel: <%=  @order.customer.telefono_1 unless @order.customer.telefono_1.empty?  %></td><tr>
+	<% end %>
 </table>
 </div>
 
