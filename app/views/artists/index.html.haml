@@ -14,7 +14,10 @@
   - @artists.each do |artist|
     %tr
       %td= link_to artist.nombre, artist
-      %td= link_to  currency(artist.products.sum(:pago)), artist_path(artist)
+      -if artist.beg_pago.nil?
+        %td= link_to (currency artist.products.where(location_id: 2).sum(:pago)), artist_path(artist)
+      -else
+        %td= link_to (currency (artist.beg_pago+artist.products.where(location_id: 2).sum(:pago))), artist_path(artist)
       %td.hidden-phone.hidden-tablet= link_to artist.papel, artist_path(artist)
       %td.hidden-phone.hidden-tablet= link_to artist.fecha_de_eleccion || " ", artist
       %td= link_to artist.telefono, artist

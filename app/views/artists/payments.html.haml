@@ -19,10 +19,10 @@
       %td 
       %td 
       %td= currency @artist.beg_venta unless @artist.beg_venta.nil?
-      %td= currency @artist.beg_grupo unless @artist.beg_venta.nil?
+      %td= currency @artist.beg_grupo unless @artist.beg_grupo.nil?
       %td 
       %td 
-      %td= currency @artist.beg_pago unless @artist.beg_venta.nil?
+      %td= currency @artist.beg_pago unless @artist.beg_pago.nil?
     - @products.where(location_id: 2).each do  |product|
       %tr
         %td= product.codigo

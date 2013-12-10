@@ -36,7 +36,7 @@
   %h4= link_to "Pagos", payments_path
   %p
     %b= "Pago Desde Inicio:"
-    = currency @artist.products.where(location_id: 2).sum(:pago)
+    = currency @artist.products.where(location_id: 2).sum(:pago) + @artist.beg_pago unless @artist.beg_venta.nil?
   %p
     %b= "Productos Vendido:"
     = @artist.products.where(location_id: 2).count
