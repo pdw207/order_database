@@ -1,0 +1,45 @@
+%h1.full_page Thank you and Gracias!
+%img.full_page{src: "https://dl.dropbox.com/s/bkaid3dowfdwqma/MujeresCambiaGroupShot.jpg"}
+%h1.lead_line= "Order number #{@order.id} prepared on #{ @order.updated_at.strftime("%m/%d/%y")}" 
+%table.addresses
+	%tr
+		%td= MyDetail.first.compania_nombre
+		%td= @order.customer.compania 
+	%tr
+		%td= "#{MyDetail.first.direccion_1}"
+		%td="#{@order.customer.direccion_1} #{@order.customer.direccion_2 }" 
+	%tr
+		%td=MyDetail.first.direccion_2
+		%td="#{@order.customer.ciudad}, #{@order.customer.estado}  #{@order.customer.codigo_postal}"
+	%tr
+		%td="#{MyDetail.first.cuidad}, #{MyDetail.first.provencia} #{MyDetail.first.codigo_postal}"
+		%td="#{@order.customer.telefono_1}" 
+	%tr
+		%td="#{MyDetail.first.business_phone}"
+		%td 
+%table.table-striped.table-bordered.table.wice-grid.center_table
+	%thead
+		%tr.wice-grid-title-row
+			%td Item #
+			%td Product Type
+			%td Artist
+			%td Style Name
+			%td Quantity
+			%td Price
+		%tbody
+		- @order.products.each do  |i|
+			%tr.english
+				%td=  i.codigo
+				%td=  t i.design.product_type.nombre
+				%td=  i.artist.nombre
+				%td=  [i.design.nombre, i.design.id].join(" - #")
+				%td 1
+				%td=  currency(i.precio)
+		%tr{style: "color: red;"}
+			%td 
+			%td
+			%td
+			%td TOTAL
+			%td= @order.products.count
+			%td= currency @order.products.sum(:precio)
+		

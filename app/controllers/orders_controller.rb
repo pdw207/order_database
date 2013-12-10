@@ -1,5 +1,5 @@
 class OrdersController < ApplicationController
-  before_action :set_order, only: [:show, :edit, :update, :destroy, :print_label, :print_das, :reconciliation]
+  before_action :set_order, only: [:show, :edit, :update, :destroy, :print_label, :print_das, :reconciliation, :packing_slip]
 
   def index
     @orders = Order.all
@@ -11,6 +11,9 @@ class OrdersController < ApplicationController
 
   def closed
      end
+
+  def packing_slip
+  end
 
   def show
     #get codes from form

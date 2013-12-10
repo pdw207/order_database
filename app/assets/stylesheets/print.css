@@ -20,6 +20,11 @@ thead {text-decoration: underline;}
   top: 300px;
   left: 220px;
   line-height: .5em;}
-  
 
+  img.full_page{width: 80%; padding-left: 10%; padding-bottom: 30px;}
+  h1.full_page{width: 50%; margin: 0 auto; padding-bottom: 30px;}
+	h1.lead_line{width: 80%; margin: 0 auto;}
+  table.addresses{padding: 30px;width: 70%; margin: 0 auto;}
+  table.center_table {width: 80%; margin: 0 auto;}
+.addresses tr { line-height: 12px; }
 }

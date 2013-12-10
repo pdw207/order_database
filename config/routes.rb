@@ -3,16 +3,16 @@ MujeresCambiaMail::Application.routes.draw do
   resources :registers
   resources :product_types
   resources :products
-   get '/my_details/instructions', to: 'my_details#instructions', as: 'instructions'
+  get '/my_details/instructions', to: 'my_details#instructions', as: 'instructions'
   resources :my_details
   resources :designs
   resources :customers
   resources :orders
 
-   get '/artists/:id/payments', to: 'artists#payments', as: 'payments'
+  get '/artists/:id/payments', to: 'artists#payments', as: 'payments'
   resources :artists
 
-  root :to => "sessions#destroy"
+  root :to => "sessions#new"
   resources :buyers
   resources :users
   resources :sessions
@@ -26,6 +26,7 @@ MujeresCambiaMail::Application.routes.draw do
   get '/orders/print_label/:id', to: 'orders#print_label', as: 'print_label'
   get '/orders/print_exporta_facil/:id', to: 'orders#print_das', as: 'print_das'
   get '/orders/reconciliation/:id', to: 'orders#reconciliation', as: 'reconciliation'
+  get '/orders/packing_slip/:id', to: 'orders#packing_slip', as: 'packing_slip'
 
 
   resources :orders do
