@@ -14,6 +14,9 @@ class MyDetailsController < ApplicationController
 
   def instructions
   end
+
+  def information
+  end
   
   # GET /my_details/new
   def new

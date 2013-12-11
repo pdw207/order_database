@@ -1,4 +1,5 @@
 MujeresCambiaMail::Application.routes.draw do
+  get '/my_details/basic_information', to: 'my_details#information', as: 'information'
 
   resources :registers
   resources :product_types
