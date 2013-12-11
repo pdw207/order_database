@@ -70,6 +70,6 @@ class DesignsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def design_params
-      params.require(:design).permit(:product_type_id, :nombre, :detallas, :nivel, :Tiempo_en_minutos)
+      params.require(:design).permit(:product_type_id, :nombre, :detallas, :nivel, :Tiempo_en_minutos, :url1, :url2, :url3)
     end
 end

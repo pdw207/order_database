@@ -21,7 +21,11 @@
   %p
     %b Precio por Mayor ($2.20 por hora):
     = bulk_price
-
+  %p
+    =image_tag raw @design.url1
+    =image_tag raw @design.url2
+    =image_tag raw @design.url3
+    
   = link_to 'Editar', edit_design_path(@design)
   \|
   = link_to 'Ver Todo', designs_path

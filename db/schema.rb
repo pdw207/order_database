@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131209231518) do
+ActiveRecord::Schema.define(version: 20131211030944) do
 
   create_table "artists", force: true do |t|
     t.string   "nombre"
@@ -104,6 +104,9 @@ ActiveRecord::Schema.define(version: 20131209231518) do
     t.decimal  "Tiempo_en_minutos"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "url1"
+    t.string   "url2"
+    t.string   "url3"
   end
 
   create_table "expenses", force: true do |t|

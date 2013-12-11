@@ -9,21 +9,21 @@
 			%th.hidden-phone.hidden-tablet Código
 			%th Descripción
 			%th Tipo
-			%th.hidden-phone Efectivo
-			%th.hidden-phone Banco de Guayaquil
-			%th.hidden-phone Paypal
-			%th.hidden-phone Payoneer
-			%th.hidden-phone Obligaciones
+			%th Efectivo
+			%th Banco de Guayaquil
+			%th Paypal
+			%th Payoneer
+			%th Obligaciones
 		%tr.hidden-print
 			%th 
 			%th
 			%th 
 			%th 
-			%th.hidden-phone= currency @registers.sum(:effectivo) 
-			%th.hidden-phone=currency @registers.sum(:banco)
-			%th.hidden-phone=currency @registers.sum(:paypal)
-			%th.hidden-phone=currency @registers.sum(:payoneer)
-			%th.hidden-phone=currency @registers.sum(:obligaciones)
+			%th= currency @registers.sum(:effectivo) 
+			%th=currency @registers.sum(:banco)
+			%th=currency @registers.sum(:paypal)
+			%th=currency @registers.sum(:payoneer)
+			%th=currency @registers.sum(:obligaciones)
 	- @registers.sort_by { |obj| obj.created_at }.reverse.each do |transaction|
 		%tr
 			%td= link_to transaction.created_at.strftime("%d/%m/%y"), edit_register_path(transaction)

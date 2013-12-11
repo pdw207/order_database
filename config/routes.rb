@@ -12,7 +12,7 @@ MujeresCambiaMail::Application.routes.draw do
   get '/artists/:id/payments', to: 'artists#payments', as: 'payments'
   resources :artists
 
-  root :to => "sessions#new"
+  root :to => "products#index"
   resources :buyers
   resources :users
   resources :sessions

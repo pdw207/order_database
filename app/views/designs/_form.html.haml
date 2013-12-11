@@ -28,6 +28,18 @@
       = f.label :nivel
       %br/
       = f.select(:nivel, options_for_select([ "Amarillo","Verde","Azul", "Rojo" ], @design.nivel))
+    .field
+      = f.label :url1, "Photo Url Link #1"
+      %br/
+      = f.text_field :url1
+    .field
+      = f.label :url2, "Photo Url Link #2"
+      %br/
+      = f.text_field :url2
+    .field
+      = f.label :url3, "Photo Url Link #3"
+      %br/
+      = f.text_field :url3
     %footer
       .actions
         = f.submit "Enviar", class: "btn btn-default"
