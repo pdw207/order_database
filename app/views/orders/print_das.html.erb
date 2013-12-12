@@ -18,8 +18,13 @@
 	</div>
 	
 	<div id="part_one_B"  class="das">
-		<p><%= "#{@order.encargado} ." %></p>
-		<p><%= MyDetail.first.business_phone %></p><div class="spacer_one"></div>
+		<% if @order.encargado.empty? %>
+			<p><%=MyDetail.first.direccion_1 %></p>
+		<% else %>
+			<p><%= @order.encargado %></p>
+		<% end %>
+		<p><%= MyDetail.first.business_phone %></p>
+		<p><%= MyDetail.first.business_phone %></p>
 		<p><%= MyDetail.first.RUC %></p>
 		<p><%= MyDetail.first.cuidad %></p>
 		<p><%= MyDetail.first.codigo_postal %></p>
@@ -36,7 +41,7 @@
 	<div id="part_two_A" class="das">
 		<p><%= @order.customer.compania  %></p>	
 		<p><%=  @order.customer.direccion_1  %></p>
-		<% unless @order.customer.direccion_2.empty?  %>
+		<% if @order.customer.direccion_2.empty?  %>
 			<p><%= @order.customer.direccion_2   %></p>
 		<% end %>
 		<% unless @order.customer.direccion_3.empty?  %>
@@ -46,9 +51,17 @@
 	</div>
 
 	<div id="part_two_B"  class="das">		
-		<p><%= "#{@order.customer.nombre_de_contacto} ."%></p>
-		<p><%=  @order.customer.telefono_1  %></p>
-		<p> <%= @order.customer.telefono_2  %></p>
+		<% if @order.customer.nombre_de_contacto.empty? %>
+			<p><%= @order.customer.compania  %></p>
+		<% else %>
+			<p><%= @order.customer.nombre_de_contacto%></p>
+		<% end %>
+		<p><%=  @order.customer.telefono_1  %></p
+		<% if @order.customer.telefono_2.empty?  %>
+			<p><%=  @order.customer.telefono_1  %></p
+		<% else %>	
+			<p><%= @order.customer.telefono_2   %></p>
+		<% end %>
 		<p><%= @order.customer.email_de_contacto%></p>
 	</div>
 	<div id="part_two_C"  class="das">		
