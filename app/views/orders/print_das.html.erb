@@ -1,8 +1,83 @@
-<div class="page"></div>
-<div id="mc_address">
-<p><%= MyDetail.first.direccion_1 %></p>
-<p><%= MyDetail.first.compania_nombre %></p>
-<p><%= MyDetail.first.direccion_2 %></p>
-<p><%= MyDetail.first.direccion_3 %></p>
-<p><%= MyDetail.first.cuidad %>, <%= MyDetail.first.provencia %> 
+<div class="page">
+	<div id="das_links" class="das" >
+	<ul>
+	    <li><%=link_to("Obtener DAS No. y No. Orden", "http://www.exportafacil.gob.ec", :target => "_blank" )%></li>
+	    <li><%=link_to("Instructions","https://dl.dropbox.com/s/8zef13294u7d8dm/Export%20Facil.pdf", :target => "_blank")%></li>
+	  </ul>
+
+	</div>
+	
+		
+	<div id="date"  class="das">	<p><%= date Time.now %></p></div>
+	<div id="part_one_A"  class="das">
+		<p><%= MyDetail.first.direccion_1 %></p>
+		<p><%= MyDetail.first.compania_nombre %></p>
+		<p><%= MyDetail.first.direccion_2 %></p>
+		<p><%= MyDetail.first.direccion_3 %></p>
+		<p><%= MyDetail.first.cuidad %>, <%= MyDetail.first.provencia %> 
+	</div>
+	
+	<div id="part_one_B"  class="das">
+		<p><%= @order.encargado %></p>
+		<p><%= MyDetail.first.business_phone %></p><br><br>
+		<p><%= MyDetail.first.RUC %></p>
+		<p><%= MyDetail.first.cuidad %></p>
+		<p><%= MyDetail.first.codigo_postal %></p>
+	</div>
+
+	<div id="part_one_C"  class="das">
+		<p><%= MyDetail.first.email %></p>
+		<p> Ecuador </p>
+		<br><br>
+		<p><%= MyDetail.first.cuidad_embarque %></p>
+		<p><%= MyDetail.first.puerto_embarque%> 
+	</div>
+
+	<div id="part_two_A" class="das">
+		<p><%= @order.customer.compania  %></p>	
+		<p><%=  @order.customer.direccion_1  %></p>
+		<% unless @order.customer.direccion_2.empty?  %>
+			<p><%= @order.customer.direccion_2   %></p>
+		<% end %>
+		<% unless @order.customer.direccion_3.empty?  %>
+			<p><%=  @order.customer.direccion_3  %></p>
+		<% end %>
+		<p><%=  @order.customer.ciudad%> , <%=@order.customer.estado  %> <%=  @order.customer.codigo_postal%> </p>
+	</div>
+
+	<div id="part_two_B"  class="das">		
+		<p><%= @order.customer.nombre_de_contacto%></p>
+		<p><%=  @order.customer.telefono_1  %></p>
+		<p> <%= @order.customer.telefono_2  %></p>
+		<p><%= @order.customer.email_de_contacto%></p>
+	</div>
+	<div id="part_two_C"  class="das">		
+		<p><%= @order.customer.pais%></p>
+		<p><%=  @order.customer.codigo_postal  %></p>
+		<p> <%= @order.customer.ciudad  %></p>
+	</div>
+	<div id="part_three_A"  class="das">		
+		<p><%= currency @order.valor_aduana%></p>
+	</div>
+	<div id="part_three_B"  class="das">		
+		<p><%= units(@order, "metric")%></p>
+	</div>	
+	<div id="part_three_C"  class="das">		
+		<p>1</p>
+	</div>	
+	<div id="part_three_D"  class="das">		
+		<p>Certificado Exp</p>
+	</div>	
+	<div id="part_four"  class="das">		
+		<p><%= "#{MyDetail.first.arancel_codigo} #{MyDetail.first.description_arancel} #{@order.products.count} unidades y pesa de #{units(@order, "metric")}" %></p>
+	</div>	
+	<div id="part_five"  class="das">		
+		<p><%= "Factural Commerical numero #{factura_full_number(@order)} y fecha #{date @order.fecha_de_factura}" %></p>
+	</div>	
+	<div id="part_six"  class="das">		
+		<p>Devolver</p>
+	</div>			
+	<div id="part_seven"  class="das">		
+		<p>No</p>
+	</div>			
 </div>
