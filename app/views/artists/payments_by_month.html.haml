@@ -1,0 +1,16 @@
+%h1= "#{@artist.nombre} - Pagos por Mes"
+%table.table-striped.table-bordered.table.wice-grid
+	%thead
+		%tr
+			%td Fecha
+			%td Pago
+			%td Meta de Ahorros
+	%tbody
+	- @sales_in_month.sort.each do |month,orders|
+		%tr
+			%td=l(month, :format => '%B %Y')
+			-y=0
+			-orders.each do |x|
+				-y+=x.products.where(artist_id: params[:id]).sum(:pago)
+			%td= currency y
+			%td=  currency y.to_i*0.2

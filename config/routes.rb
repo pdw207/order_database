@@ -5,15 +5,16 @@ MujeresCambiaMail::Application.routes.draw do
   resources :product_types
   resources :products
   get '/my_details/instructions', to: 'my_details#instructions', as: 'instructions'
+  get '/orders/sales', to: 'orders#sales', as: 'sales'
   resources :my_details
   resources :designs
   resources :customers
   resources :orders
-
+  get '/artists/:id/payments_by_month', to: 'artists#payments_by_month', as: 'payments_by_month'
   get '/artists/:id/payments', to: 'artists#payments', as: 'payments'
   resources :artists
 
-  root :to => "products#index"
+  root :to => "sessions#new"
   resources :buyers
   resources :users
   resources :sessions

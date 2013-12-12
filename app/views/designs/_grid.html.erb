@@ -1,20 +1,15 @@
 
-	<%= define_grid(@designs_grid, class: "hidden-phone " ,hide_submit_button: true, hide_reset_button: true) do |g|
+	<%= grid(@designs_grid, class: "hidden-phone ") do |g|
 
-      g.column name:  'ID', attribute: 'id', 
-      detach_with_id: :id_filter do |design|link_to  design.id, design end
+      g.column name:  'ID', attribute: 'id' do |design|link_to  design.id, design end
 
-    	g.column name:  'Producto',  attribute: 'nombre', model: 'ProductType' ,
-    	detach_with_id: :type_filter do |design|link_to  design.product_type.nombre, design end
+    	g.column name:  'Producto',  attribute: 'nombre', model: 'ProductType'  do |design|link_to  design.product_type.nombre, design end
     
-    	g.column name:  'Diseño', attribute: 'nombre', 
-    	detach_with_id: :nombre_filter do |design|link_to  design.nombre, design end
+    	g.column name:  'Diseño', attribute: 'nombre' do |design|link_to  design.nombre, design end
 
-    	g.column name:  'Detalles', attribute: 'detallas', 
-    	detach_with_id: :detallas_filter do |design|link_to  design.detallas, design end
+    	g.column name:  'Detalles' do |design|link_to  design.detallas, design end
 
-    	g.column name:  'Nivel', attribute: 'nivel', 
-    	detach_with_id: :nivel_filter do |design|link_to  design.nivel, design end
+    	g.column name:  'Nivel', attribute: 'nivel' do |design|link_to  design.nivel, design end
 
     	g.column name:  'Tiempo', attribute: 'Tiempo_en_minutos', 
     	detach_with_id: :Tiempo_en_minutos_filter do |design|link_to  design.Tiempo_en_minutos, design end

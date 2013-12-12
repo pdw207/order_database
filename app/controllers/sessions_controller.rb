@@ -1,10 +1,9 @@
 class SessionsController < ApplicationController
 def new
-         render :layout => "application_simple"
+
 end
 
 def create
-
   user = User.authenticate(params[:email], params[:password])
   if user
     session[:user_id] = user.id

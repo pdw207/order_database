@@ -6,8 +6,8 @@
 
     	g.column name:  'Compañía', attribute: 'compania', model: 'Customer'   do |order|link_to  order.customer.compania, order end
 
-    	g.column name:  'Venta', attribute: 'venta', filter_type: :range do |order|link_to  currency(order.venta), order end
-      g.column name:  'Fecha' do |order|link_to  date(order.created_at), order end
+    	g.column name:  'Venta', attribute: 'venta',  class: "wide_col", filter_type: :range do |order|link_to  currency(order.venta), order end
+      g.column name:  'Fecha' , attribute: 'created_at', detach_with_id: 'fecha' do |order|link_to  date(order.created_at), order end
 
       g.column name:  'Productos Adjuntos'  do |order|link_to  order.products.count , order end   
     	g.column name:  'Forma de Pago',attribute: 'pago' do |order| order.pago  ? "Consignación": "Efectivo" end    			

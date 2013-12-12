@@ -3,7 +3,7 @@ class Product < ActiveRecord::Base
 					:estado, :funda, :precio, :button, :order_id, :location_id, :last_location
     
 	belongs_to :location, inverse_of: :products
-	belongs_to :artist
+	belongs_to :artist, inverse_of: :products
 	belongs_to :design, inverse_of: :products
 	has_and_belongs_to_many :orders
 	

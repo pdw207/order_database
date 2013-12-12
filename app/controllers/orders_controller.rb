@@ -4,13 +4,17 @@ class OrdersController < ApplicationController
   def index
     @orders = Order.all
     @orders_grid = initialize_grid(Order,:include => [:customer], order: 'id')
-    @sales = Order.all.where(estado_de_pedido: "Cerrado", pago: false)
+   @sales = Order.all.where(estado_de_pedido: "Cerrado", pago: false)
     # @artist_group = @order.products.group_by { |t| t.artist_id }
-
   end
 
+  def sales
+   @sales_in_month = Order.all.where(estado_de_pedido: "Cerrado", pago: false).order(:created_at).reverse.group_by { |t| t.created_at.beginning_of_month }
+   
+  end 
+
   def closed
-     end
+  end
 
   def packing_slip
   end

@@ -18,11 +18,11 @@
   </head>
 
   <body>
-
+    <% if current_user %>
     <nav id="user_nav">
       <%=render :partial => 'shared/sharednavbar'%>  
     </nav>  
-    <% if current_user %>
+
       <div id="main">
         <%= yield %>
       </div>

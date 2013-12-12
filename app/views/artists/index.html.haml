@@ -13,7 +13,7 @@
 
   - @artists.each do |artist|
     %tr
-      %td= link_to artist.nombre, artist
+      %td= link_to artist.nombre, payments_path(artist)
       -if artist.beg_pago.nil?
         %td= link_to (currency artist.products.where(location_id: 2).sum(:pago)), payments_path(artist)
       -else

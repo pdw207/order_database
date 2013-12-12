@@ -1,0 +1,22 @@
+%h1 Ventas
+%table.table-striped.table-bordered.table.wice-grid
+	%thead
+		%tr.wice-grid-title-row
+			%td Fecha
+			%td Numero de Ventas
+			%td Numero de Productos Vendido
+			%td Venta
+	%tbody
+		-@sales_in_month.each do |month,orders|
+			%tr
+				%td= l(month, :format => '%B %Y')
+				-x = 0.0
+				-y = 0.0
+				-z = 0.0
+				-orders.each do |sale|
+					- x += sale.venta.to_i
+					- y += sale.products.count
+	
+				%td=orders.count			
+				%td=y
+				%td=currency x

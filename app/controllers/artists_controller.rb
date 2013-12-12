@@ -1,5 +1,5 @@
 class ArtistsController < ApplicationController
-  before_action :set_artist, only: [:show, :edit, :update, :destroy, :payments]
+  before_action :set_artist, only: [:show, :edit, :update, :destroy, :payments, :payments_by_month]
 
   # GET /artists
   # GET /artists.json
@@ -10,6 +10,10 @@ class ArtistsController < ApplicationController
   # GET /artists/1
   # GET /artists/1.json
   def show
+  end
+
+  def payments_by_month
+    @sales_in_month = Order.all.where(estado_de_pedido: "Cerrado", pago: false).order(:created_at).reverse.group_by { |t| t.created_at.beginning_of_month }
   end
 
   def payments

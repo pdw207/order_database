@@ -14,7 +14,7 @@
 
     	g.column name:  'Nivel', class: "hidden-phone " do |product|link_to  product.design.nivel, edit_product_path(product) end
   		g.column name:  'Tipo' ,class: "hidden-phone " do |product|link_to  product.design.product_type.nombre, edit_product_path(product) end
-    	g.column name:  'Fecha',   class: "hidden-phone " do |product|link_to  product.created_at.strftime("%d/%m/%y"), edit_product_path(product) end
+    	g.column name:  'Fecha',   class: "hidden-phone ", attribute: 'created_at', detach_with_id: 'fecha' do |product|link_to  product.created_at.strftime("%d/%m/%y"), edit_product_path(product) end
 	end -%>
 
 <div class="hide_in_desktop hidden-tablet hidden-print">
