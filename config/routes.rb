@@ -25,6 +25,7 @@ MujeresCambiaMail::Application.routes.draw do
   get "log_in" => "sessions#new", :as => "log_in"
 
   get '/orders/closed', to: 'orders#closed', as: 'closed'
+  get '/orders/customs_label/:id', to: 'orders#customs_label', as: 'customs_label'
   get '/orders/print_label/:id', to: 'orders#print_label', as: 'print_label'
   get '/orders/print_exporta_facil/:id', to: 'orders#print_das', as: 'print_das'
   get '/orders/reconciliation/:id', to: 'orders#reconciliation', as: 'reconciliation'

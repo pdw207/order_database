@@ -52,7 +52,7 @@ clear: both;
 #part_one_A{ top: 242px; left: 111px;}
 #part_one_B{top: 215px;left: 470px;}
 #part_one_C{top: 217px;left: 737px;}
-#date{top: 133px;left: 786px;}
+#date{top: 153px;left: 757px;}
 #part_two_A{top: 429px; left: 101px;}
 #part_two_B{top: 425px; left: 463px;}
 #part_two_C{top: 425px; left: 757px;}
@@ -65,12 +65,38 @@ clear: both;
 #part_six{top: 970px; left: 100px;}
 #part_seven{top: 970px; left: 700px;}
 
+/*Customs Form*/
+.customs{
+ background: url(https://dl.dropbox.com/s/m6pmtkg2o91j937/english_label3.jpg) no-repeat 0 0;
+ background-size: 800px;
+ width: 28cm;
+ min-height: 29.7cm;
+ position: absolute;
+ font-size: 14px;  
+
+}
+
+.custom_line_item_A {position: absolute; z-index: 5; top: 5px;left: 434px;font-size: large;}
+.custom_line_item_B {position: absolute; z-index: 5; top: 141px;left: 50px;font-size: x-large;}
+.custom_line_item_C {position: absolute; z-index: 5; top: 141px;left: 390px;font-size: large;}
+.custom_line_item_D {position: absolute; z-index: 5; top: 141px;left: 429px;font-size: large;}
+.custom_line_item_E {position: absolute; z-index: 5; top: 141px;left: 523px;font-size: large;}
+.custom_line_item_F {position: absolute; z-index: 5; top: 141px;left: 605px;}
+.custom_line_item_G {position: absolute; z-index: 5; top: 141px;left: 711px;font-size: large;}
+.custom_line_item_H {position: absolute; z-index: 5; top: 379px;left: 532px;font-size: large;}
+
+
+
+
+
+
+/*Other*/
 img.products{width: 80%;}
 /*Packing Slip*/
 img.full_page{width: 80%; padding-left: 10%; padding-bottom: 30px;}
 h1.full_page{width: 50%; margin: 0 auto; padding-bottom: 30px;}
 h1.lead_line{width: 80%; margin: 0 auto;}
-table.addresses{padding: 30px;width: 70%; margin: 0 auto;}
+table.addresses{padding: 20px;width: 70%; margin: 0 auto;}
 table.center_table {width: 80%; margin: 0 auto;}
 .addresses tr { line-height: 12px; }
 

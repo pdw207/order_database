@@ -1,5 +1,5 @@
 class OrdersController < ApplicationController
-  before_action :set_order, only: [:show, :edit, :update, :destroy, :print_label, :print_das, :reconciliation, :packing_slip]
+  before_action :set_order, only: [:show, :edit, :update, :destroy, :customs_label, :print_label, :print_das, :reconciliation, :packing_slip]
 
   def index
     @orders = Order.all
@@ -13,10 +13,12 @@ class OrdersController < ApplicationController
    
   end 
 
-  def closed
+  def customs_label
+         render :layout => "application_simple"
   end
 
   def packing_slip
+         render :layout => "application_simple"
   end
 
   def show

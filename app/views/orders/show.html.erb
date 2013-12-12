@@ -166,19 +166,29 @@
   
   <!-- Shipping Label -->
   
-  <p>Imprimir: <%= link_to "Etiqueta", print_label_path, :target => "_blank"  %> , <%= link_to "Lista de Empaque", packing_slip_path, :target => "_blank" %> y  <%= link_to "Exporta Facil Formulario", print_das_path, :target => "_blank"  %>
-  </p>
+  <h4>Imprimir:</h4>
+    <ol>
+        <li><%= link_to "Etiqueta", print_label_path, :target => "_blank"  %> </li>
+        <li><%= link_to "Lista de Empaque", packing_slip_path, :target => "_blank" %> </li>
+        <% if @order.pesa_en_gramas.present? %>
+        <li><%= link_to "Exporta Facil Formulario", print_das_path, :target => "_blank"  %></li>
+        <li><%= link_to "Aduanas Formulario - Inglés", customs_label_path, :target => "_blank"  %></li>
+        <% end %>
+    </ol>
+
   <!-- Shipping Information -->
+    <h4>Información:</h4>
+  <% if @order.numero_de_rastreo.present? %>
   <p>
     <strong>Numero de rastreo:</strong>
     <%= @order.numero_de_rastreo %>
   </p>
-
+<% end %>
   <p>
     <strong>Idioma:</strong>
     <%= @order.idioma %>
   </p>
-
+<% if @order.pesa_en_gramas.present? %>
   <p>
     <strong>Pesa:</strong>
     <%= units(@order, "english") %> o <%= units(@order, "metric") %> 
@@ -188,7 +198,8 @@
     <strong>Unidades:</strong>
     <%= @order.unidades %>
   </p>
-  
+  <% end %>
+  <% if @order.factura_numero.present? %>
   <p>
     <strong>Factura Numero:</strong>
     <%= factura_full_number(@order) %>
@@ -198,11 +209,13 @@
     <strong>Fecha de factura:</strong>
     <%= date @order.fecha_de_factura %>
   </p>
-
+<% end %>
+<% if @order.valor_aduana.present? %>
   <p>
     <strong>Valor aduana:</strong>
     <%= currency @order.valor_aduana %>
   </p>
+  <% end %>
 </div>
 
 <div class="hidden-print">

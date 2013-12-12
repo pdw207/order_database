@@ -1,0 +1,17 @@
+.customs
+	.custom_line_item_A
+		x
+	.custom_line_item_B
+		Imitation Jewerlry
+	.custom_line_item_C
+		=@order.products.count	
+	.custom_line_item_D
+		=units @order, "english"
+	.custom_line_item_E
+		=currency @order.valor_aduana
+	.custom_line_item_F
+		=MyDetail.first.arancel_codigo[0,10]
+	.custom_line_item_G
+		Ecuador
+	.custom_line_item_H
+		= number_with_precision @order.valor_aduana, precision: 2, delimiter:".", separator: ","		

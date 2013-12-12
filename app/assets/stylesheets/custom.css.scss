@@ -96,7 +96,24 @@ clear: both;
   line-height: 2em;
   
 }
+.customs{
+ background: url(https://dl.dropbox.com/s/9yzih2hzevllc3a/english_label2.jpg) no-repeat 0 0;
+ background-size: 800px;
+ width: 28cm;
+ min-height: 29.7cm;
+ position: absolute;
+ font-size: 14px;  
 
+}
+
+.custom_line_item_A {position: absolute; z-index: 5; top: 5px;left: 434px;font-size: large;}
+.custom_line_item_B {position: absolute; z-index: 5; top: 141px;left: 50px;font-size: x-large;}
+.custom_line_item_C {position: absolute; z-index: 5; top: 141px;left: 390px;font-size: large;}
+.custom_line_item_D {position: absolute; z-index: 5; top: 141px;left: 429px;font-size: large;}
+.custom_line_item_E {position: absolute; z-index: 5; top: 141px;left: 523px;font-size: large;}
+.custom_line_item_F {position: absolute; z-index: 5; top: 141px;left: 605px;}
+.custom_line_item_G {position: absolute; z-index: 5; top: 141px;left: 711px;font-size: large;}
+.custom_line_item_H {position: absolute; z-index: 5; top: 379px;left: 532px;font-size: large;}
 .page{
   position: absolute;
   font-size: 10px;
