@@ -18,8 +18,8 @@
 	</div>
 	
 	<div id="part_one_B"  class="das">
-		<p><%= @order.encargado %></p>
-		<p><%= MyDetail.first.business_phone %></p><br><br>
+		<p><%= "#{@order.encargado} ." %></p>
+		<p><%= MyDetail.first.business_phone %></p><div class="spacer_one"></div>
 		<p><%= MyDetail.first.RUC %></p>
 		<p><%= MyDetail.first.cuidad %></p>
 		<p><%= MyDetail.first.codigo_postal %></p>
@@ -28,7 +28,7 @@
 	<div id="part_one_C"  class="das">
 		<p><%= MyDetail.first.email %></p>
 		<p> Ecuador </p>
-		<br><br>
+		<br><div class="spacer_two"></div>
 		<p><%= MyDetail.first.cuidad_embarque %></p>
 		<p><%= MyDetail.first.puerto_embarque%> 
 	</div>
@@ -46,7 +46,7 @@
 	</div>
 
 	<div id="part_two_B"  class="das">		
-		<p><%= @order.customer.nombre_de_contacto%></p>
+		<p><%= "#{@order.customer.nombre_de_contacto} ."%></p>
 		<p><%=  @order.customer.telefono_1  %></p>
 		<p> <%= @order.customer.telefono_2  %></p>
 		<p><%= @order.customer.email_de_contacto%></p>

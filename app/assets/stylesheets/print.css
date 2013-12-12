@@ -41,6 +41,29 @@ clear: both;
     margin: 1cm auto;
 
 }
+/*DAS*/
+.das{
+  position: absolute;
+  font-size: 14px;  
+  z-index: 5;
+  
+}
+#das_links{display: none !important;}
+#part_one_A{ top: 242px; left: 111px;}
+#part_one_B{top: 215px;left: 470px;}
+#part_one_C{top: 217px;left: 737px;}
+#date{top: 133px;left: 786px;}
+#part_two_A{top: 429px; left: 101px;}
+#part_two_B{top: 425px; left: 463px;}
+#part_two_C{top: 425px; left: 757px;}
+#part_three_A{top: 575px; left: 74px;}
+#part_three_B{top: 575px; left: 242px;}
+#part_three_C{top: 575px; left: 390px;}
+#part_three_D{top: 575px; left: 543px;}
+#part_four{top: 715px; left: 100px;}
+#part_five{top: 851px; left: 100px;}
+#part_six{top: 970px; left: 100px;}
+#part_seven{top: 970px; left: 700px;}
 
 img.products{width: 80%;}
 /*Packing Slip*/
