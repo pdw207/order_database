@@ -27,9 +27,9 @@
 	- @registers.sort_by { |obj| obj.created_at }.reverse.each do |transaction|
 		%tr
 			%td= link_to transaction.created_at.strftime("%d/%m/%y"), edit_register_path(transaction)
-			%td.hidden-phone.hidden-tablet= link_to transaction.codigo, edit_register_path(transaction)
+			%td.hidden-phone.hidden-tablet= link_to transaction.codigo || "modificar", edit_register_path(transaction)
 			%td= link_to transaction.Descripcion, edit_register_path(transaction)
-			%td= link_to transaction.tipo , edit_register_path(transaction)
+			%td= link_to transaction.tipo || "modificar", edit_register_path(transaction)
 			%td.hidden-phone= link_to (currency (transaction.effectivo)) , edit_register_path(transaction)
 			%td.hidden-phone= link_to (currency (transaction.banco)) , edit_register_path(transaction)
 			%td.hidden-phone= link_to (currency (transaction.paypal)) , edit_register_path(transaction)

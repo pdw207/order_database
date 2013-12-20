@@ -1,6 +1,8 @@
 MujeresCambiaMail::Application.routes.draw do
   get '/my_details/basic_information', to: 'my_details#information', as: 'information'
 
+  get 'process_sms', to: 'sms#process_sms'
+
   resources :registers
   resources :product_types
   resources :products

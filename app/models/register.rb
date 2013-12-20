@@ -45,4 +45,8 @@ class Register < ActiveRecord::Base
 	    end
     end
 
+    def Descripcion
+      attributes['Descripcion'] ? attributes['Descripcion'] : "-"
+    end
+
 end
