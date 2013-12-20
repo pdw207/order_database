@@ -4,6 +4,15 @@ class ApplicationController < ActionController::Base
   # protect_from_forgery with: :exception
 	helper_method :current_user
 	before_filter :set_locale
+
+  def test_mailer
+    order = Order.new
+    order.customer = Customer.new
+    order.customer.email_de_contacto = "rhok.mujeres.cambia@gmail.com"
+    ThankYouMailer.thank_you(order).deliver
+    render template: 'test_mailer'
+  end
+
 	private
 
 	def current_user

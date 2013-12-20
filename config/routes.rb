@@ -1,4 +1,6 @@
 MujeresCambiaMail::Application.routes.draw do
+  get '/test_mailer', to: 'application#test_mailer'
+
   get '/my_details/basic_information', to: 'my_details#information', as: 'information'
 
   get 'process_sms', to: 'sms#process_sms'
