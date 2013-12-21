@@ -1,7 +1,7 @@
-<h4>
+<h6>
 <p><%= date @order.created_at %> <%= @order.customer.compania %> Pedido: #<%= @order.id %></p>
 <p><%= currency @order.venta%> </p>
-</h4>
+</h6>
 <br>
 <h5>Reconciliación</h5>
 
@@ -56,6 +56,16 @@
                 <td><%= currency @order.products.sum(:pago)%></td>
                 <td></td>
                 <td></td>
+              </tr>
+              <tr>
+                <td>Cuenta de Grupo</td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td><%=currency (@order.products.sum(:precio) - @order.products.sum(:pago))%></td>
+                <td>Alexandra Paola De La Cruz Cusme</td>
+                <td>29636775</td>
               </tr>
       </tbody>
       

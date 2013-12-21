@@ -100,7 +100,7 @@
 
    
         <tbody>
-                <% @order.products.each do  |i|%>
+                <% @order.products.order(:codigo).each do  |i|%>
             <tr>
                 <td><%= link_to i.codigo, order_product_edit_path(@order.id, i.id)  %></td>
                 <td><%= link_to i.artist.nombre, order_product_edit_path(@order.id, i.id)  %></td>
@@ -180,8 +180,12 @@
     <h4>Información:</h4>
   <% if @order.numero_de_rastreo.present? %>
   <p>
-    <strong>Numero de rastreo:</strong>
+    <strong>Numero de Rastreo:</strong>
     <%= @order.numero_de_rastreo %>
+  </p>
+  <p>
+    <strong>Fecha de Email a Cliente:</strong>
+    <%= date @order.fecha_envio %>
   </p>
 <% end %>
   <p>

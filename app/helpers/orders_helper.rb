@@ -54,5 +54,4 @@ module OrdersHelper
 	end
 
 
-
 end

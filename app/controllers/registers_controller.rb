@@ -33,7 +33,7 @@ class RegistersController < ApplicationController
     respond_to do |format|
       if @register.save
        logger.debug  "I can access #{@register.amount}"
-        format.html { redirect_to @register, notice: 'Register was successfully created.' }
+        format.html { redirect_to @register, notice: 'Su nuevo producto fue agregado con éxito.' }
         format.json { render action: 'show', status: :created, location: @register }
       else
         format.html { render action: 'new' }
@@ -48,7 +48,7 @@ class RegistersController < ApplicationController
     respond_to do |format| 
       if @register.update(register_params)
         logger.debug  "I can access #{@register.amount}"
-        format.html { redirect_to @register, notice: 'Register was successfully updated.' }
+        format.html { redirect_to @register, notice: 'El cambio ha sido guardado con éxito.' }
         format.json { head :no_content }
       else
         format.html { render action: 'edit' }
