@@ -65,11 +65,11 @@ MujeresCambiaMail::Application.configure do
   # Set this to true and configure the email server for immediate delivery to raise delivery errors.
   config.action_mailer.raise_delivery_errors = false
   config.action_mailer.delivery_method = :smtp
-  
+  # was using port 587 and smtp.gmail.com
   config.action_mailer.default_url_options = { :host => 'afternoon-reaches-4345.herokuapp.com' } 
   config.action_mailer.smtp_settings = {
-    address:              'smtp.gmail.com',
-    port:                 587,
+    address:              'smtpout.secureserver.net',
+    port:                 80,
     domain:               'heroku.com',
     user_name:             ENV["EMAIL"],
     password:              ENV["PASSWORD"],
