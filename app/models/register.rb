@@ -15,7 +15,12 @@ class Register < ActiveRecord::Base
 			self.amount = -amount.abs unless amount.nil?
 			allocate_to_account
     	else
-
+    		allocate_to_account
+    		if self.amount < 0
+    			self.tipo = "Gastos"
+    		else
+    			self.tipo = "Ingresos"
+    		end
     	end
       
 
