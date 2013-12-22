@@ -22,11 +22,13 @@ class Register < ActiveRecord::Base
     			self.tipo = "Ingresos"
     		end
     	end
-      
+    end	
 
+    def Descripcion
+      attributes['Descripcion'] ? attributes['Descripcion'] : "-"
+    end
 
-	
-
+    private
       #set account
       def allocate_to_account
 		# Set all accounts to zero
@@ -47,11 +49,6 @@ class Register < ActiveRecord::Base
 	      else 
 	          self.obligaciones = amount
 	      end
-	    end
-    end
-
-    def Descripcion
-      attributes['Descripcion'] ? attributes['Descripcion'] : "-"
     end
 
 end
