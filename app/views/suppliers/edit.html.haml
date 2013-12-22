@@ -1,0 +1,10 @@
+%h1= "Editiar #{@supplier.name}"
+
+= render 'form'
+
+%footer
+	= link_to 'Mostrar', @supplier
+	\|
+	= link_to 'Ver Todo', suppliers_path
+	\|
+	= link_to 'Destruir', @supplier, :method => :delete, :data => { :confirm => '¿Está Segura?' }

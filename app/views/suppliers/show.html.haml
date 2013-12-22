@@ -1,0 +1,32 @@
+%footer
+  %p#notice= notice
+
+  %h1
+    = @supplier.name
+  %p
+    %b Nombre de Contacto:
+    = @supplier.contact_name
+  %p
+    %b Teléfono:
+    = @supplier.phone
+  %p
+    %b Email:
+    = @supplier.email
+  %p
+    %b Dirección:
+    = @supplier.address1
+    %br
+    = @supplier.address2
+    %br
+    = @supplier.address3
+
+  %p
+    %b Notas:
+    = @supplier.notes
+  %br
+    = link_to 'Editar', edit_supplier_path(@supplier)
+    \|
+    = link_to 'Ver Todo', suppliers_path
+
+
+

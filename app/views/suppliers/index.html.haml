@@ -1,0 +1,19 @@
+%h1 Proveedores
+
+%h2=link_to "Añadir Nuevo",new_supplier_path
+
+%table.table-striped.table-bordered.table.wice-grid
+  %tr.wice-grid-title-row
+    %th Tipo
+    %th Nombre
+    %th Contacto
+    %th Teléfono
+    %th Email
+
+  - @suppliers.each do |supplier|
+    %tr
+      %td= link_to supplier.tipo || "", supplier
+      %td= link_to supplier.name|| "", supplier
+      %td= link_to supplier.contact_name|| "", supplier
+      %td= link_to supplier.phone|| "", supplier
+      %td= link_to supplier.email|| "", supplier

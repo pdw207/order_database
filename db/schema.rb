@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131211030944) do
+ActiveRecord::Schema.define(version: 20131222152043) do
 
   create_table "artists", force: true do |t|
     t.string   "nombre"
@@ -226,6 +226,20 @@ ActiveRecord::Schema.define(version: 20131211030944) do
     t.string   "factura_content_type"
     t.integer  "factura_file_size"
     t.datetime "factura_updated_at"
+  end
+
+  create_table "suppliers", force: true do |t|
+    t.string   "name"
+    t.string   "phone"
+    t.string   "address1"
+    t.string   "address2"
+    t.string   "address3"
+    t.string   "contact_name"
+    t.string   "email"
+    t.string   "tipo"
+    t.string   "notes"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "users", force: true do |t|
