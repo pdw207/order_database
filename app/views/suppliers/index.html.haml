@@ -10,7 +10,7 @@
     %th Teléfono
     %th Email
 
-  - @suppliers.each do |supplier|
+  - @suppliers.order(:tipo).each do |supplier|
     %tr
       %td= link_to supplier.tipo || "", supplier
       %td= link_to supplier.name|| "", supplier
